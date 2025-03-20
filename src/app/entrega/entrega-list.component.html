@@ -1,0 +1,173 @@
+<app-caminho-menu></app-caminho-menu>
+<br>
+
+<!-- <div class="mobile"  style='background-color: aquamarine; text-align-last: center;'>
+  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
+  <span style='font-weight: bolder;'>Local: {{ local }} </span>
+  <span> </span>
+</div> -->
+
+<div class='form-group row'>
+  <label class='col-sm-2 col-form-label'>Filter By:</label>
+  <div class='col-sm-10'>
+    <input [(ngModel)]='filter' class='form-control'>
+  </div>
+</div>
+<div class="table-responsive desktop">
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th> Produto</th>
+        <th> Quantidade</th>
+        <th> Nome</th>
+        <th> Observação</th>
+        <th> Telefone</th>
+        <th> Local</th>
+        <th> Isencao</th>
+        <th> Hora Pedido</th>
+        <th> Hora Entrega</th>
+        <th> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let entrega of filteredEntregas' class="cols">
+        <td>
+          <img [src]='entrega.pedido.produto.imagemUrl' class="figure-img
+            img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td style='color: red'>{{ entrega.pedido.quantidade }} </td>
+        <td>{{ entrega.pedido.produto.nome }} </td>
+        <td style='color: red'>{{ entrega.pedido.observacao }} </td>
+        <td>{{ entrega.pedido.telefone }} </td>
+        <td>{{ entrega.pedido.local }} </td>
+        <td>{{ entrega.pedido.isencao }} </td>
+        <td>{{ entrega.pedido.dataCriacao | date:'hh:mm:ss' }} </td>
+        <td>{{ entrega.dataCriacao | date:'hh:mm:ss' }} </td>
+        <td>
+          <button (click)="openPopup( entrega.id! )">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaUpdate( entrega.id! )"
+            [disabled]="((telefone == 5511982551256 || telefone == 99999999996) && entrega.dataCriacao == null)
+            ? false : true">
+            <img src='/assets/images/guardasol.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive mobile">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 10%'> Produto</th>
+        <th style='width: 30%'> Nome</th>
+        <th style='width: 10%'> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let entrega of filteredEntregas' class="cols">
+        <td>
+          <img [src]='entrega.pedido.produto.imagemUrl' class="figure-img
+            img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td>{{ entrega.pedido.produto.nome }} </td>
+        <td>
+          <button (click)="openPopup( entrega.id! )">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaUpdate( entrega.id! )"
+            [disabled]="((telefone == 5511982551256 || telefone == 99999999996) && entrega.dataCriacao == null)
+            ? false : true">
+            <img src='/assets/images/guardasol.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25" height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detalhes da Entrega</h4>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup()">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body row">
+        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
+      </div>
+      <div class="modal-body row">
+        <img [src]='produto.imagemUrl' class="figure-img img-fluid rounded"
+          alt="..."
+          width="400"
+          height="400">
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Quantidade:</span>
+        <span style='color: red;'>{{ pedido.quantidade }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Nome:</span>
+        <span>{{ produto.nome }}</span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Observação:</span>
+        <span style='color: red;'>{{ pedido.observacao }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Descrição:</span>
+        <span> {{ produto.descricao }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Preço:</span>
+        <span>{{ produto.preco }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Tempo de Preparação:</span>
+        <span>{{ produto.tempoPreparacao }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Horário do Pedido:</span>
+        <span>{{ pedido.dataCriacao | date:'hh:mm:ss' }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Horário da Entrega:</span>
+        <span>{{ entrega.dataCriacao | date:'hh:mm:ss' }} </span>
+      </div>
+
+      <div class="modal-body">
+        <p>Os ingredientes encontrados na refeição são:</p>
+        <ul>
+          <li>alho</li>
+          <li>cebola</li>
+          <li>coentro</li>
+          <li>maionese</li>
+          <li>manjericão</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

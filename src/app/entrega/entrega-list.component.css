@@ -1,0 +1,21 @@
+@media (min-height: 576px) {
+  .cols {
+      columns: 2 200px;
+  }
+}
+
+@media (min-height: 768px) {
+  .cols {
+      columns: 3 200px;
+  }
+}
+
+@media (min-height: 992px) {
+  .cols {
+      columns: 4 200px;
+  }
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}

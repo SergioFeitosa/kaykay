@@ -1,0 +1,512 @@
+
+<app-caminho-menu></app-caminho-menu>
+<br>
+
+<div class="mobile"  style='background-color: aquamarine; text-align-last: center;'>
+  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
+  <span style='font-weight: bolder;'>Local: {{ local }} </span>
+  <span> </span>
+</div>
+
+<div class='form-group row'>
+  <label class='col-sm-2 col-form-label'>Filter By:</label>
+  <div class='col-sm-10'>
+    <input [(ngModel)]='filter' class='form-control'>
+  </div>
+</div>
+
+<!-- DESKTOP -->
+
+<div class="table-responsive desktop">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th> Imagem</th>
+        <th> Quantidade</th>
+        <th> Bebida</th>
+        <th> telefone</th>
+        <th> local</th>
+        <th> observacao</th>
+        <th> Cortesia</th>
+        <th> hora</th>
+        <th class="text-center"> Status </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+        <img [src]='pedido.produto.imagemUrl' class="figure-img img-fluid
+          rounded"
+          alt="..."
+          width="100"
+          height="70">
+        <td>
+          <a style="width: 2em; margin-top: 0.5em" (click)='minus()'><i
+              class="fa
+              fa-minus" style="color:red"></i></a>
+          <input [(ngModel)]='pedido.quantidade'
+            class='form-control'
+            type="text"
+            style='color: red; width: 3em;'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (pedido.telefone != 5511982551256 && pedido.telefone != 99999999998) ? true : false">
+          <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
+              class="fa
+              fa-plus" style="color:red"></i></a>
+
+        </td>
+
+        <td>{{ pedido.produto.nome }} </td>
+        <td>{{ pedido.telefone }} </td>
+        <td>{{ pedido.local }} </td>
+
+        <td>
+
+          <textarea [(ngModel)]="pedido.observacao" type="text" style='color:
+            red'
+            (blur)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+          </textarea>
+          </td>
+
+        <td>{{ pedido.isencao }} </td>
+        <td>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25"
+              >
+          </button>
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (telefone == 5511982551256 || telefone == 99999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- LAPTOP -->
+
+<div class="table-responsive laptop">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th> Imagem</th>
+        <th> Quantidade</th>
+        <th> Produto</th>
+        <th> telefone</th>
+        <th> local</th>
+        <th> observacao</th>
+        <th> isencao</th>
+        <th> hora</th>
+        <th class="text-center"> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+        <img [src]='pedido.produto.imagemUrl' class="figure-img img-fluid
+          rounded"
+          alt="..."
+          width="100"
+          height="70">
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (pedido.telefone != 5511982551256 && pedido.telefone != 99999999998) ? true : false">
+        </td>
+
+        <td>{{ pedido.produto.nome }} </td>
+        <td>{{ pedido.telefone }} </td>
+        <td>{{ pedido.local }} </td>
+
+        <td><input [(ngModel)]="pedido.observacao" type="text" style='color:
+            red'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+          </td>
+
+        <td>{{ pedido.isencao }} </td>
+        <td>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25"
+              >
+          </button>
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaCreate( pedido.id!)"
+                  [disabled]=" (telefone == 5511982551256 || telefone == 99999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- TABLET -->
+
+<div class="table-responsive tablet">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th> Imagem</th>
+        <th> Quantidade</th>
+        <th> Produto</th>
+        <th> telefone</th>
+        <th> local</th>
+        <th> observacao</th>
+        <th> isencao</th>
+        <th> hora</th>
+        <th class="text-center"> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+        <img [src]='pedido.produto.imagemUrl' class="figure-img img-fluid
+          rounded"
+          alt="..."
+          width="100"
+          height="70">
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (pedido.telefone != 5511982551256 && pedido.telefone != 99999999998) ? true : false">
+        </td>
+
+        <td>{{ pedido.produto.nome }} </td>
+        <td>{{ pedido.telefone }} </td>
+        <td>{{ pedido.local }} </td>
+
+        <td><input [(ngModel)]="pedido.observacao" type="text" style='color:
+            red'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+          </td>
+
+        <td>{{ pedido.isencao }} </td>
+        <td>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25"
+              >
+          </button>
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (telefone == 5511982551256 || telefone == 99999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE -->
+
+<div class="table-responsive mobile">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 10%'> Imagem</th>
+        <th style='width: 30%'> Nome</th>
+        <th style='width: 10%' class="text-center"> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+
+        <td>
+          <img [src]='pedido.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td>{{ pedido.produto.nome }} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25"
+              >
+          </button>
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (telefone == 5511982551256 || telefone == 99999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE PEQUENO -->
+
+<div class="table-responsive mobile-pequeno">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 10%'> Imagem</th>
+        <th style='width: 30%'> Nome</th>
+        <th style='width: 10%' class="text-center"> Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+
+        <td>
+          <img [src]='pedido.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td>{{ pedido.produto.nome }} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25"
+              >
+          </button>
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (telefone != 5511982551256 && telefone != 99999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded" alt="..." width="25"
+              height="25">
+          </button>
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (telefone == 5511982551256 || telefone == 99999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="25"
+              height="25">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detalhes do Pedido</h4>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup()">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Avaliação:</span>
+        <span><app-star [rating]="produto.avaliacao"></app-star></span>
+
+      </div>
+      <div class="modal-body row">
+        <img [src]='produto.imagemUrl' class="figure-img img-fluid rounded"
+          alt="..."
+          width="400"
+          height="400">
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Quantidade:</span>
+        <input [(ngModel)]="pedido.quantidade" type="text" style='color: red; width: 50%'  mask='000'
+        (blur)="atualizarPedido(pedido)" class="nav-link"
+        >
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Nome:</span>
+        <span>{{produto.nome}}</span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Observação:</span>
+        <input [(ngModel)]="pedido.observacao" type="text" style='color: red; width: 100%'
+        (blur)="atualizarPedido(pedido)" class="nav-link">
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Descrição:</span>
+        <span> {{ produto.descricao }} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Local:</span>
+        <span> {{pedido.local}} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Preço:</span>
+        <span>{{produto.preco}} </span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Tempo de Preparação:</span>
+        <span>{{produto.tempoPreparacao}} </span>
+      </div>
+
+      <div class="modal-body">
+        <p>Os ingredientes encontrados na refeição são:</p>
+        <ul>
+          <li>alho</li>
+          <li>cebola</li>
+          <li>coentro</li>
+          <li>maionese</li>
+          <li>manjericão</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
+      <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
+        <button (click)="">
+          <img src='/assets/images/carrinho.jpg' class="figure-img img-fluid
+            rounded" alt="..." width="50"
+            height="25">
+        </button>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup()">
+          Fechar
+        </button>
+
+      </div>
+      <div class="modal-body row">
+        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
+      </div>
+      <div class="modal-body row">
+        <img [src]='produto.imagemUrl' class="figure-img img-fluid rounded"
+          alt="..."
+          width="400"
+          height="400">
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Nome:</span>
+        <span>{{ produto.nome }}</span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Descrição:</span>
+        <span> {{ produto.descricao }} </span>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <span class="col-4" style='font-weight: bolder; color:blue'>Preço
+            Unitário:</span>
+          <span class="col-8" style='font-weight: bolder; color:blue'>Preço
+            Total:</span>
+        </div>
+        <div class="row">
+          <span class="col-4"> {{ produto.preco }} </span>
+          <span class="col-8">{{ produto.preco * carrinho.quantidade }}</span>
+        </div>
+      </div>
+
+      <div class="modal-body row">
+        <span style='font-weight: bolder; color:blue'>Quantidade:</span>
+        <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i
+            class="fa
+            fa-minus" style="color:red"></i></a>
+        <input style="width: 3em;" [(ngModel)]='carrinho.quantidade'
+          class='form-control'>
+        <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
+            class="fa
+            fa-plus" style="color:red"></i></a>
+      </div>
+      <div class="modal-body row">
+        <div class='form-group row container'>
+          <span style='font-weight: bolder; color:blue'>Observações:</span>
+          <div>
+            <textarea [(ngModel)]='carrinho.observacao'
+              class='form-control'></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Tempo de Preparação:</span>
+        <span>{{ produto.tempoPreparacao }} </span>
+      </div>
+
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Os ingredientes encontrados
+          na
+          refeição são:</span>
+        <div>
+          <ul>
+            <li>alho</li>
+            <li>cebola</li>
+            <li>coentro</li>
+            <li>maionese</li>
+            <li>manjericão</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-content" style='background-color:rgb(225, 240,
+        252)'>
+        <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
+          <button (click)="carrinhoCreate( produto.id )" >
+            <img src='/assets/images/carrinho.jpg' class="figure-img img-fluid
+              rounded" alt="..." width="50"
+              height="25">
+          </button>
+          <button type="button" class="btn btn-danger"
+            (click)="closePopup()">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

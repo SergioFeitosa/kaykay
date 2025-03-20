@@ -1,0 +1,192 @@
+
+<!-- DESKTOP -->
+
+<div class= 'container mt-4 desktop'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: flex;
+    justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between;
+      align-items: center;"> 
+      <a routerLink="cardapioPrincipal" routerLinkActive="active"  class="navbar-brand"
+        style="font-size: 1em; margin-left: 0.5em;">
+        Kay-Kay Kentinhas
+      </a>
+      <span style="font-size: 1em; color: white;"> {{local}} </span>
+
+      <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2
+        menu-item nav-active">Logout</div>
+      <div>
+        <a routerLink="/phone" routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+            style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+          </button>
+          <button style="border: none; background: none;">
+            <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+            style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+          </button>
+        </a>
+        <a [routerLink]="['/conta']" routerLinkActive="active">  
+          <button style="border: none; background: none;">
+            <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+            style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font">paid</mat-icon>
+          </button>
+        </a>
+        <button (click)="openPopup()" style="border: none; background: none;">
+          <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+          style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font">help_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- LAPTOP -->
+
+<div class= 'container mt-4 laptop'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: flex;
+    justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between;
+      align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand"
+        style="font-size: 1em; margin-left: 0.5em;">Quiosque
+        NuButiquin
+      </a>
+      <span style="font-size: 1em; color: white;"> {{local}} </span>
+      <div>
+        <a [routerLink]="['/conta']" routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src="/assets/images/paid-icon.png" alt="paid-icon">
+          </button>
+        </a>
+        <button (click)="openPopup()" style="border: none; background: none;">
+          <img src="/assets/images/help_icon.png" alt="help-icon">
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- TABLET -->
+
+<div class= 'container mt-4 tablet'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: flex;
+    justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between;
+      align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand"
+        style="font-size: 1em; margin-left: 0.5em;">Quiosque
+        NuButiquin
+      </a>
+      <span style="font-size: 1em; color: white;"> {{local}} </span>
+      <div>
+        <a [routerLink]="['/conta']" routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src="/assets/images/paid-icon.png" alt="paid-icon">
+          </button>
+        </a>
+        <button (click)="openPopup()" style="border: none; background: none;">
+          <img src="/assets/images/help_icon.png" alt="help-icon">
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- MOBILE -->
+
+<div class= 'container mt-4 mobile'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: flex;
+    justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between;
+      align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand"
+        style="font-size: 0.9em; margin-left: 0.5em;">Quiosque
+        NuButiquin
+      </a>
+      <span style="font-size: 0.9em; color: white;"> {{local}} </span>
+      <div>
+        <a [routerLink]="['/conta']" routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src="/assets/images/paid-icon.png" alt="paid-icon">
+          </button>
+        </a>
+        <button (click)="openPopup()" style="border: none; background: none;">
+          <img src="/assets/images/help_icon.png" alt="help-icon">
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- MOBILE PEQUENO -->
+<!--  -->
+<div class= 'container mt-4 mobile-pequeno'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: flex;
+    justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between;
+      align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand"
+        style="font-size: 0.9em; margin-left: 0.5em;">Quiosque
+        NuButiquin
+      </a>
+      <div>
+        <a [routerLink]="['/conta']" routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src="/assets/images/paid-icon.png" alt="paid-icon">
+          </button>
+        </a>
+        <button (click)="openPopup()" style="border: none; background: none;">
+          <img src="/assets/images/help_icon.png" alt="help-icon">
+        </button>
+      </div>
+    </div>
+    <span style="font-size: 0.9em; color: white;"> {{local}} </span>
+  </nav>
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ajuda</h4>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup()">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body">
+        <img mat-card-md-image src='/assets/images/menu.jpg' alt="Cardápio">
+      </div>
+
+      <div class="modal-body">
+        <p>No cardápio você encontra os pratos da casa:</p>
+        <ul>
+          <li>alho</li>
+          <li>cebola</li>
+          <li>coentro</li>
+          <li>maionese</li>
+          <li>manjericão</li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <img mat-card-md-image src='/assets/images/carrinho.jpg' alt="Cardápio">
+      </div>
+
+      <div class="modal-body">
+        <p>No pedido você confere e acompanha o status do seu pedido:</p>
+        <ul>
+          <li>pendente</li>
+          <li>fila de preparação</li>
+          <li>em preparação</li>
+          <li>fila de entrega</li>
+          <li>entregue</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

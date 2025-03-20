@@ -1,0 +1,4 @@
+<div class="otp">
+  <ng-otp-input #ngOtpInput (onInputChange)='onOtpChange($event+"")' [config]='configCode'></ng-otp-input>
+  <button class="btn btn-success mt-4" (click)="handleClick()">Verify OTP</button>
+</div>

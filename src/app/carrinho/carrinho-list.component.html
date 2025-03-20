@@ -1,0 +1,301 @@
+<app-caminho-menu></app-caminho-menu>
+<br>
+<!--
+<div class="mobile"  style='background-color: aquamarine; text-align-last: center;'>
+  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
+  <span style='font-weight: bolder;'>Local: {{ local }} </span>
+  <span> </span>
+</div> -->
+<div class='form-group row container mt-5' style='margin-bottom: 1em;'>
+  <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+  <input name="prop" [(ngModel)]='filter' class='form-control' style="width: 15em;">
+</div>
+
+<!-- DESKTOP -->
+
+<div class='table-responsive desktop'>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%'> Item </th>
+        <th style='width: 5%'> Quantidade</th>
+        <th style='width: 10%'> Observacao</th>
+        <th style='width: 5%'> Local</th>
+        <th style='width: 5%'> Hora</th>
+        <th style='width: 20%' class="text-center"> Status </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
+        carrinho.id! )" style="cursor: pointer;">
+        <td>
+          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70"
+            style="margin-top: 1em;">
+        </td>
+        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td style="color:red">{{ carrinho.quantidade }} </td>
+        <td style="color:red">{{ carrinho.observacao }} </td>
+        <td>{{ carrinho.local }} </td>
+        <td>{{ carrinho.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <p style="margin: 0"><small style="font-size: 0.8em;">{{
+              carrinho.status }}</small></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- LAPTOP -->
+
+<div class='table-responsive laptop'>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%'> Item </th>
+        <th style='width: 5%'> Quantidade</th>
+        <th style='width: 10%'> Observacao</th>
+        <th style='width: 5%'> Local</th>
+        <th style='width: 5%'> Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
+        carrinho.id! )" style="cursor: pointer;">
+        <td>
+          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td>
+          {{ carrinho.quantidade }}
+        </td>
+        <td>
+          {{ carrinho.observacao }}
+        </td>
+
+        <td>{{ carrinho.local }} </td>
+        <td>{{ carrinho.dataCriacao | date:'hh:mm:ss'}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TABLET -->
+
+<div class='table-responsive tablet'>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%'> Item </th>
+        <th style='width: 5%'> Quantidade</th>
+        <th style='width: 10%'> Observacao</th>
+        <th style='width: 5%'> Local</th>
+        <th style='width: 5%'> Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
+        carrinho.id! )" style="cursor: pointer;">
+        <td>
+          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td>
+          {{ carrinho.quantidade }}
+        </td>
+        <td>
+          {{ carrinho.observacao }}
+        </td>
+
+        <td>{{ carrinho.local }} </td>
+        <td>{{ carrinho.dataCriacao | date:'hh:mm:ss'}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE -->
+
+<div class='table-responsive mobile'>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 10%; font-size: 10px;'> </th>
+        <th style='width: 30%; font-size: 10px;'> Item </th>
+        <th style='width: 10%; font-size: 10px;'> Qtde</th>
+        <th style='width: 10%; font-size: 10px;' class="text-center"> Status </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
+        carrinho.id! )" style="cursor: pointer;">
+        <td style='width: 10%; font-size: 10px;'>
+          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.quantidade }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE PEQUENO -->
+
+<div class='table-responsive mobile-pequeno'>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 10%; font-size: 10px;'> </th>
+        <th style='width: 30%; font-size: 10px;'> Item </th>
+        <th style='width: 10%; font-size: 10px;'> Qtde</th>
+        <th style='width: 10%; font-size: 10px;' class="text-center"> Status </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
+        carrinho.id! )" style="cursor: pointer;">
+        <td style='width: 10%; font-size: 10px;'>
+          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.quantidade }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Detalhes do produto/pedido -->
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
+      <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
+        <button routerLink='/carrinho/delete/{{ carrinho.id! }}'>
+          Deletar
+        </button>
+        <div *ngIf="statusBool">
+          <button (click)="pedidoCreate( carrinho.id! );" >
+            Confirmar
+          </button>
+        </div>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup()">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body row">
+        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
+      </div>
+      <div class="modal-body row">
+        <img [src]='produto.imagemUrl' class="figure-img img-fluid rounded"
+          alt="..."
+          width="400"
+          height="400">
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Nome:</span>
+        <span>{{ produto.nome }}</span>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Descrição:</span>
+        <span> {{ produto.descricao }} </span>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <span class="col-4" style='font-weight: bolder; color:blue'>Preço
+            Unitário:</span>
+          <span class="col-8" style='font-weight: bolder; color:blue'>Preço
+            Total:</span>
+        </div>
+        <div class="row">
+          <span class="col-4"> {{ produto.preco }} </span>
+          <span class="col-8">{{ produto.preco * carrinho.quantidade }}</span>
+        </div>
+      </div>
+
+      <div class="modal-body row">
+        <span style='font-weight: bolder; color:blue'>Quantidade:</span>
+        <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i
+            class="fa
+            fa-minus" style="color:red"></i></a>
+        <input style="width: 3em;" name="prp" [(ngModel)]='carrinho.quantidade'
+          class='form-control'>
+        <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
+            class="fa
+            fa-plus" style="color:red"></i></a>
+      </div>
+      <div class="modal-body row">
+        <div class='form-group row container'>
+          <span style='font-weight: bolder; color:blue'>Observações:</span>
+          <div>
+            <textarea  [(ngModel)]='carrinho.observacao'
+              class='form-control'
+              (ngModelChange)="atualizarCarrinho(carrinho)"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Tempo de Preparação:</span>
+        <span>{{ produto.tempoPreparacao }} </span>
+      </div>
+
+      <div class="modal-body row">
+        <span style='font-weight: bolder;'>Os ingredientes encontrados
+          na
+          refeição são:</span>
+        <div>
+          <ul>
+            <li>alho</li>
+            <li>cebola</li>
+            <li>coentro</li>
+            <li>maionese</li>
+            <li>manjericão</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-content" style='background-color:rgb(225, 240,
+        252)'>
+        <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
+          <button routerLink = '/carrinho/delete/{{ carrinho.id! }}'>
+            Deletar
+          </button>
+          <button (click)="pedidoCreate( carrinho.id! );">
+            Confirmar
+          </button>
+          <button type="button" class="btn btn-danger"
+            (click)="closePopup()">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

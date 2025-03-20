@@ -1,0 +1,28 @@
+<div class="contain"> 
+  <div class="row d-flex align-items-center justify-content-center">
+    <form class="col-md-8">
+      <div class="card px-5 py-5">
+        <div class="form-input">
+          <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control"
+            placeholder="Enter Phone Number" [(ngModel)]="phoneNumber" min="10" max="15">
+        </div>
+        <button class="btn btn-success mt-4 signup" (click)="getOTP()">Validar Telefone</button>
+        <div id="sign-in-button"></div>
+      </div>
+    </form>
+  </div>
+  <div class="otp row d-flex align-items-center justify-content-center" >
+    <form class="col-md-8">
+      <div class="card px-5 py-5">
+        <div class="form-input"  [ngStyle]="{'display': displayCode}">
+          <div class="otp">
+            <ng-otp-input #ngOtpInput (onInputChange)='onOtpChange($event+"")' [config]='configCode'></ng-otp-input>
+            <button class="btn btn-success mt-4" (click)="handleClick()">Verify OTP</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="recaptcha-container"></div>
+</div>
+

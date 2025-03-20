@@ -1,0 +1,318 @@
+
+<app-caminho-menu></app-caminho-menu>
+<br>
+<!--
+
+  <div class="mobile" style='background-color: aquamarine; text-align-last:
+  center;'>
+  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
+  <span style='font-weight: bolder;'>Local: {{ local }} </span>
+  <span> </span>
+</div>
+ (click)="pagamentoCartao()"
+-->
+<div
+  [ngStyle]="{'display': displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(249, 255, 166);">
+      <div class="table-responsive desktop">
+        <div class="modal-header">
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+            0.5rem; width: 30%">
+            <a
+              href="https://api.whatsapp.com/send?phone=5511982551256&text=Quero%20realizar%20o%20pagamento!"
+              style="color: white; font-size: 15px; text-decoration: none;">
+              Pagamento Cartão
+            </a>
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoPix()">
+            Pagamento Pix
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoDinheiro()">
+            Pagamento Dinheiro
+          </button>
+
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="table-primary">
+              <th style="border: 1px solid black; font-size: 16px;"> qtde
+              </th>
+              <th style="border: 1px solid black; font-size: 16px;"> nome
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 16px;"> unitário
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 16px;"> total
+                prod
+              </th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor='let conta of contas'>
+              <td style="border: 1px solid black; font-size: 16px;">{{
+                conta.quantidade }}
+                &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 16px;">{{
+                conta.pedido.produto.nome }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 16px;">{{
+                conta.valorProdutoUnitario
+                | currency:'R$' }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 16px;;">{{
+                conta.valorProdutoTotal |
+                currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-primary">
+              <td colspan="3" style="border: 1px solid black; text-align:
+                right;"> TOTAL &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; text-align: right;">{{
+                contaValorTotal | currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="table-responsive mobile">
+        <div class="modal-header">
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoCartao()">
+            Pagamento Cartão
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoPix()">
+            Pagamento Pix
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoDinheiro()">
+            Pagamento Dinheiro
+          </button>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="table-primary">
+              <th style="border: 1px solid black; font-size: 10px;"> qtde
+              </th>
+              <th style="border: 1px solid black; font-size: 10px;"> nome
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 10px;"> unitário
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 10px;"> total
+                prod
+              </th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor='let conta of contas'>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.quantidade }}
+                &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.pedido.produto.nome }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.valorProdutoUnitario
+                | currency:'R$' }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;;">{{
+                conta.valorProdutoTotal |
+                currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-primary">
+              <td colspan="3" style="border: 1px solid black; text-align:
+                right;"> TOTAL &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; text-align: right;">{{
+                contaValorTotal | currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="table-responsive mobile-pequeno">
+        <div class="modal-header">
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoCartao()">
+            Pagamento Cartão
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoPix()">
+            Pagamento Pix
+          </button>
+          <button type="button" class="btn-fab btn-primary"
+            style="border: 1px solid black; font-size: 10px; padding: 0.5rem
+            0.5rem; width: 30%"
+            (click)="pagamentoDinheiro()">
+            Pagamento Dinheiro
+          </button>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="table-primary">
+              <th style="border: 1px solid black; font-size: 10px;"> qtde
+              </th>
+              <th style="border: 1px solid black; font-size: 10px;"> nome
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 10px;"> unitário
+                &nbsp;&nbsp;</th>
+              <th style="border: 1px solid black; font-size: 10px;"> total
+                prod
+              </th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor='let conta of contas'>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.quantidade }}
+                &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.pedido.produto.nome }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;">{{
+                conta.valorProdutoUnitario
+                | currency:'R$' }} &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; font-size: 10px;;">{{
+                conta.valorProdutoTotal |
+                currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-primary">
+              <td colspan="3" style="border: 1px solid black; text-align:
+                right;"> TOTAL &nbsp;&nbsp;</td>
+              <td style="border: 1px solid black; text-align: right;">{{
+                contaValorTotal | currency:'R$' }} &nbsp;&nbsp;</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  class="modal" tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyleCartao}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(249, 255, 166);">
+      <div class="modal-header">
+        <h4 class="modal-title"
+          style="font-size: 15px; padding: 0.5rem
+          0.5rem; width: 40%">
+          Pagamento Cartão
+        </h4>
+        <button type="button" class="btn-fab btn-primary"
+          style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+          0.5rem; width: 30%"
+          (click)="closePagamentoCartao(operadoraSelecionada)">
+          Fechar
+        </button>
+      </div>
+      <div>
+        <h5>Débito/Crédito</h5>
+        <mat-radio-group class="example-radio-group"
+          [(ngModel)]="debitocreditoSelecionada">
+          <mat-radio-button class="example-radio-button" *ngFor="let debcred of
+            debcreds" [value]="debcred">
+            {{debcred}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-selected-value">Sua preferência é :
+          {{debitocreditoSelecionada}}</div>
+      </div>
+
+      <div *ngIf="debitocreditoSelecionada === 'Crédito'">
+        <h5>Operadora</h5>
+        <mat-radio-group class="example-radio-group"
+          [(ngModel)]="operadoraSelecionada">
+          <mat-radio-button class="example-radio-button" *ngFor="let operadora
+            of operadoras" [value]="operadora">
+            {{operadora}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-selected-value">Sua preferência é :
+          {{operadoraSelecionada}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal" tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStylePix}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(249, 255, 166);">
+      <div class="modal-header">
+        <h4 class="modal-title"
+          style="font-size: 15px; padding: 0.5rem
+          0.5rem; width: 40%">
+          Pagamento Pix
+        </h4>
+        <button type="button" class="btn-fab btn-primary"
+          style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+          0.5rem; width: 30%"
+          (click)="closePagamentoPix()">
+          Fechar
+        </button>
+      </div>
+      <div>
+        <img src='/assets/images/qrcode-conta.jpg' class="figure-img img-fluid
+          rounded" alt="..." width="400"
+          height="400">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal" tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyleDinheiro}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(249, 255, 166);">
+      <div class="modal-header">
+        <h4 class="modal-title"
+          style="font-size: 15px; padding: 0.5rem
+          0.5rem; width: 40%">
+          Pagamento Dinheiro
+        </h4>
+        <button type="button" class="btn-fab btn-primary"
+          style="border: 1px solid black; font-size: 15px; padding: 0.5rem
+          0.5rem; width: 30%"
+          (click)="closePagamentoDinheiro()">
+          Fechar
+        </button>
+      </div>
+      <div>
+        <h5>Valor Apresentado :</h5>
+        <input type="text" name="trocoPara" placeholder="Troco para:" class="form-control"
+            placeholder="Entre com o valor para troco" [(ngModel)]="trocoPara" min="10" max="15">
+            <br>
+        <h5>Total  :</h5>
+        <span style="font-size: 16px;;">{{ contaValorTotal | currency:'R$' }} &nbsp;&nbsp;</span>
+        <br>
+        <h5>Troco  :</h5>
+        <span style="font-size: 16px;;">{{ trocoPara - contaValorTotal | currency:'R$' }} &nbsp;&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class='row col-sm-12 mb-1'>
+  <div class='col-sm-2'>
+    <input [(ngModel)]='telefone' class='form-control id="floatingInput" '
+      placeholder="Telefone"
+      (blur)="validarTelefone()" mask='(00) 0 0000 0000' style='margin-left: 0.9em; width:100%; font-size: 15px;'>
+  </div>
+  <div class='col-sm-2'>
+    <span class="input-group-append">
+      <button (click)="validarTelefone()" class="btn" style='color:aqua'
+        type="button">
+        <i class="fa fa-arrow-circle-right fa-lg"></i>
+      </button>
+    </span>
+  </div>
+</div>
+<div class='row col-sm-12'>
+  <div class='col-sm-2'>
+    <input [(ngModel)]='codigo' class='form-control id="floatingInput" '
+      placeholder="Código"
+      mask='0000' style='margin-left: 0.9em; width: 100%; font-size: 15px;'>
+  </div>
+  <div class='col-sm-2'>
+    <span class="input-group-append">
+      <button (click)="validarCodigo()" class="btn" style='color:aqua'
+        type="button">
+        <i class="fa fa-arrow-circle-right fa-lg"></i>
+      </button>
+    </span>
+  </div>
+</div>
+

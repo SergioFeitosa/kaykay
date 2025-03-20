@@ -1,1 +1,140 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-css-class {
+  background-color: rgb(246, 250, 9);
+  color: #3D5AFE;
+}
+
+.desktop {
+  display: block;
+  /* ou inline, inline-block */
+}
+
+.mobile {
+  display: none;
+}
+
+.mobile-pequeno {
+  display: none;
+}
+
+.tablet {
+  display: none;
+}
+
+.laptop {
+  display: none;
+}
+
+ /* LAPTOP */
+
+ @media(min-width: 768px) and (max-width: 1199px) {
+  .desktop {
+    display: none;
+  }
+
+  .laptop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  .mobile-pequeno {
+    display: none;
+  }
+}
+
+/* TABLET  */
+
+@media(min-width: 481px) and (max-width: 767px) {
+  .desktop {
+    display: none;
+  }
+
+  .laptop {
+    display: none;
+  }
+
+  .mobile {
+    display: none;
+
+  }
+
+  .tablet {
+    display: block;
+  }
+
+  .mobile-pequeno {
+    display: none;
+  }
+}
+
+/* MOBILE */
+
+@media(min-width: 351px) and (max-width: 480px) {
+  .desktop {
+    display: none;
+  }
+
+  .laptop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  .mobile-pequeno {
+    display: none;
+    /* ou inline, inline-block */
+  }
+}
+
+/* MOBILE PEQUENO */
+
+@media(max-width: 350px) {
+  .desktop {
+    display: none;
+  }
+
+  .laptop {
+    display: none;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  .mobile-pequeno {
+    display: block;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
