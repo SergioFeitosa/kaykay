@@ -20,11 +20,11 @@ export class CarrinhoService {
               private http: HttpClient) {}
 
   // tslint:disable-next-line:quotemark
-  // baseUrl = "http://localhost:3001/carts";
+  baseUrl = "http://localhost:3001/carts";
 
   // baseUrl = 'http://localhost:8080/quiosqueBackend/carts';
 
-  baseUrl = 'http://localhost:8080/carts';
+  // baseUrl = 'http://localhost:8080/carts';
 
   // baseUrl = 'http://localhost:8080/quiosque/carts';
 

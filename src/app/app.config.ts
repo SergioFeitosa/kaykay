@@ -24,5 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideZoneChangeDetection({ eventCoalescing: true }), 
     importProvidersFrom(BrowserModule,BrowserAnimationsModule ),
+    provideHttpClient(),
   ]
 };

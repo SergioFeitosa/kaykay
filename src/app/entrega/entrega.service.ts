@@ -10,11 +10,11 @@ import { MatSnackBar as MatSnackBar} from '@angular/material/snack-bar';
 export class EntregaService {
 
   // tslint:disable-next-line:quotemark
-  // baseUrl = "http://localhost:3001/deliveries";
+  baseUrl = "http://localhost:3001/deliveries";
 
   // baseUrl = 'http://localhost:8080/quiosqueBackend/deliveries';
 
-  baseUrl = 'http://localhost:8080/deliveries';
+  // baseUrl = 'http://localhost:8080/deliveries';
 
   // baseUrl = 'https://sgpn.com.br/quiosqueBackend/deliveries';
 

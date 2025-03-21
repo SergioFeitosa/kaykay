@@ -11,9 +11,9 @@ import { Conta } from './conta';
 export class ContaService {
 
   // tslint:disable-next-line:quotemark
-  // baseUrl = "http://localhost:3001/contas";
+  baseUrl = "http://localhost:3001/tickets";
 
-  baseUrl = "http://localhost:8080/contas";
+  //baseUrl = "http://localhost:8080/contas";
 
   constructor(
     private snackBar: MatSnackBar,

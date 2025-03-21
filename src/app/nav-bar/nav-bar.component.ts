@@ -7,6 +7,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/aut
 import { environment } from '../../environments/environment.development';
 import { MatIconModule} from '@angular/material/icon';
 import { CommonModule, NgStyle } from '@angular/common';
+import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
 
 @Component({
   selector: 'app-nav-bar',
