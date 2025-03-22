@@ -61,10 +61,10 @@ export const routes: Routes = [
         path: 'pedidoBar', component: PedidoBarListComponent
       },
       {
-        path: 'produtos/**', component: ProdutoListComponent
+        path: 'products/**', component: ProdutoListComponent
       },
       {
-        path: 'produtos/:categoryId', component: ProdutoListComponent,
+        path: 'products/:categoryId', component: ProdutoListComponent,
       }, 
       {
         path: 'entrega/update/:id', component: EntregaUpdateComponent

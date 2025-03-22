@@ -9,7 +9,6 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     NavBarComponent,
     RouterOutlet,
-
   ],
 
   templateUrl: './app.component.html',

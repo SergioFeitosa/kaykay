@@ -1,29 +1,15 @@
 import { ProdutoListComponent } from './../produto/produto-list.component';
-import { ProdutoService } from './../produto/produto.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit, NgZone, CUSTOM_ELEMENTS_SCHEMA, Injectable, NO_ERRORS_SCHEMA } from '@angular/core';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 import { interval } from 'rxjs';
-import { WindowService } from './window.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
-import { initializeApp } from "firebase/app";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile } from "@angular/fire/auth";
 import { environment } from '../../environments/environment.development';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAc9T6jV7QRc2sZMeQ3wAFxO2u-SH7dS_A",
-  authDomain: "quiosque-phone.firebaseapp.com",
-  projectId: "quiosque-phone",
-  storageBucket: "quiosque-phone.appspot.com",
-  messagingSenderId: "977420644755",
-  appId: "1:977420644755:web:d49bb641a0a9ea7cef3866"
-};
 
  
 @Component({
@@ -36,7 +22,6 @@ const firebaseConfig = {
     NgOtpInputModule,
   ],
   providers: [
-    ProdutoListComponent,
     NavBarComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -82,12 +67,14 @@ export class PhoneNumberComponent implements OnInit {
 
   ngOnInit() {
 
+
+    this.app = firebase.initializeApp(environment.firebaseConfig);
+    //firebase.initializeApp(environment.firebaseConfig),
+
     this.auth = getAuth();
 
-    this.app = initializeApp(firebaseConfig);
-    //firebase.initializeApp(firebaseConfig),
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
-    // console.log(this.verify);
+    console.log(this.verify);
     this.displayCode = 'none';
 
   }

@@ -17,15 +17,6 @@ import { StarComponent } from '../star/star.component';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { environment } from '../../environments/environment.development';
 
-const config = {
-  apiKey: 'AIzaSyAc9T6jV7QRc2sZMeQ3wAFxO2u-SH7dS_A',
-  authDomain: 'quiosque-phone.firebaseapp.com',
-  projectId: 'quiosque-phone',
-  storageBucket: 'quiosque-phone.appspot.com',
-  messagingSenderId: '977420644755',
-  appId: '1:977420644755:web:d49bb641a0a9ea7cef3866'
-};
-
 
 @Component({
   selector: 'app-produto-list',
@@ -112,7 +103,7 @@ export class ProdutoListComponent implements OnInit {
 
     // this.modulo = 'Cardápio';
 
-    firebase.initializeApp(config);
+    firebase.initializeApp(environment.firebaseConfig);
 
     this.carrinho.quantidade = 1;
 
@@ -131,8 +122,9 @@ export class ProdutoListComponent implements OnInit {
 
     this.produtoService.read().subscribe(produtos => {
       this.produtos = produtos.filter((produto: Produto) =>
-        produto.categoria.toLocaleLowerCase() === this._categoryId.toLocaleLowerCase());
-      this.filteredProdutos = this.produtos;
+        produto.categoria ===  this._categoryId);
+      this.filteredProdutos = produtos;
+      console.log(produtos)
     });
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
