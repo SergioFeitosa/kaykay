@@ -120,11 +120,13 @@ export class ProdutoListComponent implements OnInit {
 
     this._categoryId = this.activatedRoute.snapshot.paramMap.get('categoryId');
 
-    this.produtoService.read().subscribe(produtos => {
-      this.produtos = produtos.filter((produto: Produto) =>
-        produto.categoria ===  this._categoryId);
-      this.filteredProdutos = produtos;
-      console.log(produtos)
+    this.produtoService.read().subscribe(produto => {
+      this.produtos = produto.filter((produto: Produto) =>
+        produto.category ==  this._categoryId);
+      this.filteredProdutos = this.produtos;
+      console.log(this._categoryId)
+      console.log(this.produto.category)
+      console.log(this.produtos)
     });
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
@@ -211,7 +213,7 @@ export class ProdutoListComponent implements OnInit {
 
     this.filteredProdutos =
       this.produtos.filter((produto: Produto) =>
-        produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+        produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
   }
 
   // tslint:disable-next-line:quotemark

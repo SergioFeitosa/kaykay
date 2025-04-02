@@ -154,7 +154,7 @@ export class CarrinhoListComponent implements OnInit {
       this.filteredCarrinhos =
         this.carrinhos
           .filter((carrinho: Carrinho) => carrinho.enviado !== true)
-          .filter((carrinho: Carrinho) => carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((carrinho: Carrinho) => carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     } else {
 
@@ -162,7 +162,7 @@ export class CarrinhoListComponent implements OnInit {
         this.carrinhos
           .filter((carrinho: Carrinho) => carrinho.enviado !== true)
           .filter((carrinho: Carrinho) => environment.telefone - carrinho.telefone === 0)
-          .filter((carrinho: Carrinho) => carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((carrinho: Carrinho) => carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     }
   }

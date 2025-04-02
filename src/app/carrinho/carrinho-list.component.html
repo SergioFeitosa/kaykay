@@ -30,14 +30,14 @@
       <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
         carrinho.id! )" style="cursor: pointer;">
         <td>
-          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+          <img [src]='carrinho.produto.imageUrl' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70"
             style="margin-top: 1em;">
         </td>
-        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td><p>{{ carrinho.produto.name }}</p></td>
         <td style="color:red">{{ carrinho.quantidade }} </td>
         <td style="color:red">{{ carrinho.observacao }} </td>
         <td>{{ carrinho.local }} </td>
@@ -69,13 +69,13 @@
       <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
         carrinho.id! )" style="cursor: pointer;">
         <td>
-          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+          <img [src]='carrinho.produto.imageUrl' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td><p>{{ carrinho.produto.name }}</p></td>
         <td>
           {{ carrinho.quantidade }}
         </td>
@@ -108,13 +108,13 @@
       <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
         carrinho.id! )" style="cursor: pointer;">
         <td>
-          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+          <img [src]='carrinho.produto.imageUrl' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td><p>{{ carrinho.produto.nome }}</p></td>
+        <td><p>{{ carrinho.produto.name }}</p></td>
         <td>
           {{ carrinho.quantidade }}
         </td>
@@ -145,13 +145,13 @@
       <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
         carrinho.id! )" style="cursor: pointer;">
         <td style='width: 10%; font-size: 10px;'>
-          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+          <img [src]='carrinho.produto.imageUrl' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.name }}</td>
         <td style='width: 10%; font-size: 10px;'>{{ carrinho.quantidade }}</td>
         <td style='width: 10%; font-size: 10px;'>{{ carrinho.status }}</td>
       </tr>
@@ -175,13 +175,13 @@
       <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
         carrinho.id! )" style="cursor: pointer;">
         <td style='width: 10%; font-size: 10px;'>
-          <img [src]='carrinho.produto.imagemUrl' class="figure-img img-fluid
+          <img [src]='carrinho.produto.imageUrl' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.name }}</td>
         <td style='width: 10%; font-size: 10px;'>{{ carrinho.quantidade }}</td>
         <td style='width: 10%; font-size: 10px;'>{{ carrinho.status }}</td>
       </tr>
@@ -212,21 +212,21 @@
         </button>
       </div>
       <div class="modal-body row">
-        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
+        Avaliação: <app-star [rating]="produto.rating"></app-star>
       </div>
       <div class="modal-body row">
-        <img [src]='produto.imagemUrl' class="figure-img img-fluid rounded"
+        <img [src]='produto.imageUrl' class="figure-img img-fluid rounded"
           alt="..."
           width="400"
           height="400">
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
-        <span>{{ produto.nome }}</span>
+        <span>{{ produto.name }}</span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Descrição:</span>
-        <span> {{ produto.descricao }} </span>
+        <span> {{ produto.description }} </span>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -236,8 +236,8 @@
             Total:</span>
         </div>
         <div class="row">
-          <span class="col-4"> {{ produto.preco }} </span>
-          <span class="col-8">{{ produto.preco * carrinho.quantidade }}</span>
+          <span class="col-4"> {{ produto.price }} </span>
+          <span class="col-8">{{ produto.price * carrinho.quantidade }}</span>
         </div>
       </div>
 
@@ -264,7 +264,7 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Tempo de Preparação:</span>
-        <span>{{ produto.tempoPreparacao }} </span>
+        <span>{{ produto.preparationTime }} </span>
       </div>
 
       <div class="modal-body row">
