@@ -6,16 +6,18 @@ import { RouterLink } from '@angular/router';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../../environments/environment.development';
 import { MatIconModule} from '@angular/material/icon';
-import { CommonModule, NgStyle } from '@angular/common';
+import { CommonModule, NgIf, NgStyle } from '@angular/common';
 import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
+import { PhoneNumberComponent } from '../phone-number/phone-number.component';
+import { ProdutoListComponent } from '../produto/produto-list.component';
 
 @Component({
   selector: 'app-nav-bar',
+  standalone: true,
   imports: [
     AngularFireAuthModule,
     CommonModule,
     MatIconModule,
-    NgStyle,
     RouterLink,
   ],
   templateUrl: './nav-bar.component.html',
@@ -38,12 +40,12 @@ export class NavBarComponent implements OnInit {
     private navBarService: NavBarService,
     private afAuth: AngularFireAuth,
     private router: Router,
-    
     private ngZone: NgZone,
     
   ) { }
 
   ngOnInit(): void {
+
     this.local = environment.local;
     this.login = environment.login;
   }
@@ -82,8 +84,9 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     return this.afAuth.signOut().then(() => {
+      environment.login = false;
+      this.login = false
       this.ngZone.run(() => {
-        environment.login = false;
         this.router.navigate(['']);
       });
     });

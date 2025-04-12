@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     return this.afAuth.signOut().then(() => {
+      environment.login = false
       this.ngZone.run(() => {
         this.router.navigate(['phone']);
       });

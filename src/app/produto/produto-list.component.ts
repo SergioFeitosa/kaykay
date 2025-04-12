@@ -4,11 +4,8 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Produto } from './produto';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 import { Carrinho } from '../carrinho/carrinho';
-import { LoginService } from '../login/login.service';
 
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 import { Router } from '@angular/router';
 import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
 import { CommonModule } from '@angular/common';
@@ -80,7 +77,6 @@ export class ProdutoListComponent implements OnInit {
   constructor(
     private produtoService: ProdutoService,
     private carrinhoService: CarrinhoService,
-    private loginService: LoginService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ngZone: NgZone,
@@ -107,7 +103,7 @@ export class ProdutoListComponent implements OnInit {
 
     this.carrinho.quantidade = 1;
 
-    // this.telefone = environment.telefone;
+    this.telefone = environment.telefone;
     this.login = environment.login;
     this.flag = false;
 
@@ -259,6 +255,8 @@ export class ProdutoListComponent implements OnInit {
 
   carrinhoCreate(produtoId: number): void {
 
+    alert('criar o carrinho')
+
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -289,9 +287,6 @@ export class ProdutoListComponent implements OnInit {
 
   validarCodigo(produtoId: number): void {
 
-
-    console.log('teste');
-
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -304,8 +299,6 @@ export class ProdutoListComponent implements OnInit {
       // this.updateClassDisabled();
       this.carrinhoCreate(produtoId);
       this.closePopup2();
-      environment.login = true;
-      this.login = environment.login;
       // window.alert('Logged in');
       this.closePopup();
 
@@ -317,7 +310,6 @@ export class ProdutoListComponent implements OnInit {
     // tslint:disable-next-line:comment-format
     //const telefone = this.navForm.get('telefone').value;
     const codigoGerado = Math.random() * this.telefone;
-    this.loginService.enviarCodigo(this.telefone.toString(), codigoGerado.toString());
   }
 
   // tslint:disable-next-line:typedef

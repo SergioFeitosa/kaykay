@@ -84,6 +84,8 @@ export class CardapioPrincipalComponent implements OnInit {
 
   ngOnInit(): void {
     // this.modulo = 'Cardápio';
+    environment.login = false;
+    
     if (environment.telefone > 0 && environment.codigo > 0) {
       this.telefone = environment.telefone;
       this.codigo = environment.codigo;
@@ -99,7 +101,6 @@ export class CardapioPrincipalComponent implements OnInit {
 
     this.buttonDisabled = false;
     
-
   }
 
   // tslint:disable-next-line:typedef

@@ -13,9 +13,24 @@
       <span style="font-size: 1em; color: white;"> {{local}} </span>
 
       <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2
-        menu-item nav-active">Logout</div>
-      <div>
-        <a routerLink="/phone" routerLinkActive="active">
+        menu-item nav-active">Logout
+      </div>
+        <div>
+          <a [routerLink]="['/phone']" routerLinkActive="active">
+            
+            @if (login) {
+                <button *ngIf='login' style="border: none; background: none;">
+                  <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+                  style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+                </button>  
+            } @else {
+                <button *ngIf='!login' style="border: none; background: none;">
+                  <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+                  style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+                </button>
+            }
+          </a>
+          <!-- <a routerLink="/phone" routerLinkActive="active">
           <button style="border: none; background: none;">
             <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
             style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
@@ -24,7 +39,7 @@
             <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
             style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
           </button>
-        </a>
+        </a> -->
         <a [routerLink]="['/conta']" routerLinkActive="active">  
           <button style="border: none; background: none;">
             <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 

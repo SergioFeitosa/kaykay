@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   login: false,
   ApiURL : 'http://localhost:8000',
   telefone: 0,
@@ -17,12 +17,12 @@ export const environment = {
   fundoColoridoEntrega: false,
   fundoColoridoConta: false,
   firebaseConfig: {
-    apiKey: "AIzaSyAc9T6jV7QRc2sZMeQ3wAFxO2u-SH7dS_A",
-    authDomain: "quiosque-phone.firebaseapp.com",
-    projectId: "quiosque-phone",
-    storageBucket: "quiosque-phone.appspot.com",
-    messagingSenderId: "977420644755",
-    appId: "1:977420644755:web:d49bb641a0a9ea7cef3866"
+    apiKey: "AIzaSyB2h7G3YHQQKEWM0MKlmCdhLK0qjH_Bjuk",
+    authDomain: "angular-quiosque.firebaseapp.com",
+    projectId: "angular-quiosque",
+    storageBucket: "angular-quiosque.firebasestorage.app",
+    messagingSenderId: "172900752590",
+    appId: "1:172900752590:web:94b4f4701dddccee88c49f"
   }
 };
 

@@ -57,7 +57,7 @@ export class CarrinhoListComponent implements OnInit {
 
   statusBool: boolean = false;
 
-  container = document.querySelector('.container');
+  container: any;
 
   constructor(
     private carrinhoService: CarrinhoService,

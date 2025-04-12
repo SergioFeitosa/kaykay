@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterOutlet } from '@angular/router';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { ProdutoListComponent } from './produto/produto-list.component';
 
 
 @Component({
@@ -9,8 +11,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     NavBarComponent,
     RouterOutlet,
+    
   ],
-
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
