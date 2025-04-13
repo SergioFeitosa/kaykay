@@ -99,6 +99,9 @@ export class ProdutoListComponent implements OnInit {
 
     // this.modulo = 'Cardápio';
 
+    console.log('produto list init' )
+
+
     firebase.initializeApp(environment.firebaseConfig);
 
     this.carrinho.quantidade = 1;
@@ -120,9 +123,6 @@ export class ProdutoListComponent implements OnInit {
       this.produtos = produto.filter((produto: Produto) =>
         produto.category ==  this._categoryId);
       this.filteredProdutos = this.produtos;
-      console.log(this._categoryId)
-      console.log(this.produto.category)
-      console.log(this.produtos)
     });
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
@@ -137,7 +137,6 @@ export class ProdutoListComponent implements OnInit {
   
     // tslint:disable-next-line:typedef
     handleClick(produtoId: number) {
-      console.log(this.otp);
       // tslint:disable-next-line:prefer-const
       const credential = firebase.auth.PhoneAuthProvider.credential(
         this.verify,
@@ -149,7 +148,6 @@ export class ProdutoListComponent implements OnInit {
         .auth()
         .signInWithCredential(credential)
         .then((response) => {
-          console.log(response);
           localStorage.setItem('user_data', JSON.stringify(response));
           this.ngZone.run(() => {
             // this.router.navigate(['/carrinho']);
@@ -158,7 +156,6 @@ export class ProdutoListComponent implements OnInit {
         })
         .catch((error) => {
           console.log(error);
-          alert(error.message);
         });
     }
   
@@ -170,12 +167,12 @@ export class ProdutoListComponent implements OnInit {
       auth().
       signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
       then((confirmationResult) => {
-        localStorage.setItem('verificationId',
+    this.login = environment.login;
+    window.localStorage.setItem('verificationId',
         JSON.stringify(confirmationResult.verificationId));
-        // this.router.navigate(['/code']);
-        // this.validarCodigo(this.produto.id);
+        //this.router.navigate(['/code']);
+        //this.validarCodigo(this.produto.id);
       }).catch((error) => {
-        alert(error.message),
         setTimeout(() => {
           window.location.reload();
         }, 5000);
@@ -219,6 +216,8 @@ export class ProdutoListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   openPopup(produtoId: number): void {
 
+    console.log('open popup')
+
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -250,12 +249,13 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   closePopup2() { 
+    this.displayStyle = 'none';
     this.displayStyle2 = 'none';
   }
 
   carrinhoCreate(produtoId: number): void {
 
-    alert('criar o carrinho')
+    console.log('criar o carrinho')
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -265,7 +265,12 @@ export class ProdutoListComponent implements OnInit {
       this.carrinho.isencao = false;
       this.carrinho.local = environment.local;
       this.carrinho.dataCriacao = new Date();
+
+      //environment.telefone = 5511982551256
+      alert('telefone 3 '+ environment.telefone)
+
       this.carrinho.telefone = environment.telefone;
+
       this.carrinho.status = 'Pendente';
       this.carrinho.produto = this.produto;
 
@@ -287,6 +292,8 @@ export class ProdutoListComponent implements OnInit {
 
   validarCodigo(produtoId: number): void {
 
+    console.log('criar um carrinhho')
+
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -297,7 +304,10 @@ export class ProdutoListComponent implements OnInit {
       environment.codigo = this.codigo;
       // tslint:disable-next-line:semicolon
       // this.updateClassDisabled();
+      console.log('criar um carrinhho')
       this.carrinhoCreate(produtoId);
+      console.log('criou um carrinhho')
+
       this.closePopup2();
       // window.alert('Logged in');
       this.closePopup();

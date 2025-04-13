@@ -16,15 +16,15 @@
         menu-item nav-active">Logout
       </div>
         <div>
-          <a [routerLink]="['/phone']" routerLinkActive="active">
+          <a [routerLink]="['/phone']" routerLinkActive="active" >
             
             @if (login) {
-                <button *ngIf='login' style="border: none; background: none;">
+                <button style="border: none; background: none;" >
                   <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
                   style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
                 </button>  
             } @else {
-                <button *ngIf='!login' style="border: none; background: none;">
+                <button style="border: none; background: none;">
                   <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
                   style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
                 </button>

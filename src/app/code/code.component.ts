@@ -9,12 +9,17 @@ import { Produto } from '../produto/produto';
 import { Carrinho } from '../carrinho/carrinho';
 import { environment } from '../../environments/environment.development';
 import { NgOtpInputComponent } from 'ng-otp-input';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-code',
   standalone: true,
   imports: [
-    NgOtpInputComponent
+    NgOtpInputComponent,
+  ],
+  providers: [
+    NavBarComponent
   ],
   templateUrl: './code.component.html',
   styleUrls: ['./code.component.css'],
@@ -36,6 +41,7 @@ export class CodeComponent implements OnInit {
               private _ngZone: NgZone,
               private produtoService: ProdutoService,
               private carrinhoService: CarrinhoService,
+              private navBarComponent: NavBarComponent
 ) {}
 
   configCode = {
@@ -51,7 +57,9 @@ export class CodeComponent implements OnInit {
   };
 
   ngOnInit() {
-    alert('code init')
+
+    console.log('code init' )
+
     firebase.initializeApp(environment.firebaseConfig);
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
   }
@@ -61,8 +69,6 @@ export class CodeComponent implements OnInit {
   }
 
   handleClick() {
-
-    alert(environment.login);
 
     var credential = firebase.auth.PhoneAuthProvider.credential(
       this.verify,
@@ -75,9 +81,15 @@ export class CodeComponent implements OnInit {
       .signInWithCredential(credential)
       .then((response) => {
         localStorage.setItem('user_data', JSON.stringify(response));
-        environment.login = true;
         this._ngZone.run(() => {
-          this.router.navigate(['carrinho']);
+          environment.login = true;
+          this.navBarComponent.login = true
+          this.navBarComponent.ngOnInit
+          console.log('sssssssssssssssssssssssssssssss ' + environment.login)
+          timer(1000).subscribe(x => {
+            this.router.navigateByUrl('/navBar', { skipLocationChange: true }).then(() =>
+                 this.router.navigate(["carrinho"]));
+            });
         });
       })
       .catch((error) => {

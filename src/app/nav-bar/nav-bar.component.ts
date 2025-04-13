@@ -1,15 +1,12 @@
 
 import { NavBarService } from './nav-bar.service';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { booleanAttribute, Component, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../../environments/environment.development';
 import { MatIconModule} from '@angular/material/icon';
-import { CommonModule, NgIf, NgStyle } from '@angular/common';
-import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
-import { PhoneNumberComponent } from '../phone-number/phone-number.component';
-import { ProdutoListComponent } from '../produto/produto-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
@@ -30,7 +27,7 @@ export class NavBarComponent implements OnInit {
   telefone: number = 0;
   codigo: number = 0;
   local: string = '';
-  login: boolean = false;
+  //login: boolean = false;
 
   displayStyle: string = '';
 
@@ -44,10 +41,20 @@ export class NavBarComponent implements OnInit {
     
   ) { }
 
+  @Input({ transform: booleanAttribute })
+  login: boolean = false;
+
+
   ngOnInit(): void {
+
+    console.log('navbar init' )
 
     this.local = environment.local;
     this.login = environment.login;
+
+    console.log('navbar init' + this.login  )
+    console.log('navbar init env ' + environment.login  )
+
   }
 
 

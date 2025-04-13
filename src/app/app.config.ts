@@ -7,7 +7,7 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { environment } from '../environments/environment.development';
+import { environment } from '../environments/environment';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';

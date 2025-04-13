@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { signInWithPhoneNumber, updateProfile } from "firebase/auth";
 import { getAuth, RecaptchaVerifier } from "firebase/auth";
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment.development';
+import { ProdutoService } from '../produto/produto.service';
+import { Produto } from '../produto/produto';
 
  
 @Component({
@@ -50,8 +52,10 @@ export class PhoneNumberComponent implements OnInit {
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    //private produtoListComponent: ProdutoListComponent,
+    private produtoListComponent: ProdutoListComponent,
     private navBarComponent: NavBarComponent,
+    private produtoService: ProdutoService,
+    
  ) { 
 
  }
@@ -69,7 +73,7 @@ export class PhoneNumberComponent implements OnInit {
   };
 
   ngOnInit() {
-
+    console.log('phone number init' )
     firebase.initializeApp(environment.firebaseConfig);
 
     this.app = firebase.initializeApp(environment.firebaseConfig);
@@ -83,20 +87,16 @@ export class PhoneNumberComponent implements OnInit {
 
     this.displayCode = 'none';
 
-
   }
 
   onSignInSubmit() {
 
+    console.log('onSignInSubmit')
     //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
 
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       'sign-in-button', {
       'size': 'invisible',
-      'callback': (response:any) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        //this.onSignInSubmit();
-      }
     }
   );
 
@@ -106,8 +106,8 @@ export class PhoneNumberComponent implements OnInit {
         window.localStorage.setItem('verificationId',
           JSON.stringify(confirmationResult.verificationId))
           environment.telefone = this.phoneNumber
-          alert (environment.telefone)
-        this.router.navigate(['/code'])
+          environment.login = true
+        //this.router.navigate(['/code'])
         this.displayCode = 'block';
       }).catch((error) => {
         interval(1000).subscribe(n => window.location.reload());
@@ -131,19 +131,25 @@ export class PhoneNumberComponent implements OnInit {
       .signInWithCredential(credential)
       .then((response) => {
         localStorage.setItem('user_data', JSON.stringify(response));
+        environment.login = true;
+        alert('passando login '+ environment.login)
         this.ngZone.run(() => {
-          environment.login = true;
           environment.telefone = this.phoneNumber;
-          //this.produtoListComponent.login = true;
+          environment.login = true;
+          this.navBarComponent.login = true
+          this.navBarComponent.ngOnInit
+
+          this.produtoListComponent.login = true;
           this.navBarComponent.login = true;
-          //this.produtoListComponent.closePopup2();
-          // this.produtoService.carrinhoCreate(produtctId);
-          alert('passando')
-          //this.router.navigate(['carrinho']);
+          this.produtoListComponent.closePopup();
+          this.produtoListComponent.closePopup2();
+          this.produtoListComponent.carrinhoCreate(this.produtoListComponent.produto.id!);
+          this.router.navigate(['carrinho']);
         });
       })
       .catch((error) => {
         interval(1000).subscribe(n => window.location.reload());
       });
   }
+  
 }

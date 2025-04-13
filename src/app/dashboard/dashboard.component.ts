@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-dashboard',
