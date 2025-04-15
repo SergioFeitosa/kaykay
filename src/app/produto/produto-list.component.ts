@@ -1,6 +1,6 @@
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProdutoService } from './produto.service';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, inject, NgZone, OnInit } from '@angular/core';
 import { Produto } from './produto';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 import { Carrinho } from '../carrinho/carrinho';
@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { StarComponent } from '../star/star.component';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { environment } from '../../environments/environment.development';
+import { NavBarService } from '../nav-bar/nav-bar.service';
+import { LoginService } from '../services/login.service';
 
 
 @Component({
@@ -74,6 +76,8 @@ export class ProdutoListComponent implements OnInit {
 
   verify: any;
 
+  loginService = inject(LoginService);
+
   constructor(
     private produtoService: ProdutoService,
     private carrinhoService: CarrinhoService,
@@ -99,15 +103,12 @@ export class ProdutoListComponent implements OnInit {
 
     // this.modulo = 'Cardápio';
 
-    console.log('produto list init' )
-
-
     firebase.initializeApp(environment.firebaseConfig);
 
     this.carrinho.quantidade = 1;
 
     this.telefone = environment.telefone;
-    this.login = environment.login;
+    this.login = this.loginService.getUserLogin();
     this.flag = false;
 
     environment.fundoColoridoCardapio = true;
@@ -255,7 +256,7 @@ export class ProdutoListComponent implements OnInit {
 
   carrinhoCreate(produtoId: number): void {
 
-    console.log('criar o carrinho')
+    console.log('carrinho create');
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {

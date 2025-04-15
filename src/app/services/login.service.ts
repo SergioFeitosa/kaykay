@@ -12,16 +12,21 @@ export class LoginService {
     private http: HttpClient,
   ) { }
 
+
+  getUserLogin() {
+    return this.userLogin;
+  }
+
   login() {
-    this.userLogin = true
+    this.userLogin = true;
   }
 
   logout() {
-    this.userLogin = false    
+    this.userLogin = false;    
   }
 
   userStatus() {
-    this.userLogin = !this.userLogin
+    this.userLogin = !this.userLogin;
   }
 
 }

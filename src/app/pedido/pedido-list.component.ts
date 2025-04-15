@@ -81,7 +81,7 @@ export class PedidoListComponent implements OnInit {
     environment.fundoColoridoEntrega = false;
     environment.fundoColoridoConta = false;
 
-
+ 
     if (+environment.telefone === 5511982551256 || +environment.telefone === 99999999998) {
 
       this.pedidoService.read().subscribe(pedidos => {
@@ -145,6 +145,8 @@ export class PedidoListComponent implements OnInit {
 
   entregaCreate(pedidoId: number): void {
 
+    alert('pedido ' + pedidoId)
+    
     // tslint:disable-next-line:no-unused-expression
     this.pedidoService.readById(pedidoId).subscribe(pedido => {
       this.pedido = pedido;

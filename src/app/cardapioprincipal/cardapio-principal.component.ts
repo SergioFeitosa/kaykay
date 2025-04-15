@@ -26,6 +26,7 @@ export class CardapioPrincipalComponent implements OnInit {
   buttonDisabled: boolean = false;
   telefone: number = 0;
   codigo: number = 0;
+  modulo: string = ''
 
   // Desktop
   element1!: HTMLElement;
@@ -83,7 +84,10 @@ export class CardapioPrincipalComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.modulo = 'Cardápio';
+
+    this.modulo = 'Cardápio';
+
+    
     environment.login = false;
     
     if (environment.telefone > 0 && environment.codigo > 0) {
@@ -116,15 +120,16 @@ export class CardapioPrincipalComponent implements OnInit {
     this.element8 = document.getElementById('desabilitado8') as HTMLElement;
     this.element9 = document.getElementById('desabilitado9') as HTMLElement;
 
-    this.element1.removeAttribute('disabled');
-    this.element2.removeAttribute('disabled');
-    this.element3.removeAttribute('disabled');
-    this.element4.removeAttribute('disabled');
-    this.element5.removeAttribute('disabled');
-    this.element6.removeAttribute('disabled');
-    this.element7.removeAttribute('disabled');
-    this.element8.removeAttribute('disabled');
-    this.element9.removeAttribute('disabled');
+
+    // this.element1!.removeAttribute('disabled');
+    // this.element2!.removeAttribute('disabled');
+    // this.element3!.removeAttribute('disabled');
+    // this.element4!.removeAttribute('disabled');
+    // this.element5!.removeAttribute('disabled');
+    // this.element6!.removeAttribute('disabled');
+    // this.element7!.removeAttribute('disabled');
+    // this.element8!.removeAttribute('disabled');
+    // this.element9!.removeAttribute('disabled');
   }
 
   validarTelefone(): void {
