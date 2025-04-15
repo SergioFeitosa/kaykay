@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment.development';
 import { ProdutoService } from '../produto/produto.service';
 import { Produto } from '../produto/produto';
 import { NavBarService } from '../nav-bar/nav-bar.service';
+import { LoginService } from '../services/login.service';
 
  
 @Component({
@@ -56,7 +57,8 @@ export class PhoneNumberComponent implements OnInit {
     private ngZone: NgZone,
     private produtoListComponent: ProdutoListComponent,
     private navBarComponent: NavBarComponent,
-    private navBarService: NavBarService,
+    private loginService: LoginService,
+
  ) { 
 
  }
@@ -74,8 +76,7 @@ export class PhoneNumberComponent implements OnInit {
   };
 
   ngOnInit() {
-    console.log('phone number init' )
-    
+
     firebase.initializeApp(environment.firebaseConfig);
 
     this.app = firebase.initializeApp(environment.firebaseConfig);
@@ -93,7 +94,6 @@ export class PhoneNumberComponent implements OnInit {
 
   onSignInSubmit() {
 
-    console.log('onSignInSubmit')
     //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
 
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -135,7 +135,7 @@ export class PhoneNumberComponent implements OnInit {
         localStorage.setItem('user_data', JSON.stringify(response));
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
-          this.navBarService.login()
+          this.loginService.login()
 
           this.produtoListComponent.closePopup();
           this.produtoListComponent.closePopup2();

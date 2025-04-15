@@ -17,7 +17,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhoneNumberComponent } from './phone-number/phone-number.component';
 import { Error404Component } from './Error404/error-404.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
       {
@@ -46,9 +45,6 @@ export const routes: Routes = [
       },
       {
         path: 'entrega', component: EntregaListComponent
-      },
-      {
-        path: 'login', component: LoginComponent
       },
       {
         path: 'pedido', component: PedidoListComponent

@@ -7,6 +7,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/aut
 import { environment } from '../../environments/environment.development';
 import { MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -33,6 +34,7 @@ export class NavBarComponent implements OnInit {
 
   userData: any;
 
+  loginService = inject(LoginService);
   navBarService = inject(NavBarService);
 
   constructor(
@@ -44,8 +46,6 @@ export class NavBarComponent implements OnInit {
 
   
   ngOnInit(): void {
-
-    console.log('navbar init' )
 
     this.local = environment.local;
 
