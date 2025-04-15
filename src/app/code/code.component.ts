@@ -83,9 +83,7 @@ export class CodeComponent implements OnInit {
         localStorage.setItem('user_data', JSON.stringify(response));
         this._ngZone.run(() => {
           environment.login = true;
-          this.navBarComponent.login = true
           this.navBarComponent.ngOnInit
-          console.log('sssssssssssssssssssssssssssssss ' + environment.login)
           timer(1000).subscribe(x => {
             this.router.navigateByUrl('/navBar', { skipLocationChange: true }).then(() =>
                  this.router.navigate(["carrinho"]));

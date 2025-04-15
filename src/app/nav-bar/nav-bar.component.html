@@ -16,9 +16,9 @@
         menu-item nav-active">Logout
       </div>
         <div>
-          <a [routerLink]="['/phone']" routerLinkActive="active" >
+          <a (click)="navBarService.userStatus()" >
             
-            @if (login) {
+            @if (navBarService.userLogin) {
                 <button style="border: none; background: none;" >
                   <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
                   style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>

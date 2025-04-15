@@ -1,6 +1,6 @@
 
 import { NavBarService } from './nav-bar.service';
-import { booleanAttribute, Component, Input, NgZone, OnInit } from '@angular/core';
+import { booleanAttribute, Component, inject, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -33,27 +33,21 @@ export class NavBarComponent implements OnInit {
 
   userData: any;
 
+  navBarService = inject(NavBarService);
+
   constructor(
-    private navBarService: NavBarService,
     private afAuth: AngularFireAuth,
     private router: Router,
     private ngZone: NgZone,
     
   ) { }
 
-  @Input({ transform: booleanAttribute })
-  login: boolean = false;
-
-
+  
   ngOnInit(): void {
 
     console.log('navbar init' )
 
     this.local = environment.local;
-    this.login = environment.login;
-
-    console.log('navbar init' + this.login  )
-    console.log('navbar init env ' + environment.login  )
 
   }
 
@@ -91,8 +85,7 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     return this.afAuth.signOut().then(() => {
-      environment.login = false;
-      this.login = false
+      this.navBarService.logout()
       this.ngZone.run(() => {
         this.router.navigate(['']);
       });

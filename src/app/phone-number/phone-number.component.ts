@@ -13,6 +13,7 @@ import { getAuth, RecaptchaVerifier } from "firebase/auth";
 import { environment } from '../../environments/environment.development';
 import { ProdutoService } from '../produto/produto.service';
 import { Produto } from '../produto/produto';
+import { NavBarService } from '../nav-bar/nav-bar.service';
 
  
 @Component({
@@ -23,6 +24,7 @@ import { Produto } from '../produto/produto';
     CommonModule,
     FormsModule,
     NgOtpInputModule,
+    
   ],
   providers: [
     NavBarComponent,
@@ -54,8 +56,7 @@ export class PhoneNumberComponent implements OnInit {
     private ngZone: NgZone,
     private produtoListComponent: ProdutoListComponent,
     private navBarComponent: NavBarComponent,
-    private produtoService: ProdutoService,
-    
+    private navBarService: NavBarService,
  ) { 
 
  }
@@ -74,6 +75,7 @@ export class PhoneNumberComponent implements OnInit {
 
   ngOnInit() {
     console.log('phone number init' )
+    
     firebase.initializeApp(environment.firebaseConfig);
 
     this.app = firebase.initializeApp(environment.firebaseConfig);
@@ -131,16 +133,10 @@ export class PhoneNumberComponent implements OnInit {
       .signInWithCredential(credential)
       .then((response) => {
         localStorage.setItem('user_data', JSON.stringify(response));
-        environment.login = true;
-        alert('passando login '+ environment.login)
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
-          environment.login = true;
-          this.navBarComponent.login = true
-          this.navBarComponent.ngOnInit
+          this.navBarService.login()
 
-          this.produtoListComponent.login = true;
-          this.navBarComponent.login = true;
           this.produtoListComponent.closePopup();
           this.produtoListComponent.closePopup2();
           this.produtoListComponent.carrinhoCreate(this.produtoListComponent.produto.id!);
