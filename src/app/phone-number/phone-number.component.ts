@@ -25,10 +25,6 @@ import { LoginService } from '../services/login.service';
     CommonModule,
     FormsModule,
     NgOtpInputModule,
-    
-  ],
-  providers: [
-    NavBarComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
@@ -51,13 +47,18 @@ export class PhoneNumberComponent implements OnInit {
   app: any;
   response: any;
 
+  displayStyle2: string = 'none'
+  produto = {} as Produto;
 
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    private produtoListComponent: ProdutoListComponent,
-    private navBarComponent: NavBarComponent,
+    //private produtoListComponent: ProdutoListComponent,
+    //private navBarComponent: NavBarComponent,
     private loginService: LoginService,
+    private navBarService: NavBarService,
+    private produtoService: ProdutoService,
+    
 
  ) { 
 
@@ -80,14 +81,10 @@ export class PhoneNumberComponent implements OnInit {
     firebase.initializeApp(environment.firebaseConfig);
 
     this.app = firebase.initializeApp(environment.firebaseConfig);
-
     this.auth = getAuth();
     this.auth.languageCode = 'pt-Br';
-
     this.reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
-
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
-
     this.displayCode = 'none';
 
   }
@@ -95,15 +92,21 @@ export class PhoneNumberComponent implements OnInit {
   onSignInSubmit() {
 
     //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
+    alert('phone onSignInSubmit')
 
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       'sign-in-button', {
       'size': 'invisible',
-    }
-  );
+      },
+      
+    );
 
-    firebase.auth().
-    signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
+    firebase
+    .auth()
+    .signInWithPhoneNumber(
+      this.phoneNumber, 
+      this.reCaptchaVerifier,
+    ).
       then((confirmationResult) => {
         window.localStorage.setItem('verificationId',
           JSON.stringify(confirmationResult.verificationId))
@@ -117,11 +120,14 @@ export class PhoneNumberComponent implements OnInit {
   }
 
   onOtpChange(otp: string) {
+    console.log(' onOtpChange ')
+
     this.otp = otp; 
   }
 
   handleClick() {
     // console.log(this.otp);
+    alert('phone handleClick')
 
     var credential = firebase.auth.PhoneAuthProvider.credential(
       this.verify,
@@ -135,17 +141,36 @@ export class PhoneNumberComponent implements OnInit {
         localStorage.setItem('user_data', JSON.stringify(response));
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
-          this.loginService.login()
-
-          this.produtoListComponent.closePopup();
-          this.produtoListComponent.closePopup2();
-          this.produtoListComponent.carrinhoCreate(this.produtoListComponent.produto.id!);
+          this.navBarService.telefoneOk = true
+          // this.produtoListComponent.closePopup();
+          // this.produtoListComponent.closePopup2();
+          // this.produtoListComponent.carrinhoCreate(this.produtoListComponent.produto.id!);
           this.router.navigate(['carrinho']);
         });
       })
       .catch((error) => {
         interval(1000).subscribe(n => window.location.reload());
       });
-  }
+      this.loginService.login()
+    }
+
+    openPopup2(produtoId: number): void {
+      alert('phone open pop2')
   
+      // tslint:disable-next-line:no-unused-expression
+      this.produtoService.readById(produtoId).subscribe(product => {
+        this.produto = product;
+  
+      });
+      this.displayStyle2 = 'block';
+    }
+  
+    closePopup2() { 
+      alert('phone close pop2')
+  
+      this.displayStyle2 = 'none';
+      this.navBarService.telefoneOk = true
+    }
+  
+
 }

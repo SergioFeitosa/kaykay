@@ -15,21 +15,23 @@
       <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2
         menu-item nav-active">Logout
       </div>
+      <!-- <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2
+        menu-item nav-active">Logout
+      </div> -->
         <div>
           <a (click)="loginService.userStatus()" >
-            
             @if (loginService.userLogin) {
-                <button style="border: none; background: none;" >
+                <button style="border: none; background: none;"(click)="logout();">
                   <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-                  style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+                  style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font" title="Logout">account_circle</mat-icon>
                 </button>  
             } @else {
-                <button style="border: none; background: none;">
-                  <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-                  style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
-                </button>
+              <button style="border: none; background: none;" (click)="phone()">
+                <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+                style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font" title="Login">account_circle</mat-icon>
+              </button>
             }
-          </a>
+            </a>
           <!-- <a routerLink="/phone" routerLinkActive="active">
           <button style="border: none; background: none;">
             <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
@@ -43,12 +45,12 @@
         <a [routerLink]="['/conta']" routerLinkActive="active">  
           <button style="border: none; background: none;">
             <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-            style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font">paid</mat-icon>
+            style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font" title="Conta">paid</mat-icon>
           </button>
         </a>
         <button (click)="openPopup()" style="border: none; background: none;">
           <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-          style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font">help_outline</mat-icon>
+          style="color: #a7ccff; margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font" title="Ajuda">help_outline</mat-icon>
         </button>
       </div>
     </div>
@@ -205,3 +207,30 @@
     </div>
   </div>
 </div>
+
+<!-- login -->
+<div
+  id="modalExperience"
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle2}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
+      <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
+        <button type="button" class="btn btn-danger"
+          (click)="closePopup2();">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body row">
+        <div class='row col-sm-12 mb-1'>
+          <div class='col-sm-12'>
+            <app-phone-number></app-phone-number>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

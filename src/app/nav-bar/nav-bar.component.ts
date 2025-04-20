@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment.development';
 import { MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../services/login.service';
+import { PhoneNumberComponent } from '../phone-number/phone-number.component';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,6 +19,8 @@ import { LoginService } from '../services/login.service';
     CommonModule,
     MatIconModule,
     RouterLink,
+    PhoneNumberComponent
+    
   ],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
@@ -24,19 +28,29 @@ import { LoginService } from '../services/login.service';
 export class NavBarComponent implements OnInit {
 
   navbarOpen = false;
+  phoneNumber: any;
+  reCaptchaVerifier: any;
 
   telefone: number = 0;
   codigo: number = 0;
   local: string = '';
   //login: boolean = false;
 
-  displayStyle: string = '';
-
+  login: boolean = false;
+  
   userData: any;
 
   loginService = inject(LoginService);
   navBarService = inject(NavBarService);
 
+
+  otp!: string;
+  flag!: boolean;
+
+  verify: any;
+
+
+  
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -46,19 +60,13 @@ export class NavBarComponent implements OnInit {
 
   
   ngOnInit(): void {
+    
+    firebase.initializeApp(environment.firebaseConfig);
 
     this.local = environment.local;
-
   }
 
 
-  enviarCodigo(): void {
-    // tslint:disable-next-line:comment-format
-    //const telefone = this.navForm.get('telefone').value;
-    const codigoGerado = Math.random() * this.telefone;
-    this.navBarService.enviarCodigo(this.telefone.toString(), codigoGerado.toString());
-
-  }
 
   // tslint:disable-next-line:typedef
   toggleNavbar() {
@@ -70,28 +78,128 @@ export class NavBarComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  // tslint:disable-next-line:typedef
-  openPopup(): void {
-    // tslint:disable-next-line:no-unused-expression
-    this.displayStyle = 'block';
-  }
-
-  // tslint:disable-next-line:typedef
-  closePopup() {
-    this.displayStyle = 'none';
-    // tslint:disable-next-line:prefer-const
-
-  }
-
-  logout() {
-    return this.afAuth.signOut().then(() => {
-      this.navBarService.logout()
-      this.ngZone.run(() => {
-        this.router.navigate(['']);
-      });
-    });
-  }
+  
+      // tslint:disable-next-line:typedef
+      onOtpChange(otp: string) {
+        this.otp = otp;
+      }
     
+    getOTP() {
 
+      alert('getOtp')
+
+      this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
+  
+      firebase.
+        auth().
+        signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
+        then((confirmationResult) => {
+      this.login = environment.login;
+      window.localStorage.setItem('verificationId',
+          JSON.stringify(confirmationResult.verificationId));
+          //this.router.navigate(['/code']);
+          //this.validarCodigo(this.produto.id);
+        }).catch((error) => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000);
+        });
+    }
+  
+  
+  
+    // tslint:disable-next-line:quotemark
+    // tslint:disable-next-line:member-ordering
+    displayStyle = 'none';
+  
+    // tslint:disable-next-line:typedef
+    openPopup(): void {
+      alert('openpop navbar')
+
+      this.displayStyle = 'block';
+    } 
+  
+    // tslint:disable-next-line:typedef
+    closePopup() {
+      alert('closepop navbar')
+  
+      this.displayStyle = 'none';
+    }
+  
+    // tslint:disable-next-line:quotemark
+    // tslint:disable-next-line:member-ordering
+    displayStyle2 = 'none';
+  
+    // tslint:disable-next-line:typedef
+    openPopup2(): void {
+      alert('navbar open pop2')
+      this.displayStyle2 = 'block';
+    }
+  
+    // tslint:disable-next-line:typedef
+    closePopup2() { 
+      alert('navbar close pop2')
+      this.displayStyle = 'none';
+      this.displayStyle2 = 'none';
+      let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
+  
+    }
+
+    validarTelefone(): void {
+  
+      if (this.telefone > 0) {
+        environment.telefone = this.telefone;
+        this.enviarCodigo();
+      }
+    }
+  
+  
+  
+    enviarCodigo(): void {
+      // tslint:disable-next-line:comment-format
+      //const telefone = this.navForm.get('telefone').value;
+      const codigoGerado = Math.random() * this.telefone;
+      this.navBarService.enviarCodigo(this.telefone.toString(), codigoGerado.toString());
+  
+    }
+  
+    validarCodigo(): void {
+
+      console.log('validar codigo')
+  
+  
+        // tslint:disable-next-line:semicolon
+        // this.updateClassDisabled();  
+        this.closePopup2();
+        // window.alert('Logged in');
+        this.closePopup();
+  
+    }
+  
+
+
+    logout() {
+      return this.afAuth.signOut().then(() => {
+        this.loginService.logout()
+        this.ngZone.run(() => {
+          this.router.navigate(['']);
+        });
+      });
+    }
+      
+
+
+    phone() {
+      return this.afAuth.signOut().then(() => {
+        this.ngZone.run(() => {
+          this.router.navigate(['phone']);
+        });
+      });
+    }
+      
+    
 }
 

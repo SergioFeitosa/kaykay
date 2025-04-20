@@ -128,7 +128,6 @@ export class ProdutoListComponent implements OnInit {
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
     // console.log(this.verify);
-
   }
 
     // tslint:disable-next-line:typedef
@@ -136,32 +135,10 @@ export class ProdutoListComponent implements OnInit {
       this.otp = otp;
     }
   
-    // tslint:disable-next-line:typedef
-    handleClick(produtoId: number) {
-      // tslint:disable-next-line:prefer-const
-      const credential = firebase.auth.PhoneAuthProvider.credential(
-        this.verify,
-        this.otp
-      );
-  
-      console.log(credential);
-      firebase
-        .auth()
-        .signInWithCredential(credential)
-        .then((response) => {
-          localStorage.setItem('user_data', JSON.stringify(response));
-          this.ngZone.run(() => {
-            // this.router.navigate(['/carrinho']);
-            this.validarCodigo(produtoId);
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  
-  
   getOTP() {
+
+    alert(' produto getOTP')
+
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
     firebase.
@@ -217,7 +194,7 @@ export class ProdutoListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   openPopup(produtoId: number): void {
 
-    console.log('open popup')
+    alert('open popup')
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -230,6 +207,7 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   closePopup() {
+    alert('close pop')
     this.displayStyle = 'none';
   }
 
@@ -239,6 +217,7 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   openPopup2(produtoId: number): void {
+    alert(' produto open pop2')
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -250,13 +229,15 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   closePopup2() { 
+    alert('produto close pop2')
+
     this.displayStyle = 'none';
     this.displayStyle2 = 'none';
   }
 
   carrinhoCreate(produtoId: number): void {
 
-    console.log('carrinho create');
+    alert('carrinho create');
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -290,7 +271,7 @@ export class ProdutoListComponent implements OnInit {
 
   validarCodigo(produtoId: number): void {
 
-    console.log('criar um carrinhho')
+    alert('validar codigo')
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -315,6 +296,7 @@ export class ProdutoListComponent implements OnInit {
   }
 
   enviarCodigo(): void {
+    alert('enviar codigo')
     // tslint:disable-next-line:comment-format
     //const telefone = this.navForm.get('telefone').value;
     const codigoGerado = Math.random() * this.telefone;

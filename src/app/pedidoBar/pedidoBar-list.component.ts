@@ -219,6 +219,14 @@ export class PedidoBarListComponent implements OnInit {
   atualizarPedido(pedido: Pedido) {
     this.pedidoService.update(pedido).subscribe(() => {
       this.pedidoService.showMessage('Pedido Atualizado');
+      this.carrinhoService.readById(pedido.carrinho.id!).subscribe(carrinho => {
+        this.carrinho = pedido.carrinho;
+        this.carrinho.quantidade = pedido.quantidade;
+        this.carrinho.observacao = pedido.observacao;
+        console.log ('observacao '+ this.carrinho.observacao)
+        this.atualizarCarrinho(this.carrinho);
+      })
+
     });
   }
 

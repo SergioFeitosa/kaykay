@@ -1,7 +1,6 @@
 import { environment } from './../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavBarComponent } from './nav-bar.component';
 
 const API_URL = environment.ApiURL;
 
@@ -10,23 +9,12 @@ const API_URL = environment.ApiURL;
 })
 export class NavBarService{
 
-  userLogin: boolean = false
+  telefoneOk: boolean = false
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  login() {
-    this.userLogin = true
-  }
-
-  logout() {
-    this.userLogin = false    
-  }
-
-  userStatus() {
-    this.userLogin = !this.userLogin
-  }
 
   // tslint:disable-next-line: typedef
   enviarCodigo(

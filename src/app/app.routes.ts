@@ -23,9 +23,6 @@ export const routes: Routes = [
         path: '', redirectTo: 'cardapioPrincipal', pathMatch: 'full'
       },
       {
-        path: 'navBar', component: NavBarComponent,
-      },
-      {
         path: 'cardapioPrincipal', component: CardapioPrincipalComponent,
       },
       {
@@ -44,7 +41,28 @@ export const routes: Routes = [
         path: 'carrinho/delete/:id', component: CarrinhoDeleteComponent
       },
       {
+        path: 'code', component: CodeComponent
+      },
+      {
+        path: 'conta', component: ContaListComponent,
+        data: {
+          alwaysRefresh: true
+       }
+      },
+      {
+        path: 'dashboard', component: DashboardComponent
+      },
+      {
         path: 'entrega', component: EntregaListComponent
+      },
+      {
+        path: 'entrega/update/:id', component: EntregaUpdateComponent
+      },
+      {
+        path: 'fechamento', component: FechamentoListComponent
+      },
+      {
+        path: 'navBar', component: NavBarComponent,
       },
       {
         path: 'pedido', component: PedidoListComponent
@@ -65,32 +83,14 @@ export const routes: Routes = [
         path: 'pedidoBar', component: PedidoBarListComponent
       },
       {
+        path: 'phone', component: PhoneNumberComponent
+      },
+      {
         path: 'products/**', component: ProdutoListComponent
       },
       {
         path: 'products/:categoryId', component: ProdutoListComponent,
       }, 
-      {
-        path: 'entrega/update/:id', component: EntregaUpdateComponent
-      },
-      {
-        path: 'conta', component: ContaListComponent,
-        data: {
-          alwaysRefresh: true
-       }
-      },
-      {
-        path: 'fechamento', component: FechamentoListComponent
-      },
-      {
-        path: 'code', component: CodeComponent
-      },
-      {
-        path: 'dashboard', component: DashboardComponent
-      },
-      {
-        path: 'phone', component: PhoneNumberComponent
-      },
       {
         path: '**', component: Error404Component
       }
