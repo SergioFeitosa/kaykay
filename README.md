@@ -57,3 +57,9 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Functional User
+
++55 99 9 9999 9998 -->  visualizar pedidos exclusivos que já estão na cozinha ou bar (visão do cozinheiro e bar)
++55 99 9 9999 9997 -->  visualizar todos os pedidos 
++55 99 9 9999 9996 -->  visualização exclusiva dos pedidos em entrega ou já entregue
