@@ -85,13 +85,13 @@ export class PedidoBarListComponent implements OnInit {
     environment.fundoColoridoConta = false;
 
 
-    if (+environment.telefone === 5511982551256 || +environment.telefone === 99999999998) {
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999998) {
 
       this.pedidoService.read().subscribe(pedidos => {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.produto.category.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.category.toLowerCase() === 'bebida');
       });
 
       this.updateSubscription = interval(5000).subscribe(
@@ -100,7 +100,7 @@ export class PedidoBarListComponent implements OnInit {
             this.pedidos = pedidos;
             this.filteredPedidos = this.pedidos
               .filter((pedido: Pedido) => pedido.enviado !== true)
-              .filter((pedido: Pedido) => pedido.produto.category.toLowerCase() === 'bebida');
+              .filter((pedido: Pedido) => pedido.carrinho.produto.category.toLowerCase() === 'bebida');
           });
         });
 
@@ -110,7 +110,7 @@ export class PedidoBarListComponent implements OnInit {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos.filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.produto.category.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.category.toLowerCase() === 'bebida');
       });
     }
 
@@ -124,13 +124,13 @@ export class PedidoBarListComponent implements OnInit {
   set filter(value: string) {
     this._filterBy = value;
 
-    if (+environment.telefone === 5511982551256 || +environment.telefone === 99999999998) {
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999998) {
 
       this.filteredPedidos =
         this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.produto.category.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
+          .filter((pedido: Pedido) => pedido.carrinho.produto.category.toLowerCase() === 'bebida');
 
     } else {
 
@@ -138,38 +138,40 @@ export class PedidoBarListComponent implements OnInit {
         this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
           .filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
-          .filter((pedido: Pedido) => pedido.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.produto.category.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
+          .filter((pedido: Pedido) => pedido.carrinho.produto.category.toLowerCase() === 'bebida');
 
     }
   }
 
 
 
-  entregaCreate(pedidoId: number): void {
+  async entregaCreate(pedidoId: number): Promise<void> {
 
     // tslint:disable-next-line:no-unused-expression
-    this.pedidoService.readById(pedidoId).subscribe(pedido => {
+    const response = await this.pedidoService.readById(pedidoId).subscribe(async pedido => {
       this.pedido = pedido;
 
       if (this.pedido.enviado !== true) {
 
-        this.pedido.enviado = false;
-        this.pedido.status = 'Saiu para entrega';
-        this.atualizarPedido(pedido);
-
         // tslint:disable-next-line:no-unused-expression
-        this.carrinhoService.readById(pedido.carrinho.id!).subscribe(carrinho => {
-          this.carrinho = carrinho;
+        const response = await this.carrinhoService.readById(this.pedido.carrinho.id!).subscribe(carrinho => {
+          this.carrinho = this.pedido.carrinho;
           this.carrinho.status = 'Saiu para entrega';
           this.atualizarCarrinho(this.carrinho);
         })
+        
+        this.pedido.enviado = false;
+        this.pedido.status = 'Saiu para entrega';
+        this.pedido.carrinho.status = 'Saiu para entrega';
+        const response2 = await this.atualizarPedido(this.pedido);
 
-        this.entrega.pedido = pedido;
+
+        this.entrega.pedido = this.pedido;
         this.entrega.observacao = this.pedido.observacao;
         this.entrega.quantidade = this.pedido.quantidade;
 
-        this.entregaService.create(this.entrega).subscribe(() => {
+        const response3 = await this.entregaService.create(this.entrega).subscribe(() => {
           this.entregaService.showMessage('Saiu para entrega');
         });
       }
@@ -182,7 +184,7 @@ export class PedidoBarListComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.pedidoService.readById(pedidoId).subscribe(pedido => {
       this.pedido = pedido;
-      this.produto = this.pedido.produto;
+      this.produto = this.pedido.carrinho.produto;
     });
 
     this.displayStyle = 'block';

@@ -86,8 +86,6 @@ export class NavBarComponent implements OnInit {
     
     getOTP() {
 
-      alert('getOtp')
-
       this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
   
       firebase.
@@ -114,15 +112,11 @@ export class NavBarComponent implements OnInit {
   
     // tslint:disable-next-line:typedef
     openPopup(): void {
-      alert('openpop navbar')
-
       this.displayStyle = 'block';
     } 
   
     // tslint:disable-next-line:typedef
     closePopup() {
-      alert('closepop navbar')
-  
       this.displayStyle = 'none';
     }
   
@@ -132,13 +126,11 @@ export class NavBarComponent implements OnInit {
   
     // tslint:disable-next-line:typedef
     openPopup2(): void {
-      alert('navbar open pop2')
       this.displayStyle2 = 'block';
     }
   
     // tslint:disable-next-line:typedef
     closePopup2() { 
-      alert('navbar close pop2')
       this.displayStyle = 'none';
       this.displayStyle2 = 'none';
       let currentUrl = this.router.url;
@@ -168,18 +160,12 @@ export class NavBarComponent implements OnInit {
   
     validarCodigo(): void {
 
-      console.log('validar codigo')
-  
-  
-        // tslint:disable-next-line:semicolon
+      // tslint:disable-next-line:semicolon
         // this.updateClassDisabled();  
         this.closePopup2();
-        // window.alert('Logged in');
         this.closePopup();
   
     }
-  
-
 
     logout() {
       return this.afAuth.signOut().then(() => {

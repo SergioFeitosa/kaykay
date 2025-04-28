@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhoneNumberComponent } from './phone-number/phone-number.component';
 import { Error404Component } from './Error404/error-404.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const routes: Routes = [
       {
@@ -26,7 +27,8 @@ export const routes: Routes = [
         path: 'cardapioPrincipal', component: CardapioPrincipalComponent,
       },
       {
-        path: 'carrinho', component: CarrinhoListComponent
+        path: 'carrinho', 
+        component: CarrinhoListComponent
       },
       {
         path: 'carrinho/:id', component: CarrinhoListComponent

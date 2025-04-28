@@ -74,7 +74,9 @@ export class EntregaListComponent implements OnInit {
     environment.fundoColoridoEntrega = true;
     environment.fundoColoridoConta = false;
 
-    if (+environment.telefone === 5511982551256 || environment.telefone === 99999999996) {
+
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999996) {
+
 
       this.entregaService.read().subscribe(entregas => {
         this.entregas = entregas;
@@ -100,17 +102,17 @@ export class EntregaListComponent implements OnInit {
   set filter(value: string) {
     this._filterBy = value;
 
-    if (+environment.telefone === 5511982551256 || +environment.telefone === 99999999996) {
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999996) {
       this.filteredEntregas =
         this.entregas
-          .filter((entrega: Entrega) => entrega.pedido.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     } else {
 
       this.filteredEntregas =
         this.entregas
           .filter((entrega: Entrega) => entrega.pedido.telefone - environment.telefone === 0)
-          .filter((entrega: Entrega) => entrega.pedido.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     }
   }
@@ -126,7 +128,7 @@ export class EntregaListComponent implements OnInit {
     this.entregaService.readById(entregaId).subscribe(entrega => {
       this.entrega = entrega;
       this.pedido = this.entrega.pedido;
-      this.produto = this.pedido.produto;
+      this.produto = this.pedido.carrinho.produto;
     });
 
     this.displayStyle = 'block';
@@ -137,31 +139,38 @@ export class EntregaListComponent implements OnInit {
     this.displayStyle = 'none';
   }
 
-  entregaUpdate(entregaId: number): void {
+  async entregaUpdate(entregaId: number): Promise<void> {
 
     // tslint:disable-next-line:no-unused-expression
-    this.entregaService.readById(entregaId).subscribe(entrega => {
+    const response = await this.entregaService.readById(entregaId).subscribe(async entrega => {
       this.entrega = entrega;
 
-      // tslint:disable-next-line:no-unused-expression
-      this.pedidoService.readById(this.entrega.pedido.id!).subscribe(pedido => {
-        this.pedido = pedido;
-        this.pedido.status = 'Pedido entregue';
-        this.atualizarPedido(this.pedido);
-      })
+      console.log('pedido entrega 1 => ' + this.entrega.pedido.id!)
 
       // tslint:disable-next-line:no-unused-expression
-      this.carrinhoService.readById(this.entrega.pedido.carrinho.id!).subscribe(carrinho => {
+      const response3 = await  this.pedidoService.readById(this.entrega.pedido.id!).subscribe(pedido => {
+        this.pedido = pedido;
+        this.pedido.status = 'Pedido entregue';
+        this.pedido.carrinho.status = 'Pedido entregue';
+        this.atualizarPedido(this.pedido);
+        this.entrega.pedido = this.pedido;
+      })
+
+      console.log('pedido entrega 2 => ' + this.entrega.pedido.id!)
+
+      // tslint:disable-next-line:no-unused-expression
+      const response2 = await this.carrinhoService.readById(this.entrega.pedido.carrinho.id!).subscribe(carrinho => {
         this.carrinho = carrinho;
         this.carrinho.status = 'Pedido entregue';
         this.atualizarCarrinho(this.carrinho);
       })
 
+      console.log('pedido entrega 3 => ' + this.entrega.pedido.id!)
 
-      this.entrega.pedido = this.pedido;
+
       this.entrega.dataCriacao = new Date();
 
-      this.entregaService.update(this.entrega).subscribe(() => {
+      const response1 = await this.entregaService.update(this.entrega).subscribe(() => {
         this.entregaService.showMessage('Entrega realizada');
       }
       );
@@ -173,15 +182,15 @@ export class EntregaListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  atualizarPedido(pedido: Pedido) {
-    this.pedidoService.update(pedido).subscribe(() => {
+  async atualizarPedido(pedido: Pedido) {
+    const response = await this.pedidoService.update(pedido).subscribe(() => {
       this.pedidoService.showMessage('Pedido Entregue');
     });
   }
 
   // tslint:disable-next-line:typedef
-  atualizarCarrinho(carrinho: Carrinho) {
-    this.carrinhoService.update(carrinho).subscribe(() => {
+  async atualizarCarrinho(carrinho: Carrinho) {
+    const response = await this.carrinhoService.update(carrinho).subscribe(() => {
       this.carrinhoService.showMessage('Pedido Entregue');
     });
   }

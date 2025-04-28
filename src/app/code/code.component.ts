@@ -103,8 +103,6 @@ export class CodeComponent implements OnInit {
 
     });
 
-    alert('Logged in');
-
     if (environment.codigo > 0) {
       environment.codigo = this.codigo;
       // tslint:disable-next-line:semicolon

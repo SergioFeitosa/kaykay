@@ -84,7 +84,7 @@ export class CarrinhoListComponent implements OnInit {
 
     console.log(environment.telefone)
 
-    if (+environment.telefone === 5511982551256 || +environment.telefone === 99999999997) {
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999997) {
 
       this.carrinhoService.read().subscribe(carrinhos => {
         this.carrinhos = carrinhos;
@@ -108,9 +108,6 @@ export class CarrinhoListComponent implements OnInit {
         this.filteredCarrinhos = this.carrinhos
         .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
         .filter((carrinho: Carrinho) => carrinho.enviado !== true);
-        //alert('passei carrinho 1');
-        //alert('passei carrinho ENV ' + +environment.telefone);
-        //alert('passei carrinho TEL ' + +this.carrinho.telefone);
       });
 
       this.updateSubscription = interval(5000).subscribe(
@@ -121,7 +118,6 @@ export class CarrinhoListComponent implements OnInit {
             this.filteredCarrinhos = this.carrinhos
             .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
             .filter((carrinho: Carrinho) => carrinho.enviado !== true);
-            //alert('passei carrinho 2');
           });
       });
     }
@@ -151,7 +147,7 @@ export class CarrinhoListComponent implements OnInit {
   set filter(value: string) {
     this._filterBy = value;
 
-    if (environment.telefone === 5511982551256 || environment.telefone === 99999999997) {
+    if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999997) {
 
       this.filteredCarrinhos =
         this.carrinhos
@@ -202,18 +198,20 @@ export class CarrinhoListComponent implements OnInit {
   }
 
 
-  pedidoCreate(carrinhoId: number): void {
+  async pedidoCreate(carrinhoId: number): Promise<void> {
 
     // tslint:disable-next-line:no-unused-expression
-    this.carrinhoService.readById(carrinhoId).subscribe(carrinho => {
+    const response = await this.carrinhoService.readById(carrinhoId).subscribe(carrinho => {
       this.carrinho = carrinho;
 
       if (carrinho.enviado !== true) {
 
+        alert('confirmando')
+
         this.carrinho.enviado = false;
         this.carrinho.status = 'Confirmado';
 
-        this.atualizarCarrinho(this.carrinho);
+         this.atualizarCarrinho(this.carrinho);
 
         this.pedido.telefone = this.carrinho.telefone;
         this.pedido.local = this.carrinho.local;
@@ -225,7 +223,7 @@ export class CarrinhoListComponent implements OnInit {
         this.pedido.status = 'Confirmado';
         this.pedido.carrinho = this.carrinho;
 
-        this.pedido.produto = this.carrinho.produto;
+        this.pedido.carrinho.produto = this.carrinho.produto;
 
         this.pedidoService.create(this.pedido).subscribe(() => {
           this.pedidoService.showMessage('Pedido solicitado');
@@ -238,9 +236,9 @@ export class CarrinhoListComponent implements OnInit {
 
 
   // tslint:disable-next-line:typedef
-  atualizarCarrinho(carrinho: Carrinho) {
+  async atualizarCarrinho(carrinho: Carrinho) {
 
-    this.carrinhoService.update(carrinho).subscribe(() => {
+    const response = await this.carrinhoService.update(carrinho).subscribe(() => {
       this.carrinhoService.showMessage('Carrinho Atualizado');
     });
   }

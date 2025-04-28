@@ -111,6 +111,8 @@ export class ProdutoListComponent implements OnInit {
     this.login = this.loginService.getUserLogin();
     this.flag = false;
 
+
+
     environment.fundoColoridoCardapio = true;
     environment.fundoColoridoPedido = false;
     environment.fundoColoridoCozinha = false;
@@ -137,8 +139,6 @@ export class ProdutoListComponent implements OnInit {
   
   getOTP() {
 
-    alert(' produto getOTP')
-
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
     firebase.
@@ -150,6 +150,8 @@ export class ProdutoListComponent implements OnInit {
         JSON.stringify(confirmationResult.verificationId));
         //this.router.navigate(['/code']);
         //this.validarCodigo(this.produto.id);
+        this.carrinhoCreate(this.produto.id!)
+        this.router.navigate(['/carrinho']);
       }).catch((error) => {
         setTimeout(() => {
           window.location.reload();
@@ -194,8 +196,6 @@ export class ProdutoListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   openPopup(produtoId: number): void {
 
-    alert('open popup')
-
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -207,7 +207,6 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   closePopup() {
-    alert('close pop')
     this.displayStyle = 'none';
   }
 
@@ -217,7 +216,6 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   openPopup2(produtoId: number): void {
-    alert(' produto open pop2')
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -229,15 +227,12 @@ export class ProdutoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   closePopup2() { 
-    alert('produto close pop2')
 
     this.displayStyle = 'none';
     this.displayStyle2 = 'none';
   }
 
-  carrinhoCreate(produtoId: number): void {
-
-    alert('carrinho create');
+  async carrinhoCreate(produtoId: number): Promise<void> {
 
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
@@ -248,7 +243,7 @@ export class ProdutoListComponent implements OnInit {
       this.carrinho.local = environment.local;
       this.carrinho.dataCriacao = new Date();
 
-      this.carrinho.telefone = environment.telefone;
+      this.carrinho.telefone = +environment.telefone;
 
       this.carrinho.status = 'Pendente';
       this.carrinho.produto = this.produto;
@@ -271,8 +266,6 @@ export class ProdutoListComponent implements OnInit {
 
   validarCodigo(produtoId: number): void {
 
-    alert('validar codigo')
-
     // tslint:disable-next-line:no-unused-expression
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
@@ -288,7 +281,6 @@ export class ProdutoListComponent implements OnInit {
       console.log('criou um carrinhho')
 
       this.closePopup2();
-      // window.alert('Logged in');
       this.closePopup();
 
 
@@ -296,7 +288,6 @@ export class ProdutoListComponent implements OnInit {
   }
 
   enviarCodigo(): void {
-    alert('enviar codigo')
     // tslint:disable-next-line:comment-format
     //const telefone = this.navForm.get('telefone').value;
     const codigoGerado = Math.random() * this.telefone;

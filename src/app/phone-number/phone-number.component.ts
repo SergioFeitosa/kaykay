@@ -1,21 +1,19 @@
-import { ProdutoListComponent } from './../produto/produto-list.component';
 import { Router } from '@angular/router';
 import { Component, OnInit, NgZone, CUSTOM_ELEMENTS_SCHEMA, Injectable, NO_ERRORS_SCHEMA, inject } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { interval } from 'rxjs';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
-import { signInWithPhoneNumber, updateProfile } from "firebase/auth";
-import { getAuth, RecaptchaVerifier } from "firebase/auth";
+import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { environment } from '../../environments/environment.development';
 import { ProdutoService } from '../produto/produto.service';
 import { Produto } from '../produto/produto';
 import { NavBarService } from '../nav-bar/nav-bar.service';
 import { LoginService } from '../services/login.service';
 
+import { initializeApp } from 'firebase/app';
  
 @Component({
   selector: 'app-phone-number',
@@ -36,7 +34,7 @@ import { LoginService } from '../services/login.service';
 export class PhoneNumberComponent implements OnInit {
 
   phoneNumber: any;
-  reCaptchaVerifier: any;
+  applicationVerifier : any;
   // tslint:disable-next-line:quotemark
   // tslint:disable-next-line:member-ordering
   displayCode = 'none';
@@ -83,52 +81,55 @@ export class PhoneNumberComponent implements OnInit {
     this.app = firebase.initializeApp(environment.firebaseConfig);
     this.auth = getAuth();
     this.auth.languageCode = 'pt-Br';
-    this.reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
+    this.applicationVerifier  = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
     this.displayCode = 'none';
 
   }
 
-  onSignInSubmit() {
+  async getOtp() {
 
     //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
-    alert('phone onSignInSubmit')
-
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    this.applicationVerifier  = new firebase.auth.RecaptchaVerifier(
       'sign-in-button', {
       'size': 'invisible',
+      'callback': () => {
+        // reCAPTCHA solved, proceed with phone number sign-in
       },
-      
+      'expired-callback': () => {
+        // Response expired, ask user to solve reCAPTCHA again
+      }
+      },
     );
 
-    firebase
-    .auth()
-    .signInWithPhoneNumber(
+    const confirmationResult = await signInWithPhoneNumber(this.auth, this.phoneNumber, this.applicationVerifier);
+    
+    
+    signInWithPhoneNumber(
+      this.auth,
       this.phoneNumber, 
-      this.reCaptchaVerifier,
-    ).
-      then((confirmationResult) => {
-        window.localStorage.setItem('verificationId',
-          JSON.stringify(confirmationResult.verificationId))
-          environment.telefone = this.phoneNumber
-          environment.login = true
-        //this.router.navigate(['/code'])
+      this.applicationVerifier ,
+    ).then((confirmationResult) => {
+      window.localStorage.setItem('confirmationResult',
+        JSON.stringify(confirmationResult.verificationId))
+        environment.telefone = this.phoneNumber
+        environment.login = true
         this.displayCode = 'block';
-      }).catch((error) => {
-        interval(1000).subscribe(n => window.location.reload());
-      })
+      //this.router.navigate(['/cardapioPrincipal'])
+    }).catch((error) => {
+      //send sms
+      alert('erro')
+      interval(1000).subscribe(n => window.location.reload());
+    })
   }
 
   onOtpChange(otp: string) {
-    console.log(' onOtpChange ')
-
     this.otp = otp; 
   }
 
   handleClick() {
-    // console.log(this.otp);
-    alert('phone handleClick')
 
+    // console.log(this.otp);
     var credential = firebase.auth.PhoneAuthProvider.credential(
       this.verify,
       this.otp
@@ -142,10 +143,8 @@ export class PhoneNumberComponent implements OnInit {
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
           this.navBarService.telefoneOk = true
-          // this.produtoListComponent.closePopup();
-          // this.produtoListComponent.closePopup2();
-          // this.produtoListComponent.carrinhoCreate(this.produtoListComponent.produto.id!);
-          this.router.navigate(['carrinho']);
+          this.router.navigate(['/cardapioPrincipal'])
+
         });
       })
       .catch((error) => {
@@ -154,9 +153,8 @@ export class PhoneNumberComponent implements OnInit {
       this.loginService.login()
     }
 
+
     openPopup2(produtoId: number): void {
-      alert('phone open pop2')
-  
       // tslint:disable-next-line:no-unused-expression
       this.produtoService.readById(produtoId).subscribe(product => {
         this.produto = product;
@@ -166,11 +164,9 @@ export class PhoneNumberComponent implements OnInit {
     }
   
     closePopup2() { 
-      alert('phone close pop2')
-  
       this.displayStyle2 = 'none';
       this.navBarService.telefoneOk = true
     }
-  
 
+    
 }
