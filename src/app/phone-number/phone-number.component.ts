@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit, NgZone, CUSTOM_ELEMENTS_SCHEMA, Injectable, NO_ERRORS_SCHEMA, inject } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { interval } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
@@ -12,8 +11,7 @@ import { ProdutoService } from '../produto/produto.service';
 import { Produto } from '../produto/produto';
 import { NavBarService } from '../nav-bar/nav-bar.service';
 import { LoginService } from '../services/login.service';
-
-import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
  
 @Component({
   selector: 'app-phone-number',
@@ -76,13 +74,12 @@ export class PhoneNumberComponent implements OnInit {
 
   ngOnInit() {
 
-    firebase.initializeApp(environment.firebaseConfig);
+    //firebase.initializeApp(environment.firebaseConfig);
 
     this.app = firebase.initializeApp(environment.firebaseConfig);
     this.auth = getAuth();
-    this.auth.languageCode = 'pt-Br';
-    this.applicationVerifier  = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
-    this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
+    const db = getFirestore(this.app);
+    //this.auth.languageCode = 'pt-Br';
     this.displayCode = 'none';
 
   }
@@ -90,21 +87,24 @@ export class PhoneNumberComponent implements OnInit {
   async getOtp() {
 
     //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
-    this.applicationVerifier  = new firebase.auth.RecaptchaVerifier(
-      'sign-in-button', {
-      'size': 'invisible',
-      'callback': () => {
-        // reCAPTCHA solved, proceed with phone number sign-in
-      },
-      'expired-callback': () => {
-        // Response expired, ask user to solve reCAPTCHA again
-      }
-      },
-    );
+    // this.applicationVerifier  = new firebase.auth.RecaptchaVerifier(
+    //   'sign-in-button', {
+    //   'size': 'invisible',
+    //   'callback': () => {
+    //     // reCAPTCHA solved, proceed with phone number sign-in
+    //   },
+    //   'expired-callback': () => {
+    //     // Response expired, ask user to solve reCAPTCHA again
+    //   }
+    //   },
+    // );
 
-    const confirmationResult = await signInWithPhoneNumber(this.auth, this.phoneNumber, this.applicationVerifier);
+    //const confirmationResult = await signInWithPhoneNumber(this.auth, this.phoneNumber, this.applicationVerifier);
     
-    
+    this.applicationVerifier  = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
+
+    this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
+
     signInWithPhoneNumber(
       this.auth,
       this.phoneNumber, 
@@ -118,7 +118,7 @@ export class PhoneNumberComponent implements OnInit {
       //this.router.navigate(['/cardapioPrincipal'])
     }).catch((error) => {
       //send sms
-      alert('erro')
+      //alert('erro')
       interval(1000).subscribe(n => window.location.reload());
     })
   }

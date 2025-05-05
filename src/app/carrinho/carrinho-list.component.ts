@@ -206,8 +206,6 @@ export class CarrinhoListComponent implements OnInit {
 
       if (carrinho.enviado !== true) {
 
-        alert('confirmando')
-
         this.carrinho.enviado = false;
         this.carrinho.status = 'Confirmado';
 
