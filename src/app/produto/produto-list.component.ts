@@ -124,7 +124,7 @@ export class ProdutoListComponent implements OnInit {
 
     this.produtoService.read().subscribe(produto => {
       this.produtos = produto.filter((produto: Produto) =>
-        produto.category ==  this._categoryId);
+        produto.categoria ==  this._categoryId);
       this.filteredProdutos = this.produtos;
     });
 
@@ -186,7 +186,7 @@ export class ProdutoListComponent implements OnInit {
 
     this.filteredProdutos =
       this.produtos.filter((produto: Produto) =>
-        produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+        produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
   }
 
   // tslint:disable-next-line:quotemark

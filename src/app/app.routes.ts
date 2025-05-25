@@ -13,7 +13,7 @@ import { EntregaUpdateComponent } from './entrega/entrega-update.component';
 import { ContaListComponent } from './conta/conta-list.component';
 import { FechamentoListComponent } from './fechamento/fechamento-list.component';
 import { CodeComponent } from './code/code.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhoneNumberComponent } from './phone-number/phone-number.component';
 import { Error404Component } from './Error404/error-404.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -51,9 +51,9 @@ export const routes: Routes = [
           alwaysRefresh: true
        }
       },
-      {
-        path: 'dashboard', component: DashboardComponent
-      },
+      // {
+      //   path: 'dashboard', component: DashboardComponent
+      // },
       {
         path: 'entrega', component: EntregaListComponent
       },
@@ -88,10 +88,10 @@ export const routes: Routes = [
         path: 'phone', component: PhoneNumberComponent
       },
       {
-        path: 'products/**', component: ProdutoListComponent
+        path: 'produto/**', component: ProdutoListComponent
       },
       {
-        path: 'products/:categoryId', component: ProdutoListComponent,
+        path: 'produto/:categoryId', component: ProdutoListComponent,
       }, 
       {
         path: '**', component: Error404Component

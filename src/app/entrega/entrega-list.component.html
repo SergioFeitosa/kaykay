@@ -33,14 +33,14 @@
     <tbody>
       <tr *ngFor='let entrega of filteredEntregas' class="cols">
         <td>
-          <img [src]='entrega.pedido.carrinho.produto.imageUrl'
+          <img [src]='entrega.pedido.carrinho.produto.imagem_url'
             class="figure-img img-fluid rounded"
             alt="..."
             width="100"
             height="70">
         </td>
         <td style='color: red'>{{ entrega.pedido.quantidade }} </td>
-        <td>{{ entrega.pedido.carrinho.produto.name }} </td>
+        <td>{{ entrega.pedido.carrinho.produto.nome }} </td>
         <td style='color: red'>{{ entrega.pedido.observacao }} </td>
         <td>{{ entrega.pedido.telefone }} </td>
         <td>{{ entrega.pedido.local }} </td>
@@ -74,14 +74,14 @@
     <tbody>
       <tr *ngFor='let entrega of filteredEntregas' class="cols">
         <td>
-          <img [src]='entrega.pedido.carrinho.produto.imageUrl' class="figure-img
+          <img [src]='entrega.pedido.carrinho.produto.imagem_url' class="figure-img
             img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td>{{ entrega.pedido.carrinho.produto.name }} </td>
+        <td>{{ entrega.pedido.carrinho.produto.nome }} </td>
         <td>
           <button (click)="openPopup( entrega.id! )">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
@@ -114,10 +114,10 @@
         </button>
       </div>
       <div class="modal-body row">
-        Avaliação: <app-star [rating]="produto.rating"></app-star>
+        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
       </div>
       <div class="modal-body row">
-        <img [src]='produto.imageUrl' class="figure-img img-fluid rounded"
+        <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
           alt="..."
           width="400"
           height="400">
@@ -128,7 +128,7 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
-        <span>{{ produto.name }}</span>
+        <span>{{ produto.nome }}</span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Observação:</span>
@@ -136,15 +136,15 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Descrição:</span>
-        <span> {{ produto.description }} </span>
+        <span> {{ produto.descricao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Preço:</span>
-        <span>{{ produto.price }} </span>
+        <span>{{ produto.tempo_preparacao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Tempo de Preparação:</span>
-        <span>{{ produto.preparationTime }} </span>
+        <span>{{ produto.tempo_preparacao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Horário do Pedido:</span>

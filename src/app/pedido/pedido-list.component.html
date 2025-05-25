@@ -35,7 +35,7 @@
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
-        <img [src]='pedido.carrinho.produto.imageUrl' class="figure-img img-fluid
+        <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
           rounded"
           alt="..."
           width="100"
@@ -56,7 +56,7 @@
 
         </td>
 
-        <td>{{ pedido.carrinho.produto.name }} </td>
+        <td>{{ pedido.carrinho.produto.nome }} </td>
         <td>{{ pedido.telefone }} </td>
         <td>{{ pedido.local }} </td>
 
@@ -115,7 +115,7 @@
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
-        <img [src]='pedido.carrinho.produto.imageUrl' class="figure-img img-fluid
+        <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
           rounded"
           alt="..."
           width="100"
@@ -126,7 +126,7 @@
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
-        <td>{{ pedido.carrinho.produto.name }} </td>
+        <td>{{ pedido.carrinho.produto.nome }} </td>
         <td>{{ pedido.telefone }} </td>
         <td>{{ pedido.local }} </td>
 
@@ -183,7 +183,7 @@
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
-        <img [src]='pedido.carrinho.produto.imageUrl' class="figure-img img-fluid
+        <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
           rounded"
           alt="..."
           width="100"
@@ -194,7 +194,7 @@
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
-        <td>{{ pedido.carrinho.produto.name }} </td>
+        <td>{{ pedido.carrinho.produto.nome }} </td>
         <td>{{ pedido.telefone }} </td>
         <td>{{ pedido.local }} </td>
 
@@ -246,13 +246,13 @@
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
 
         <td>
-          <img [src]='pedido.carrinho.produto.imageUrl' class="figure-img img-fluid
+          <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td>{{ pedido.carrinho.produto.name }} </td>
+        <td>{{ pedido.carrinho.produto.nome }} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
@@ -293,13 +293,13 @@
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
 
         <td>
-          <img [src]='pedido.carrinho.produto.imageUrl' class="figure-img img-fluid
+          <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
             rounded"
             alt="..."
             width="100"
             height="70">
         </td>
-        <td>{{ pedido.carrinho.produto.name }} </td>
+        <td>{{ pedido.carrinho.produto.nome }} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
@@ -340,11 +340,11 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Avaliação:</span>
-        <span><app-star [rating]="this.produto.rating"></app-star></span>
+        <span><app-star [rating]="this.produto.avaliacao"></app-star></span>
 
       </div>
       <div class="modal-body row">
-        <img [src]='this.produto.imageUrl' class="figure-img img-fluid rounded"
+        <img [src]='this.produto.imagem_url' class="figure-img img-fluid rounded"
           alt="..."
           width="400"
           height="400">
@@ -357,7 +357,7 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
-        <span>{{this.produto.name}}</span>
+        <span>{{this.produto.nome}}</span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Observação:</span>
@@ -366,7 +366,7 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Descrição:</span>
-        <span> {{ this.produto.description }} </span>
+        <span> {{ this.produto.descricao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Local:</span>
@@ -374,11 +374,11 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Preço:</span>
-        <span>{{this.produto.price}} </span>
+        <span>{{this.produto.preco}} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Tempo de Preparação:</span>
-        <span>{{this.produto.preparationTime}} </span>
+        <span>{{this.produto.tempo_preparacao}} </span>
       </div>
 
       <div class="modal-body">

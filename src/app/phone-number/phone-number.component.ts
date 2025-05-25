@@ -25,9 +25,9 @@ import { getFirestore } from 'firebase/firestore/lite';
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 
- @Injectable({
-   providedIn: 'root'
- })
+//  @Injectable({
+//    providedIn: 'root'
+//  })
 
 export class PhoneNumberComponent implements OnInit {
 
@@ -86,21 +86,8 @@ export class PhoneNumberComponent implements OnInit {
 
   async getOtp() {
 
-    //const reCaptchaVerifier = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
-    // this.applicationVerifier  = new firebase.auth.RecaptchaVerifier(
-    //   'sign-in-button', {
-    //   'size': 'invisible',
-    //   'callback': () => {
-    //     // reCAPTCHA solved, proceed with phone number sign-in
-    //   },
-    //   'expired-callback': () => {
-    //     // Response expired, ask user to solve reCAPTCHA again
-    //   }
-    //   },
-    // );
+    console.log('getOtp')
 
-    //const confirmationResult = await signInWithPhoneNumber(this.auth, this.phoneNumber, this.applicationVerifier);
-    
     this.applicationVerifier  = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
@@ -129,7 +116,7 @@ export class PhoneNumberComponent implements OnInit {
 
   handleClick() {
 
-    // console.log(this.otp);
+    console.log('handleclick()');
     var credential = firebase.auth.PhoneAuthProvider.credential(
       this.verify,
       this.otp

@@ -180,8 +180,9 @@ export class NavBarComponent implements OnInit {
 
     phone() {
       return this.afAuth.signOut().then(() => {
+        console.log('chamada phone pelo navBar')
         this.ngZone.run(() => {
-          this.router.navigate(['phone']);
+          this.router.navigate(['/phone']);
         });
       });
     }

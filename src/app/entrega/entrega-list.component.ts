@@ -105,14 +105,14 @@ export class EntregaListComponent implements OnInit {
     if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999996) {
       this.filteredEntregas =
         this.entregas
-          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     } else {
 
       this.filteredEntregas =
         this.entregas
           .filter((entrega: Entrega) => entrega.pedido.telefone - environment.telefone === 0)
-          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.name.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+          .filter((entrega: Entrega) => entrega.pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     }
   }

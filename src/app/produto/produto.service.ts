@@ -14,11 +14,11 @@ import { CarrinhoService } from '../carrinho/carrinho.service';
 export class ProdutoService {
 
   // tslint:disable-next-line:quotemark
-  baseUrl = "http://localhost:3001/products";
+  //baseUrl = "http://localhost:3001/products";
 
   // baseUrl = 'http://localhost:8080/quiosqueBackend/produtos';
 
-  // baseUrl = 'http://localhost:8080/produtos';
+  baseUrl = 'http://localhost:8080/produto';
 
   // baseUrl = 'https://sgpn.com.br/quiosqueBackend/produtos';
 

@@ -1,13 +1,13 @@
 export interface Produto {
 
     id?: number;
-    category: string;
-    name: string;
-    code: string;
-    price: number;
-    imageUrl: string;
-    preparationTime: string;
-    rating: number;
-    releaseDate: Date;
-    description: string;
+    categoria: string;
+    nome: string;
+    codigo: string;
+    preco: number;
+    imagem_url: string;
+    tempo_preparacao: string;
+    avaliacao: number;
+    data_criacao: Date;
+    descricao: string;
   }

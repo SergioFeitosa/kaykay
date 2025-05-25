@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     return this.afAuth.signOut().then(() => {
       environment.login = false
       this.ngZone.run(() => {
-        this.router.navigate(['phone']);
+        this.router.navigate(['phonexxx']);
       });
     });
   }
