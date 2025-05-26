@@ -1,5 +1,4 @@
 import { Carrinho } from '../carrinho/carrinho';
-import { Produto } from '../produto/produto';
 
 export interface Pedido {
 
