@@ -9,7 +9,7 @@ export interface Carrinho {
   quantidade: number;
   isencao: boolean;
   enviado: boolean;
-  dataCriacao: Date;
+  data_criacao: Date;
   status: string;
   produto: Produto;
 }

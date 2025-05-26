@@ -13,8 +13,6 @@ export interface Pedido {
   dataCriacao: Date;
   status: string;
 
-  produto: Produto;
-  
   carrinho: Carrinho;
 
 }

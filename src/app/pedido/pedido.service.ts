@@ -11,11 +11,11 @@ export class PedidoService {
 
 
   // tslint:disable-next-line:quotemark
-  baseUrl = "http://localhost:3001/orders";
+  //baseUrl = "http://localhost:3001/orders";
 
   // baseUrl = 'http://localhost:8080/quiosqueBackend/pedidos';
 
-  // baseUrl = 'http://localhost:8080/pedidos';
+  baseUrl = 'http://localhost:8080/pedido';
 
   // baseUrl = 'https://sgpn.com.br/quiosqueBackend/pedidos';
 

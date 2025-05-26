@@ -219,7 +219,7 @@ export class CarrinhoListComponent implements OnInit {
         this.pedido.quantidade = this.carrinho.quantidade;
         this.pedido.observacao = this.carrinho.observacao;
         this.pedido.isencao = this.carrinho.isencao;
-        this.pedido.dataCriacao = this.carrinho.dataCriacao;
+        this.pedido.dataCriacao = this.carrinho.data_criacao;
         this.pedido.enviado = false;
         this.pedido.status = 'Confirmado';
         this.pedido.carrinho = this.carrinho;
