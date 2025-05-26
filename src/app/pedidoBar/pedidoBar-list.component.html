@@ -41,19 +41,25 @@
           width="100"
           height="70">
         <td>
-          <a style="width: 2em; margin-top: 0.5em" (click)='minus()'><i
-              class="fa
-              fa-minus" style="color:red"></i></a>
-          <input [(ngModel)]='pedido.quantidade'
-            class='form-control'
-            type="text"
-            style='color: red; width: 3em;'
-            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-            [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
-          <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
-              class="fa
-              fa-plus" style="color:red"></i></a>
+          <div style='align-items: center;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;'>
 
+            <a style="width: 2em; margin-top: 0.5em" (click)='minus()'>
+              <i class="fa fa-minus" style="color:red; padding: 8px;"></i>
+            </a>
+            <input [(ngModel)]='pedido.quantidade'
+              class='form-control'
+              type="text"
+              style='color: red; width: 3em;'
+              (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+              [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+            <a style="width: 2em; margin-top: 0.5em" (click)="plus()">
+              <i class="fa fa-plus" style="color:red; padding: 8px;"></i>
+            </a>
+          </div>
         </td>
 
         <td>{{ pedido.carrinho.produto.nome }} </td>
@@ -360,7 +366,7 @@
           height="400">
       </div>
       <div class="modal-body row">
-        <span style='font-weight: bolder;'>Quantidade:</span>
+        <span style='font-weight: bolder; text-align: center;'>Quantidade:</span>
         <input [(ngModel)]="pedido.quantidade" type="text" style='color: red; width: 50%'  mask='000'
         (blur)="atualizarPedido(pedido)" class="nav-link"
         >

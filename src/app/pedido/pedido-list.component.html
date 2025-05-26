@@ -40,20 +40,26 @@
           alt="..."
           width="100"
           height="70">
-        <td>
-          <a style="width: 2em; margin-top: 0.5em" (click)='minus()'><i
-              class="fa
-              fa-minus" style="color:red"></i></a>
-          <input [(ngModel)]='pedido.quantidade'
-            class='form-control'
-            type="text"
-            style='color: red; width: 3em;'
-            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-            [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
-          <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
-              class="fa
-              fa-plus" style="color:red"></i></a>
+        <td >
+          <div style='align-items: center;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;'>
+            <a style="width: 2em; margin-top: 0.5em;" (click)='minus()'>
+              <i class="fa fa-minus" style="color:red; padding: 8px;"></i>
 
+            </a>
+            <input [(ngModel)]='pedido.quantidade'
+              class='form-control'
+              type="text"
+              style='color: red; width: 3em;'
+              (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+              [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+            <a style="width: 2em; margin-top: 0.5em" (click)="plus()">
+              <i class="fa fa-plus" style="color:red; padding: 8px;"></i>
+            </a>
+          </div>
         </td>
 
         <td>{{ pedido.carrinho.produto.nome }} </td>
