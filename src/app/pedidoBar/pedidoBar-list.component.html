@@ -35,8 +35,8 @@
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
           [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
-        <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
-          rounded"
+        <img [src]='pedido.carrinho.produto.imagem_url' 
+          class="figure-img img-fluid rounded"
           alt="..."
           width="100"
           height="70">
@@ -47,17 +47,18 @@
               flex-wrap: wrap;
               justify-content: center;'>
 
-            <a style="width: 2em; margin-top: 0.5em" (click)='minus()'>
-              <i class="fa fa-minus" style="color:red; padding: 8px;"></i>
+            <a style="width: 1em; margin-top: 0.5em" (click)='minus(pedido)'>
+              <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
             </a>
-            <input [(ngModel)]='pedido.quantidade'
+            <input [(ngModel)]='pedido.carrinho.quantidade'
               class='form-control'
               type="text"
               style='color: red; width: 3em;'
               (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
               [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
-            <a style="width: 2em; margin-top: 0.5em" (click)="plus()">
-              <i class="fa fa-plus" style="color:red; padding: 8px;"></i>
+
+            <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
+              <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
             </a>
           </div>
         </td>
@@ -68,9 +69,12 @@
 
         <td>
 
-          <textarea [(ngModel)]="pedido.observacao" type="text" style='color:
-            red'
-            (blur)="atualizarPedido(pedido)" class="nav-link"
+          <textarea [(ngModel)]="pedido.carrinho.observacao" 
+            type="text" 
+            style='color:red' 
+            (blur)="atualizarObservacao(pedido)" 
+            (ngModelChange)="atualizarObservacao(pedido)"
+            class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </textarea>
           </td>
@@ -198,7 +202,7 @@
           alt="..."
           width="100"
           height="70">
-        <td><input [(ngModel)]="pedido.quantidade" type="text"
+        <td><input [(ngModel)]="pedido.quantidade" type="text" 
                    style='color: red; width: 60px'
                    (blur)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">

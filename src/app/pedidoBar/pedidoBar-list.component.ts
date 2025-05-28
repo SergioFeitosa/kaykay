@@ -156,20 +156,19 @@ export class PedidoBarListComponent implements OnInit {
 
         // tslint:disable-next-line:no-unused-expression
         const response = await this.carrinhoService.readById(this.pedido.carrinho.id!).subscribe(carrinho => {
-          this.carrinho = this.pedido.carrinho;
+          this.carrinho = carrinho;
           this.carrinho.status = 'Saiu para entrega';
           this.atualizarCarrinho(this.carrinho);
         })
         
+        this.pedido.carrinho = this.carrinho;
         this.pedido.enviado = false;
         this.pedido.status = 'Saiu para entrega';
-        this.pedido.carrinho.status = 'Saiu para entrega';
+        //this.pedido.carrinho.status = 'Saiu para entrega';
         const response2 = await this.atualizarPedido(this.pedido);
 
 
         this.entrega.pedido = this.pedido;
-        this.entrega.observacao = this.pedido.observacao;
-        this.entrega.quantidade = this.pedido.quantidade;
 
         const response3 = await this.entregaService.create(this.entrega).subscribe(() => {
           this.entregaService.showMessage('Saiu para entrega');
@@ -202,17 +201,24 @@ export class PedidoBarListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  minus() {
-    if (this.pedido.quantidade !== 1) {
-      this.pedido.quantidade--;
+  minus(pedido: Pedido) {
+    if (pedido.carrinho.quantidade !== 1) {
+      pedido.carrinho.quantidade--;
+      this.atualizarCarrinho(pedido.carrinho)
     }
   }
 
   // tslint:disable-next-line:typedef
-  plus() {
-    if (this.pedido.quantidade !== 10) {
-      this.pedido.quantidade++;
+  plus(pedido: Pedido) {
+    if (pedido.carrinho.quantidade !== 10) { 
+      pedido.carrinho.quantidade++;
+      this.atualizarCarrinho(pedido.carrinho)
     }
+  }
+
+    // tslint:disable-next-line:typedef
+  atualizarObservacao(pedido: Pedido) {
+    this.atualizarCarrinho(pedido.carrinho);
   }
 
 
@@ -222,11 +228,9 @@ export class PedidoBarListComponent implements OnInit {
     this.pedidoService.update(pedido).subscribe(() => {
       this.pedidoService.showMessage('Pedido Atualizado');
       this.carrinhoService.readById(pedido.carrinho.id!).subscribe(carrinho => {
-        this.carrinho = pedido.carrinho;
-        this.carrinho.quantidade = pedido.quantidade;
-        this.carrinho.observacao = pedido.observacao;
-        console.log ('observacao '+ this.carrinho.observacao)
-        this.atualizarCarrinho(this.carrinho);
+         this.carrinho = pedido.carrinho;
+         this.carrinho.observacao = pedido.observacao;
+         this.atualizarCarrinho(pedido.carrinho);
       })
 
     });

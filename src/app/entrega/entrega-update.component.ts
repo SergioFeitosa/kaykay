@@ -27,7 +27,7 @@ export class EntregaUpdateComponent implements OnInit {
     this.entregaService.readById(id).subscribe(entrega => {
       this.entrega = entrega;
 
-      entrega.dataCriacao = new Date();
+      entrega.data_criacao = new Date();
 
       this.entregaService.update(entrega).subscribe(() => {
 

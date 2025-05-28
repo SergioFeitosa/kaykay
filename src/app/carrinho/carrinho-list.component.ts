@@ -123,22 +123,6 @@ export class CarrinhoListComponent implements OnInit {
     }
   }
 
-    // tslint:disable-next-line:typedef
-    minus() {
-
-      if (this.carrinho.quantidade !== 1) {
-        this.carrinho.quantidade--;
-        this.atualizarCarrinho(this.carrinho);
-      }
-    }
-
-    // tslint:disable-next-line:typedef
-    plus() {
-      if (this.carrinho.quantidade !== 10) {
-        this.carrinho.quantidade++;
-        this.atualizarCarrinho(this.carrinho);
-      }
-    }
   // tslint:disable-next-line:typedef
   get filter() {
     return this._filterBy;
@@ -181,7 +165,7 @@ export class CarrinhoListComponent implements OnInit {
         this.statusBool = true;
       }
     });
-
+ 
     this.displayStyle = 'block';
   }
 
@@ -231,10 +215,9 @@ export class CarrinhoListComponent implements OnInit {
         });
       }
     });
-
+ 
     this.closePopup();
   }
-
 
   // tslint:disable-next-line:typedef
   async atualizarCarrinho(carrinho: Carrinho) {
@@ -242,6 +225,22 @@ export class CarrinhoListComponent implements OnInit {
     const response = await this.carrinhoService.update(carrinho).subscribe(() => {
       this.carrinhoService.showMessage('Carrinho Atualizado');
     });
+  }
+
+    // tslint:disable-next-line:typedef
+  minus(carrinho: Carrinho) {
+    if (carrinho.quantidade !== 1) {
+      carrinho.quantidade--;
+      this.atualizarCarrinho(carrinho)
+    }
+  }
+
+  // tslint:disable-next-line:typedef
+  plus(carrinho: Carrinho) {
+    if (carrinho.quantidade !== 10) { 
+      carrinho.quantidade++;
+      this.atualizarCarrinho(carrinho)
+    }
   }
 
 

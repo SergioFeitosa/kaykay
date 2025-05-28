@@ -27,9 +27,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let carrinho of filteredCarrinhos' (click)="openPopup(
-        carrinho.id! )" style="cursor: pointer;">
-        <td>
+      <tr *ngFor='let carrinho of filteredCarrinhos' style="cursor: pointer;">
+        
+        <td  (click)="openPopup(carrinho.id! )">
           <img [src]='carrinho.produto.imagem_url' class="figure-img img-fluid
             rounded"
             alt="..."
@@ -37,12 +37,46 @@
             height="70"
             style="margin-top: 1em;">
         </td>
-        <td><p>{{ carrinho.produto.nome }}</p></td>
-        <td style="color:red">{{ carrinho.quantidade }} </td>
-        <td style="color:red">{{ carrinho.observacao }} </td>
-        <td>{{ carrinho.local }} </td>
-        <td>{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
-        <td class="text-center">
+        
+        <td  (click)="openPopup(carrinho.id! )">
+          <p>{{ carrinho.produto.nome }}</p>
+        </td>
+
+        <td>
+          <div style='align-items: center;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;'
+              >
+            <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+              <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+
+            </a>
+            <input [(ngModel)]='carrinho.quantidade'
+              class='form-control'
+              type="text"
+              style='color: red; width: 3em;'
+              (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+
+            <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+              <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+            </a>
+          </div>
+        </td>
+
+
+
+        <td  (click)="openPopup(carrinho.id! )" style="color:red">
+          {{ carrinho.observacao }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"> 
+          {{ carrinho.local }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )">
+          {{ carrinho.data_criacao | date:'hh:mm:ss'}} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"class="text-center">
           <p style="margin: 0"><small style="font-size: 0.8em;">{{
               carrinho.status }}</small></p>
         </td>
@@ -198,14 +232,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
       <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
-        <button routerLink='/carrinho/delete/{{ carrinho.id! }}'>
-          Deletar
-        </button>
+
+        <div *ngIf="statusBool">
+          <button routerLink='/carrinho/delete/{{ carrinho.id! }}'>
+            Deletar
+          </button>
+        </div>
+
         <div *ngIf="statusBool">
           <button (click)="pedidoCreate( carrinho.id! );" >
             Confirmar
           </button>
         </div>
+
         <button type="button" class="btn btn-danger"
           (click)="closePopup()">
           Fechar
@@ -243,12 +282,12 @@
 
       <div class="modal-body row">
         <span style='font-weight: bolder; color:blue'>Quantidade:</span>
-        <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i
+        <a style="width: 2em; margin-top: 0.5em" (click)="minus(carrinho)"><i
             class="fa
             fa-minus" style="color:red"></i></a>
         <input style="width: 3em;" name="prp" [(ngModel)]='carrinho.quantidade'
           class='form-control'>
-        <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
+        <a style="width: 2em; margin-top: 0.5em" (click)="plus(carrinho)"><i
             class="fa
             fa-plus" style="color:red"></i></a>
       </div>
@@ -284,12 +323,19 @@
       <div class="modal-content" style='background-color:rgb(225, 240,
         252)'>
         <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
-          <button routerLink = '/carrinho/delete/{{ carrinho.id! }}'>
-            Deletar
-          </button>
-          <button (click)="pedidoCreate( carrinho.id! );">
-            Confirmar
-          </button>
+
+          <div *ngIf="statusBool">
+            <button routerLink = '/carrinho/delete/{{ carrinho.id! }}'>
+              Deletar
+            </button>
+          </div>
+
+          <div *ngIf="statusBool">
+            <button (click)="pedidoCreate( carrinho.id! );" >
+              Confirmar
+            </button>
+          </div>
+
           <button type="button" class="btn btn-danger"
             (click)="closePopup()">
             Fechar

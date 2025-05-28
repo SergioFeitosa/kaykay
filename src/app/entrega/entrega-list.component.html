@@ -39,21 +39,31 @@
             width="100"
             height="70">
         </td>
-        <td style='color: red'>{{ entrega.pedido.quantidade }} </td>
+
+        <td style='color: red'>
+          <div style='align-items: center;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;'>
+                  {{ entrega.pedido.carrinho.quantidade }} 
+          </div>
+        </td>
+
         <td>{{ entrega.pedido.carrinho.produto.nome }} </td>
-        <td style='color: red'>{{ entrega.pedido.observacao }} </td>
+        <td style='color: red'>{{ entrega.pedido.carrinho.observacao }} </td>
         <td>{{ entrega.pedido.telefone }} </td>
         <td>{{ entrega.pedido.local }} </td>
         <td>{{ entrega.pedido.isencao }} </td>
         <td>{{ entrega.pedido.dataCriacao | date:'hh:mm:ss' }} </td>
-        <td>{{ entrega.dataCriacao | date:'hh:mm:ss' }} </td>
+        <td>{{ entrega.data_criacao | date:'hh:mm:ss' }} </td>
         <td>
           <button (click)="openPopup( entrega.id! )">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
               rounded" alt="..." width="25" height="25" title="Ver detalhes">
           </button>
           <button (click)="entregaUpdate( entrega.id! )"
-            [disabled]="((+telefone == 5511982551256 || +telefone == 5599999999996) && entrega.dataCriacao == null)
+            [disabled]="((+telefone == 5511982551256 || +telefone == 5599999999996) && entrega.data_criacao == null)
             ? false : true">
             <img src='/assets/images/guardasol.jpg' class="figure-img img-fluid
               rounded" alt="..." width="25" height="25" title="Entrega realizada">
@@ -89,7 +99,7 @@
               height="25">
           </button>
           <button (click)="entregaUpdate( entrega.id! )"
-            [disabled]="((+telefone == 5511982551256 || +telefone == 5599999999996) && entrega.dataCriacao == null)
+            [disabled]="((+telefone == 5511982551256 || +telefone == 5599999999996) && entrega.data_criacao == null)
             ? false : true">
             <img src='/assets/images/guardasol.jpg' class="figure-img img-fluid
               rounded" alt="..." width="25" height="25">
@@ -114,45 +124,42 @@
         </button>
       </div>
       <div class="modal-body row">
-        Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
-      </div>
-      <div class="modal-body row">
-        <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
+        <img [src]='this.produto.imagem_url' class="figure-img img-fluid rounded"
           alt="..."
           width="400"
           height="400">
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Quantidade:</span>
-        <span style='color: red;'>{{ pedido.quantidade }} </span>
+        <span style='color: red;'>{{ this.carrinho.quantidade }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
-        <span>{{ produto.nome }}</span>
+        <span>{{ this.produto.nome }}</span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Observação:</span>
-        <span style='color: red;'>{{ pedido.observacao }} </span>
+        <span style='color: red;'>{{ this.carrinho.observacao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Descrição:</span>
-        <span> {{ produto.descricao }} </span>
+        <span> {{ this.produto.descricao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Preço:</span>
-        <span>{{ produto.tempo_preparacao }} </span>
+        <span>{{ this.produto.tempo_preparacao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Tempo de Preparação:</span>
-        <span>{{ produto.tempo_preparacao }} </span>
+        <span>{{ this.produto.tempo_preparacao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Horário do Pedido:</span>
-        <span>{{ pedido.dataCriacao | date:'hh:mm:ss' }} </span>
+        <span>{{ this.pedido.dataCriacao | date:'hh:mm:ss' }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Horário da Entrega:</span>
-        <span>{{ entrega.dataCriacao | date:'hh:mm:ss' }} </span>
+        <span>{{ this.entrega.data_criacao | date:'hh:mm:ss' }} </span>
       </div>
 
       <div class="modal-body">

@@ -21,7 +21,7 @@ import { environment } from '../../environments/environment.development';
     FormsModule,
     CommonModule,
     CaminhoMenuComponent,
-    StarComponent
+    //StarComponent
 
   ]
 
@@ -76,19 +76,16 @@ export class EntregaListComponent implements OnInit {
 
 
     if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999996) {
-
-
       this.entregaService.read().subscribe(entregas => {
         this.entregas = entregas;
         this.filteredEntregas = this.entregas;
-
       });
+
     } else {
 
       this.entregaService.read().subscribe(entregas => {
         this.entregas = entregas;
         this.filteredEntregas = this.entregas.filter((entrega: Entrega) => entrega.pedido.telefone - environment.telefone === 0);
-
       });
 
     }
@@ -128,7 +125,8 @@ export class EntregaListComponent implements OnInit {
     this.entregaService.readById(entregaId).subscribe(entrega => {
       this.entrega = entrega;
       this.pedido = this.entrega.pedido;
-      this.produto = this.pedido.carrinho.produto;
+      this.carrinho = this.entrega.pedido.carrinho;
+      this.produto = this.entrega.pedido.carrinho.produto;
     });
 
     this.displayStyle = 'block';
@@ -137,48 +135,34 @@ export class EntregaListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   closePopup() {
     this.displayStyle = 'none';
-  }
+  } 
 
-  async entregaUpdate(entregaId: number): Promise<void> {
+  entregaUpdate(entregaId: number) {
 
     // tslint:disable-next-line:no-unused-expression
-    const response = await this.entregaService.readById(entregaId).subscribe(async entrega => {
+    const response = this.entregaService.readById(entregaId).subscribe(entrega => {
       this.entrega = entrega;
 
-      console.log('pedido entrega 1 => ' + this.entrega.pedido.id!)
-
-      // tslint:disable-next-line:no-unused-expression
-      const response3 = await  this.pedidoService.readById(this.entrega.pedido.id!).subscribe(pedido => {
-        this.pedido = pedido;
-        this.pedido.status = 'Pedido entregue';
-        this.pedido.carrinho.status = 'Pedido entregue';
-        this.atualizarPedido(this.pedido);
-        this.entrega.pedido = this.pedido;
-      })
-
-      console.log('pedido entrega 2 => ' + this.entrega.pedido.id!)
-
-      // tslint:disable-next-line:no-unused-expression
-      const response2 = await this.carrinhoService.readById(this.entrega.pedido.carrinho.id!).subscribe(carrinho => {
+            // tslint:disable-next-line:no-unused-expression
+      const response2 = this.carrinhoService.readById(this.entrega.pedido.carrinho.id!).subscribe(carrinho => {
         this.carrinho = carrinho;
         this.carrinho.status = 'Pedido entregue';
         this.atualizarCarrinho(this.carrinho);
       })
 
-      console.log('pedido entrega 3 => ' + this.entrega.pedido.id!)
+      // tslint:disable-next-line:no-unused-expression
+      const response3 = this.pedidoService.readById(this.entrega.pedido.id!).subscribe(pedido => {
+        this.pedido = pedido;
+        this.pedido.status = 'Pedido entregue';
+        this.pedido.carrinho = this.carrinho;
+        this.atualizarPedido(this.pedido);
+        
+      })
 
-
-      this.entrega.dataCriacao = new Date();
-
-      const response1 = await this.entregaService.update(this.entrega).subscribe(() => {
-        this.entregaService.showMessage('Entrega realizada');
-      }
-      );
-
-
-
+      this.entrega.pedido = this.pedido;
+      this.entrega.data_criacao = new Date();
+      this.atualizarEntrega(this.entrega);
     });
-
   }
 
   // tslint:disable-next-line:typedef
@@ -190,10 +174,14 @@ export class EntregaListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   async atualizarCarrinho(carrinho: Carrinho) {
-    const response = await this.carrinhoService.update(carrinho).subscribe(() => {
+    const response1 = await this.carrinhoService.update(carrinho).subscribe(() => {
       this.carrinhoService.showMessage('Pedido Entregue');
     });
   }
 
-
+  async atualizarEntrega(entrega: Entrega) {
+      const response2 =  await this.entregaService.update(entrega).subscribe(() => {
+        this.entregaService.showMessage('Entrega realizada');
+    });
+  }
 }
