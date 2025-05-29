@@ -34,7 +34,7 @@
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'aquamarine' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
         <img [src]='pedido.carrinho.produto.imagem_url' 
           class="figure-img img-fluid rounded"
           alt="..."
@@ -443,7 +443,6 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Quantidade:</span>
-          <td>
             <div style='align-items: center;
                 display: flex; 
                 flex-direction: row;
@@ -455,10 +454,8 @@
                 style='color: red; width: 3em;'
                 >
                 {{ this.carrinho.quantidade}}
-                </span>
-
+              </span>
             </div>
-          </td>
       </div>
 
       <div class="modal-body row">
