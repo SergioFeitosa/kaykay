@@ -64,6 +64,7 @@ export class NavBarComponent implements OnInit {
     firebase.initializeApp(environment.firebaseConfig);
 
     this.local = environment.local;
+    this.telefone = environment.telefone;
   }
 
 

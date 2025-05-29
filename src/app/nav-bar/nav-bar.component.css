@@ -2,6 +2,33 @@ section {
   display: table;
 }
 
+
+.container {
+  background-image: url('../../assets/images/color-azul-mar.png');
+  border-color: #0509fc;
+  border-style: double;
+  border-bottom-color: #0509fc;
+  box-shadow: 0 4px 6px #0509fc;
+}
+
+.navbar-title {
+  color: #0509fc;
+  font-weight: bold;
+  font-size: 2em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar-info {
+  color: #0509fc;
+  font-weight: bold;
+  font-size: 2em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar-button {
+  color: #0509fc;
+}
+
 .example-label {
   display: table-cell;
   font-size: 14px;

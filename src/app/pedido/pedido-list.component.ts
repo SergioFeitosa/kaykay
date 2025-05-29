@@ -174,7 +174,8 @@ export class PedidoListComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.pedidoService.readById(pedidoId).subscribe(pedido => {
       this.pedido = pedido;
-      this.produto = this.pedido.carrinho.produto;
+      this.carrinho = pedido.carrinho;
+      this.produto = pedido.carrinho.produto;
     });
 
     this.displayStyle = 'block';
