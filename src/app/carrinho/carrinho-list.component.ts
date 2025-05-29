@@ -82,7 +82,7 @@ export class CarrinhoListComponent implements OnInit {
 
     // entram no if somente administradores, clientes saem pelo else
 
-    console.log(environment.telefone)
+    //console.log(environment.telefone)
 
     if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999997) {
 

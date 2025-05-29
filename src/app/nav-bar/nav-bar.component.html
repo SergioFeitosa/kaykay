@@ -8,67 +8,41 @@
         style="margin-left: 0.5em;">
         KAY-KAY
       </a>
-
-      <!-- <div style="cursor: pointer; font-size: 1em;" (click)="logout()" 
-        class="navbar-brand  navbar-title">
-        Logout
-      </div> -->
-      <!-- <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2
-        menu-item nav-active">Logout
-      </div> -->
       <div>
-        <td>
-          <tr>
-            <span style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
-              {{ this.local }}
-            </span>
-            <span style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
-              {{ '11 * **** 1256'}}
-            </span>
-          </tr>
-          
-          <br>
-          
-          <tr>
-            <div style="display: flex; justify-content: center; align-items: center;">
-            <a (click)="loginService.userStatus()">
-              @if (loginService.userLogin) {
-              <button style="border: none; background: none;" (click)="logout();">
-                <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                  style="margin-right: 4px; color: #01a501;" aria-hidden="true" data-mat-icon-type="font"
-                  title="Logout">account_circle</mat-icon>
-              </button>
-              } @else {
-              <button style="border: none; background: none;" (click)="phone()">
-                <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                  style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
-                  title="Login">account_circle</mat-icon>
-              </button>
-              }
-            </a>
-            <a [routerLink]="['/conta']" routerLinkActive="active">
-              <button style="border: none; background: none;">
-                <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
-                  style="margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font" title="Conta">paid</mat-icon>
-              </button>
-            </a>
-            <button (click)="openPopup()" style="border: none; background: none;">
-              <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
-                style="margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font" title="Ajuda">help_outline</mat-icon>
+        <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+          {{ this.local }}
+        </a>
+        <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+          {{ '11 * **** 1256'}}
+        </a>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <a (click)="loginService.userStatus()">
+            @if (loginService.userLogin) {
+            <button style="border: none; background: none;" (click)="logout();">
+              <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
+                style="margin-right: 4px; color: #01a501;" aria-hidden="true" data-mat-icon-type="font"
+                title="Logout">account_circle</mat-icon>
             </button>
-            </div>
-          </tr>
-        </td>
-        <!-- <a routerLink="/phone" routerLinkActive="active">
-          <button style="border: none; background: none;">
-            <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-            style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+            } @else {
+            <button style="border: none; background: none;" (click)="phone()">
+              <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
+                style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
+                title="Login">account_circle</mat-icon>
+            </button>
+            }
+          </a>
+          <a [routerLink]="['/conta']" routerLinkActive="active">
+            <button style="border: none; background: none;">
+              <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
+                style="margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font" title="Conta">paid</mat-icon>
+            </button>
+          </a>
+          <button (click)="openPopup()" style="border: none; background: none;">
+            <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
+              style="margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font"
+              title="Ajuda">help_outline</mat-icon>
           </button>
-          <button style="border: none; background: none;">
-            <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-            style="margin-right: 4px; color: greenyellow;" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
-          </button>
-        </a> -->
+        </div>
       </div>
     </div>
   </nav>
