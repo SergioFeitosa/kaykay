@@ -81,8 +81,6 @@ export class PedidoListComponent implements OnInit {
     environment.fundoColoridoEntrega = false;
     environment.fundoColoridoConta = false;
 
-
-    
     if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999998) {
       this.pedidoService.read().subscribe(pedidos => {
         this.pedidos = pedidos;

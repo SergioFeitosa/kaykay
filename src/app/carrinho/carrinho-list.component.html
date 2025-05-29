@@ -42,29 +42,83 @@
           <p>{{ carrinho.produto.nome }}</p>
         </td>
 
-        <td>
-          <div style='align-items: center;
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: center;'
-              >
-            <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-              <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+          @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+               (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
-            </a>
-            <input [(ngModel)]='carrinho.quantidade'
-              class='form-control'
-              type="text"
-              style='color: red; width: 3em;'
-              (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+            <td>
+              <div style='align-items: center;
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: wrap;
+                  justify-content: center;'
+                  >
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
 
-            <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-              <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
-            </a>
-          </div>
-        </td>
+                </a>
+                <input [(ngModel)]='carrinho.quantidade'
+                  class='form-control'
+                  type="text"
+                  style='color: red; width: 3em;'
+                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
 
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+                </a>
+              </div>
+            </td>
+          }
+          @else if(carrinho.status === 'Pendente') {
+            <td>
+              <div style='align-items: center;
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: wrap;
+                  justify-content: center;'
+                  >
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+
+                </a>
+                <input [(ngModel)]='carrinho.quantidade'
+                  class='form-control'
+                  type="text"
+                  style='color: red; width: 3em;'
+                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+                </a>
+              </div>
+            </td>
+
+          }
+          @else {
+            <td>
+              <div style='align-items: center;
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: wrap;
+                  justify-content: center;'
+                  >
+                <span style="width: 1em; margin-top: 0.5em;">
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+
+                </span>
+                <input [(ngModel)]='carrinho.quantidade'
+                  class='form-control'
+                  type="text"
+                  style='color: red; width: 3em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+
+                <span style="width: 1em; margin-top: 0.5em">
+                  <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+                </span>
+              </div>
+            </td>
+
+          }
 
 
         <td  (click)="openPopup(carrinho.id! )" style="color:red">

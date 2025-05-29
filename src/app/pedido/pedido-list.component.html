@@ -40,30 +40,80 @@
           alt="..."
           width="100"
           height="70">
-        <td>
-          <div style='align-items: center;
+         @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999998) &&
+              (pedido.carrinho.status === 'Confirmado')) {
+
+          <td>
+            <div style='align-items: center;
               display: flex; 
               flex-direction: row;
               flex-wrap: wrap;
               justify-content: center;'>
               
-            <a style="width: 1em; margin-top: 0.5em;" (click)='minus(pedido)'>
-              <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+              <a style="width: 1em; margin-top: 0.5em;" (click)='minus(pedido)'>
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+              </a>
+            
+              <input [(ngModel)]='pedido.carrinho.quantidade'
+                class='form-control'
+                type="text"
+                style='color: red; width: 3em;'
+                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
-            </a>
-            <input [(ngModel)]='pedido.carrinho.quantidade'
-              class='form-control'
-              type="text"
-              style='color: red; width: 3em;'
-              (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-              [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+              <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
+                <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+              </a>
+            </div>
+          </td>
+        }
+        @else if(pedido.carrinho.status === 'Confirmado') {
+          <td>
+            <div style='align-items: center;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;'>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(pedido)'>
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
 
-            <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
-              <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
-            </a>
-          </div>
-        </td>
+              </a>
+              <input [(ngModel)]='pedido.carrinho.quantidade'
+                class='form-control'
+                type="text"
+                style='color: red; width: 3em;'
+                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
+              <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
+                <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+              </a>
+            </div>
+          </td>
+        } @else {
+          <td>
+            <div style='align-items: center;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;'>
+                <span style="width: 1em; margin-top: 0.5em;">
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                </span>
+                <input [(ngModel)]='pedido.carrinho.quantidade'
+                  class='form-control'
+                  type="text"
+                  style='color: red; width: 3em;'
+                  (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                  disabled>
+
+                <span style="width: 1em; margin-top: 0.5em">
+                  <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
+                </span>
+            </div>
+          </td>
+
+        }
         <td>{{ pedido.carrinho.produto.nome }} </td>
         <td>{{ pedido.telefone }} </td>
         <td>{{ pedido.local }} </td>
