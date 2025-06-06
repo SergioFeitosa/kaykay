@@ -7,7 +7,7 @@
         <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
           <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ?
             '#cbfaf8' : ''}" style="border: 1px solid rgb(77, 40, 146); width: 15em;">
-            <mat-card-title class="title">Cardapio</mat-card-title>
+            <mat-card-title class="title">CardapioPri</mat-card-title>
             <mat-card-subtitle class="subtitle">Menu</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon 
@@ -102,13 +102,17 @@
   <!-- LAPTOP  -->
   
   <div class="container laptop" >
-    <mat-grid-list cols="5">
+    <mat-grid-list cols="5" rowHeight="10em">
       <mat-grid-tile  gutterSize="1em" >
         <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ?
-            '#cbfaf8' : ''}" style="border: 1px solid rgb(77, 40, 146); width: 10em;">
-            <mat-card-title>CardÃ¡pio</mat-card-title>
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ? '#cbfaf8' : ''}" 
+                    style="border: 1px solid rgb(77, 40, 146); 
+                           width: 10em;
+                           font-size: 1em;
+                           align-items: center;
+                           ">
+            <mat-card-title>Cardápiolap</mat-card-title>
             <mat-card-subtitle>Menu</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>menu_book</mat-icon>
@@ -119,8 +123,12 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/carrinho']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoPedido ?
-            '#cbfaf8' : ''}"  style="border: 1px solid rgb(77, 40, 146); width: 10em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 10em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
             <mat-card-title>Pedido</mat-card-title>
             <mat-card-subtitle>Order</mat-card-subtitle>
             <mat-card-title-group>
@@ -133,8 +141,12 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/pedido']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoCozinha ?
-            '#cbfaf8' : ''}"  style="border: 1px solid rgb(77, 40, 146); width: 10em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCozinha ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 10em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
             <mat-card-title>Cozinha</mat-card-title>
             <mat-card-subtitle>Cook</mat-card-subtitle>
             <mat-card-title-group>
@@ -147,8 +159,13 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/pedidoBar']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoBar ? 
-            '#cbfaf8' : ''}" style="border: 1px solid rgb(77, 40, 146); width: 10em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoBar ? '#cbfaf8' : ''}" 
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 10em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+
             <mat-card-title>Bar</mat-card-title>
             <mat-card-subtitle>Bar</mat-card-subtitle>
             <mat-card-title-group>
@@ -159,10 +176,108 @@
       </mat-grid-tile>
   
       <mat-grid-tile  gutterSize="1em">
-        <a [routerLink]="['/entrega']" routerLinkActive="active"
+        <a [routerLink]="['/entrega']" routerLinkActive="active"  class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoEntrega ? '#cbfaf8' : ''}"   
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 10em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+            <mat-card-title>Entrega</mat-card-title>
+            <mat-card-subtitle>Delivery</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>room_service</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
+  <!-- LAPTOP2  -->
+  
+  <div class="container laptop2" >
+    <mat-grid-list cols="5" rowHeight="8em">
+      <mat-grid-tile  gutterSize="1em" >
+        <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoEntrega ?
-            '#cbfaf8' : ''}"   style="border: 1px solid rgb(77, 40, 146); width: 10em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ? '#cbfaf8' : ''}" 
+                    style="border: 1px solid rgb(77, 40, 146); 
+                           width: 8em;
+                           font-size: 1em;
+                           align-items: center;
+                           ">
+            <mat-card-title>Cardápiolap2</mat-card-title>
+            <mat-card-subtitle>Menu</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>menu_book</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+      <mat-grid-tile  gutterSize="1em">
+        <a [routerLink]="['/carrinho']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 8em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+            <mat-card-title>Pedido</mat-card-title>
+            <mat-card-subtitle>Order</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>shopping_cart</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+        </a>
+  
+      </mat-grid-tile>
+      <mat-grid-tile  gutterSize="1em">
+        <a [routerLink]="['/pedido']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCozinha ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 8em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+            <mat-card-title>Cozinha</mat-card-title>
+            <mat-card-subtitle>Cook</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>restaurant_menu</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+  
+      <mat-grid-tile  gutterSize="1em">
+        <a [routerLink]="['/pedidoBar']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoBar ? '#cbfaf8' : ''}" 
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 8em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+
+            <mat-card-title>Bar</mat-card-title>
+            <mat-card-subtitle>Bar</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>liquor</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+  
+      <mat-grid-tile  gutterSize="1em">
+        <a [routerLink]="['/entrega']" routerLinkActive="active"  class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoEntrega ? '#cbfaf8' : ''}"   
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 8em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
             <mat-card-title>Entrega</mat-card-title>
             <mat-card-subtitle>Delivery</mat-card-subtitle>
             <mat-card-title-group>
@@ -179,11 +294,14 @@
   <div class="container tablet" >
     <mat-grid-list cols="5" rowHeight="10em">
       <mat-grid-tile  gutterSize="1em" >
-        <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active"
-          class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ?
-            '#cbfaf8' : ''}" style="border: 1px solid rgb(77, 40, 146);  width: 6.5em;">
-            <mat-card-title style="font-size: larger;">CardÃ¡pio</mat-card-title>
+        <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCardapio ? '#cbfaf8' : ''}" 
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 5.5em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+            <mat-card-title style="font-size: larger;">Cardápio</mat-card-title>
             <mat-card-subtitle>Menu</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>menu_book</mat-icon>
@@ -194,8 +312,12 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/carrinho']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoPedido ?
-            '#cbfaf8' : ''}"  style="border: 1px solid rgb(77, 40, 146);  width: 6.5em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 5.5em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
             <mat-card-title style="font-size: larger;">Pedido</mat-card-title>
             <mat-card-subtitle>Order</mat-card-subtitle>
             <mat-card-title-group>
@@ -207,8 +329,13 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/pedido']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoCozinha ?
-            '#cbfaf8' : ''}"  style="border: 1px solid rgb(77, 40, 146); width: 6.5em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoCozinha ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 5.5em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+
             <mat-card-title style="font-size: larger;">Cozinha</mat-card-title>
             <mat-card-subtitle>Cook</mat-card-subtitle>
             <mat-card-title-group>
@@ -220,8 +347,12 @@
       <mat-grid-tile  gutterSize="1em">
         <a [routerLink]="['/pedidoBar']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoBar ?
-            '#cbfaf8' : ''}"  style="border: 1px solid rgb(77, 40, 146); width: 6.5em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoBar ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 5.5em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
             <mat-card-title style="font-size: larger;">Bar</mat-card-title>
             <mat-card-subtitle>Bar</mat-card-subtitle>
             <mat-card-title-group>
@@ -233,8 +364,13 @@
       <mat-grid-tile  gutterSize="1em" >
         <a [routerLink]="['/entrega']" routerLinkActive="active"
           class="nav-link">
-          <mat-card [ngStyle]="{'background-color':fundoColoridoEntrega ?
-            '#cbfaf8' : ''}"   style="border: 1px solid rgb(77, 40, 146); width: 6.5em;">
+          <mat-card [ngStyle]="{'background-color':fundoColoridoEntrega ? '#cbfaf8' : ''}"   
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 5.5em;
+                            font-size: 1em;
+                            align-items: center;
+                            ">
+
             <mat-card-title style="font-size: larger;">Entrega</mat-card-title>
             <mat-card-subtitle>Delivery</mat-card-subtitle>
             <mat-card-title-group>
@@ -248,17 +384,19 @@
   
   <!-- MOBILE -->
   
-  <div class="container mt-4 mobile">
+  <div class="container mobile">
     <div class="content">
-      <mat-grid-list cols="2" rowHeight="13em">
+      <mat-grid-list cols="5" rowHeight="6em">
         <mat-grid-tile>
-          <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active"
-          class="nav-link">
-  
-          <mat-card class="example-card" [ngStyle]="{'background-color':fundoColoridoCardapio ?
-            '#cbfaf8' : ''}" style="border: 2px solid rgb(77, 40, 146); width: 8em;">
-            <mat-card-title>CardÃ¡pio</mat-card-title>
-            <mat-card-subtitle>Menu</mat-card-subtitle>
+          <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoCardapio ? '#cbfaf8' : ''}" 
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 4em;
+                            align-items: center;
+                            ">
+            <mat-card-title style="font-size: 0.7em;">Cardápio</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.8em;">Menu</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>menu_book</mat-icon>
             </mat-card-title-group>
@@ -268,12 +406,64 @@
         <mat-grid-tile>
           <a [routerLink]="['/carrinho']" routerLinkActive="active"
           class="nav-link">
-          <mat-card class="example-card" [ngStyle]="{'background-color':fundoColoridoPedido ?
-          '#cbfaf8' : ''}"  style="border: 2px solid rgb(77, 40, 146); width: 8em;">
-            <mat-card-title>Pedido</mat-card-title>
-            <mat-card-subtitle>Order</mat-card-subtitle>
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 2px solid rgb(77, 40, 146); 
+                            width: 4em; 
+                            align-items: center;">
+            <mat-card-title style="font-size: 0.7em;">Pedido</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.8em;">Order</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>shopping_cart</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/pedido']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 2px solid rgb(77, 40, 146); 
+                            width: 4em; 
+                            align-items: center;">
+            <mat-card-title style="font-size: 0.7em;">Cozinha</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.8em;">Cook</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>restaurant_menu</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/pedidoBar']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style="border: 2px solid rgb(77, 40, 146); 
+                           width: 4em; 
+                           align-items: center;">
+            <mat-card-title style="font-size: 0.7em;">Bar</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.8em;">Bar</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>liquor</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/entrega']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 2px solid rgb(77, 40, 146); 
+                            width: 4em; 
+                            align-items: center;">
+
+            <mat-card-title style="font-size: 0.7em;">Entrega</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.8em;">Delivery</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>room_service</mat-icon>
             </mat-card-title-group>
           </mat-card>
           </a>
@@ -284,16 +474,20 @@
   
   <!-- MOBILE-PEQUENO -->
   
-  <div class="container mt-4 mobile-pequeno">
+  <div class="container mobile-pequeno">
     <div class="content">
-      <mat-grid-list cols="2" rowHeight="13em">
+      <mat-grid-list cols="5" rowHeight="5em">
         <mat-grid-tile>
-          <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active"
-          class="nav-link">
-          <mat-card class="example-card" [ngStyle]="{'background-color':fundoColoridoCardapio ?
-          '#cbfaf8' : ''}"  style="border: 2px solid rgb(77, 40, 146); width: 8em;">
-            <mat-card-title >CardÃ¡pio</mat-card-title>
-            <mat-card-subtitle>Menu</mat-card-subtitle>
+          <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoCardapio ? '#cbfaf8' : ''}" 
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 2.6em;
+                            height: 4em;
+                            align-items: center;
+                            ">
+            <mat-card-title style="font-size: 0.6em; height: 1.5em;">Cardápio</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.7em; height: 1.5em;">Menu</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>menu_book</mat-icon>
             </mat-card-title-group>
@@ -301,14 +495,68 @@
           </a>
         </mat-grid-tile>
         <mat-grid-tile>
-          <a [routerLink]="['/carrinho']" routerLinkActive="active"
-          class="nav-link">
-          <mat-card class="example-card" [ngStyle]="{'background-color':fundoColoridoPedido ?
-          '#cbfaf8' : ''}"   style="border: 2px solid rgb(77, 40, 146); width: 8em;">
-            <mat-card-title >Pedido</mat-card-title>
-            <mat-card-subtitle>Order</mat-card-subtitle>
+          <a [routerLink]="['/carrinho']" routerLinkActive="active" class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 2.6em;
+                            height: 4em;
+                            align-items: center;">
+            <mat-card-title style="font-size: 0.6em; height: 1.5em;">Pedido</mat-card-title>
+            <mat-card-subtitle style="font-size: 0.7em; height: 1.5em;">Order</mat-card-subtitle>
             <mat-card-title-group>
               <mat-icon>shopping_cart</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/pedido']" routerLinkActive="active" class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 2.6em;
+                            height: 4em;
+                            align-items: center;">
+            <mat-card-title  style="font-size: 0.6em; height: 1.5em;">Cozinha</mat-card-title>
+            <mat-card-subtitle  style="font-size: 0.7em; height: 1.5em;">Cook</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>restaurant_menu</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/pedidoBar']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style="border: 1px solid rgb(77, 40, 146); 
+                            width: 2.6em;
+                            height: 4em;
+                           align-items: center;">
+            <mat-card-title  style="font-size: 0.6em; height: 1.5em;">Bar</mat-card-title>
+            <mat-card-subtitle  style="font-size: 0.7em; height: 1.5em;">Bar</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>liquor</mat-icon>
+            </mat-card-title-group>
+          </mat-card>
+          </a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a [routerLink]="['/entrega']" routerLinkActive="active"
+          class="nav-link">
+          <mat-card class="example-card" 
+                    [ngStyle]="{'background-color':fundoColoridoPedido ? '#cbfaf8' : ''}"  
+                    style=" border: 1px solid rgb(77, 40, 146); 
+                            width: 2.6em;
+                            height: 4em;
+                            align-items: center;">
+
+            <mat-card-title  style="font-size: 0.6em; height: 1.5em;">Entrega</mat-card-title>
+            <mat-card-subtitle  style="font-size: 0.7em; height: 1.5em;">Delivery</mat-card-subtitle>
+            <mat-card-title-group>
+              <mat-icon>room_service</mat-icon>
             </mat-card-title-group>
           </mat-card>
           </a>
@@ -316,4 +564,3 @@
       </mat-grid-list>
     </div>
   </div>
-  
