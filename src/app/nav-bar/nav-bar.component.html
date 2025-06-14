@@ -2,11 +2,14 @@
 
 <div class='container mt-4 desktop'>
   <nav class="navbar"
-    style="display: flex; justify-content: center; align-items: center;">
-    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
-      <a routerLink="cardapioPrincipal" routerLinkActive="active" class="navbar-brand  navbar-title"
-        style="margin-left: 0.5em;">
-        KAY-KAY
+       style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-12" 
+         style="display: flex; justify-content: space-between; align-items: center;">
+      <a routerLink="cardapioPrincipal" 
+         routerLinkActive="active" 
+         class="navbar-brand  navbar-title"
+         style="font-size: 2em; margin-left: 0.5em; font-weight: bold;">
+        QUIOSQUE  LÊTO
       </a>
       <div>
         <a style="font-size: 1em; padding-bottom: 0;" 
@@ -58,9 +61,9 @@
     <div class="col-12" 
          style="display: flex; justify-content: space-between; align-items: center;">
       <a  [routerLink]="['/cardapioPrincipal']" 
-          class="navbar-brand" 
-          style="font-size: 1em; margin-left: 0.5em;">
-          KAY-KAY
+          class="navbar-brand  navbar-title"
+          style="font-size: 1.8em; margin-left: 0.5em; font-weight: bold;">
+          QUIOSQUE LÊTO
       </a>
       <div>
         <a style="font-size: 1em; padding-bottom: 0;" 
@@ -112,9 +115,9 @@
     <div class="col-12" 
          style="display: flex; justify-content: space-between; align-items: center;">
       <a  [routerLink]="['/cardapioPrincipal']" 
-          class="navbar-brand" 
-          style="font-size: 1em; margin-left: 0.5em;">
-          KAY-KAY
+          class="navbar-brand  navbar-title"
+          style="font-size: 1.8em; margin-left: 0.5em;  font-weight: bold;">
+          QUIOSQUE  LÊTO
       </a>
       <div>
         <a style="font-size: 1em; padding-bottom: 0;" 
@@ -168,8 +171,9 @@
     <div  class="col-12" 
           style="display: flex; justify-content: space-between; align-items: center;">
       <a [routerLink]="['/cardapioPrincipal']" 
-         class="navbar-brand" 
-         style="font-size: 1em; margin-left: 0.5em;">KAY-KAY
+          class="navbar-brand  navbar-title"
+          style="font-size: 1.4em; margin-left: 0.5em; font-weight: bold;">
+          QUIOSQUE  LÊTO
       </a>
       <div>
         <a style="font-size: 1em; padding-bottom: 0;" 
@@ -222,8 +226,9 @@
          style="display: flex; justify-content: space-between; align-items: center;">
       
       <a [routerLink]="['/cardapioPrincipal']" 
-         class="navbar-brand"
-         style="font-size: 0.9em; margin-left: 0.5em;">KAY-KAY
+            class="navbar-brand  navbar-title"
+      style="font-size: 0.9em; margin-left: 0.5em; font-weight: bold;">
+         QUIOSQUE  LÊTO
       </a>
       
       <div>
@@ -276,16 +281,16 @@
     <div class="col-12" 
          style="display: flex; justify-content: space-between; align-items: center;">
       <a [routerLink]="['/cardapioPrincipal']" 
-         class="navbar-brand"
-         style="font-size: 1.1em; margin-left: 0.5em; font-weight: bold;">
-         KAY-KAY
+         class="navbar-brand  navbar-title"
+         style="font-size: 0.7em; margin-left: 0.5em; font-weight: bold;">
+         QUIOSQUE <BR> &nbsp;&nbsp;&nbsp; LÊTO
       </a>
       <div>
-        <a style="font-size: 0.7em; padding-bottom: 0;" 
+        <a style="font-size: 0.5em; padding-bottom: 0;" 
            class="navbar-brand  navbar-info">
            {{ this.local }}
         </a>
-        <a style="font-size: 0.7em; padding-bottom: 0;" 
+        <a style="font-size: 0.5em; padding-bottom: 0;" 
            class="navbar-brand  navbar-info">
            {{ '11 * **** 1256'}}
         </a>
@@ -294,13 +299,13 @@
             @if (loginService.userLogin) {
             <button style="border: none; background: none;" (click)="logout();">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                style="margin-right: 4px; color: #01a501;" aria-hidden="true" data-mat-icon-type="font"
+                style="margin-right: 4px; color: #01a501; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
             <button style="border: none; background: none;" (click)="phone()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
+                style="margin-right: 4px; color: red; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
             </button>
             }
@@ -314,6 +319,63 @@
           <button (click)="openPopup()" style="border: none; background: none;">
             <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
               style="margin-right: 4px;" aria-hidden="true" data-mat-icon-type="font"
+              title="Ajuda">help_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- MOBILE PEQUENO2 -->
+<div class='container mt-4 mobile-pequeno2'>
+  <nav  class="navbar" 
+        style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12 row" 
+         style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" 
+         class="navbar-brand  navbar-title"
+         style="font-size: 0.7em; margin-left: 0.5em; font-weight: bold; display: flex; justify-content: center; align-items: center">
+         QUIOSQUE <BR> &nbsp;&nbsp;&nbsp; LÊTO
+      </a>
+      <BR>
+
+      <div>
+        <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;" 
+           class="navbar-brand  navbar-info">
+           {{ this.local }}
+        </a>
+        <BR>
+        <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;" 
+           class="navbar-brand  navbar-info">
+           {{ '11 * **** 1256'}}
+        </a>
+        <BR>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <a (click)="loginService.userStatus()">
+            @if (loginService.userLogin) {
+            <button style="border: none; background: none;" (click)="logout();">
+              <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
+                style="margin-right: 2px; color: #01a501; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
+                title="Logout">account_circle</mat-icon>
+            </button>
+            } @else {
+            <button style="border: none; background: none;" (click)="phone()">
+              <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
+                style="margin-right: 2px; color: red; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
+                title="Login">account_circle</mat-icon>
+            </button>
+            }
+          </a>
+          <a [routerLink]="['/conta']" routerLinkActive="active">
+            <button style="border: none; background: none;">
+              <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
+                style="margin-right: 2px;" aria-hidden="true" data-mat-icon-type="font" title="Conta">paid</mat-icon>
+            </button>
+          </a>
+          <button (click)="openPopup()" style="border: none; background: none;">
+            <mat-icon _ngcontent-yfk-c12="" role="img" class="mat-icon notranslate material-icons navbar-button"
+              style="margin-right: 2px;" aria-hidden="true" data-mat-icon-type="font"
               title="Ajuda">help_outline</mat-icon>
           </button>
         </div>

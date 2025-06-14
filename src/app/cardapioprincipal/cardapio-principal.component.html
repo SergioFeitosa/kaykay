@@ -4,101 +4,91 @@
 <!-- DESKTOP -->
 
 <div class='table-responsive desktop'>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 7em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        
-        <a [routerLink]="['/produto','pratododia']" class='btn' routerLinkActive="active">  
+        <a [routerLink]="['/produto','pratododia']" class='btn' routerLinkActive="active">
           <button style="border: none; background: none;">
-            <img src="/assets/images/pratododia.jpg" 
-                 class="figure-img img-fluid rounded" 
-                 alt="..." 
-                 width="500" 
-                 height="140">
+            <img src="/assets/images/entradas.jpg" class="figure-img img-fluid rounded" alt="Entradas">
           </button>
         </a>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Prato do
-          dia</figcaption>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <a [routerLink]="['/produto','pratoregional']" class='btn'>
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
         </a>
-        <figcaption style='margin-left: 1em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 7em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <a [routerLink]="['/produto','pratoespecial']" class='btn'>
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
         </a>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" class='btn'>
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
-        </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções</figcaption>
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
+        </a>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 7em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
-        </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
+        </a>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" class='btn'>
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
-        </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas</figcaption>
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/salgados.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
+        </a>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 7em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
-        </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
+        </a>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" class='btn'>
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
-        </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Bebidas</figcaption>
+        <a [routerLink]="['/produto','pratoregional']" class='btn' routerLinkActive="active">
+          <button style="border: none; background: none;">
+            <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="...">
+          </button>
+        </a>
+        <figcaption style='margin-left: 1.5em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>
@@ -107,102 +97,75 @@
 <!-- LAPTOP -->
 
 <div class='table-responsive laptop'>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratododia']" id='desabilitado33'
-          class='btn' disabled>
-          <img src='/assets/images/pratododia.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Prato do
-          dia</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoregional']" id='desabilitado34'
-          class='btn' disabled>
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoespecial']" id='desabilitado35'
-          class='btn' disabled>
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" id='desabilitado36'
-          class='btn' disabled>
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']"  id='desabilitado37' class='btn' disabled>
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" id='desabilitado38'
-          class='btn' disabled>
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.png' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']" id='desabilitado39' class='btn' disabled>
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" id='desabilitado40'
-          class='btn' disabled>
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Bebidas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>
@@ -211,102 +174,75 @@
 <!-- LAPTOP2 -->
 
 <div class='table-responsive laptop2'>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratododia']" id='desabilitado33'
-          class='btn' disabled>
-          <img src='/assets/images/pratododia.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Prato do
-          diaccccc</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoregional']" id='desabilitado34'
-          class='btn' disabled>
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoespecial']" id='desabilitado35'
-          class='btn' disabled>
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" id='desabilitado36'
-          class='btn' disabled>
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']"  id='desabilitado37' class='btn' disabled>
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" id='desabilitado38'
-          class='btn' disabled>
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.png' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5" style='margin-left: 5em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']" id='desabilitado39' class='btn' disabled>
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
     </div>
     <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" id='desabilitado40'
-          class='btn' disabled>
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="500"
-            height="140">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Bebidas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>
@@ -315,299 +251,312 @@
 <!-- TABLET -->
 
 <div class='table-responsive tablet'>
-  <div class="row">
-    <div class="col-5" style="margin-left: 3.9em;">
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratododia']" id='desabilitado9'
-          class='btn' disabled>
-          <img src='/assets/images/pratododia.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Prato do
-          dia</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
     </div>
-    <div class="col-5">
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoregional']" id='desabilitado10'
-          class='btn' disabled>
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-5" style='margin-left: 3.9em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoespecial']" id='desabilitado11'
-          class='btn' disabled>
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
     </div>
-    <div class="col-5">
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" id='desabilitado12'
-          class='btn' disabled>
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-5" style='margin-left: 3.9em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']"  id='desabilitado13' class='btn' disabled>
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
     </div>
-    <div class="col-5">
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" id='desabilitado14'
-          class='btn' disabled>
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
-  <div class="row">
-    <div class="col-5" style='margin-left: 3.9em;'>
+  <div class="row" style='display: flex; justify-content: space-evenly;'>
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']" id='desabilitado15' class='btn' disabled>
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
     </div>
-    <div class="col-5">
+    <div class="col-sm-5">
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" id='desabilitado16'
-          class='btn' disabled>
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="...">
         </button>
-        <figcaption style='margin-left: 1em;' class="figure-caption">Bebidas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>
 </div>
 
-
-<!-- MOBILE -->
+<!-- mobile -->
 
 <div class='table-responsive mobile'>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around; ">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratododia']" id='desabilitado17'
-          class='btn' >
-          <img src='/assets/images/pratododia.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="..." width="120"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Prato do
-          dia</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoregional']" id='desabilitado18'
-          class='btn' >
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="..." width="120"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoespecial']" id='desabilitado19'
-          class='btn' >
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="..." width="120" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" id='desabilitado20'
-          class='btn' >
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="..." width="120" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Porções</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']"
-          id='desabilitado21' class='btn' >
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="..." width="120" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" id='desabilitado22'
-          class='btn' >
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.jpg' class="figure-img img-fluid rounded" alt="..." width="120"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Saladas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']"
-          id='desabilitado23' class='btn' >
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="..." width="120"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" id='desabilitado24'
-          class='btn' >
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="..." width="120" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Bebidas</figcaption>
+        <figcaption style='margin-left: 1em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>
 </div>
+
+
 
 <!-- MOBILE PEQUENO -->
 
 <div class='table-responsive mobile-pequeno'>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around; ">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratododia']" id='desabilitado25'
-          class='btn' >
-          <img src='/assets/images/pratododia.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Prato do
-          dia</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">ENTRADAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoregional']" id='desabilitado26'
-          class='btn' >
-          <img src='/assets/images/baiao-dois-1.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;'class="figure-caption">Pratos
-          Regionais</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','pratoespecial']" id='desabilitado27'
-          class='btn' >
-          <img src='/assets/images/pratoespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Pratos
-          especiais</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SALADAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoes']" id='desabilitado28'
-          class='btn' >
-          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Porções</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">PORÇÕES</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','porcoesespeciais']"
-          id='desabilitado29' class='btn' >
-          <img src='/assets/images/porcoesespeciais.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Porções
-          especiais</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">LANCHES</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','salada']" id='desabilitado30'
-          class='btn' >
-          <img src='/assets/images/salada.png' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Saladas</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SALGADOS</figcaption>
       </figure>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" style="display: flex; justify-content: space-around;">
+    <div class="col-sm-6" style="display: flex; justify-content: space-evenly; ">
       <figure class="figure">
-        <button [routerLink]="['/produto','saladaespecial']"
-          id='desabilitado31' class='btn' >
-          <img src='/assets/images/saladaespecial.jpg' class="figure-img
-            img-fluid rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Saladas
-          especiais</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
       </figure>
       <figure class="figure">
-        <button [routerLink]="['/produto','bebida']" id='desabilitado32'
-          class='btn' >
-          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid
-            rounded" alt="..." width="150"
-            height="140">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
         </button>
-        <figcaption style='margin-left: 0.9em;' class="figure-caption">Bebidas</figcaption>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">BEBIDAS</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE PEQUENO2 -->
+
+<div class='table-responsive mobile-pequeno2'>
+  <div class="row">
+    <div style="display: flex; justify-content: space-evenly;">
+      <figure class="figure">
+        <button [routerLink]="['/produto','pratododia']" class='btn'>
+          <img src='/assets/images/entradas.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">ENTRADAS</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div style="display: flex; justify-content: space-evenly;">
+      <figure class="figure">
+        <button [routerLink]="['/produto','pratoregional']" class='btn'>
+          <img src='/assets/images/refeicoes.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">REFEIÇÕES</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5" style="display: flex; justify-content: space-evenly; ">
+      <figure class="figure">
+        <button [routerLink]="['/produto','pratoespecial']" class='btn'>
+          <img src='/assets/images/saladas.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SALADAS</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div style="display: flex; justify-content: space-evenly;">
+      <figure class="figure">
+        <button [routerLink]="['/produto','porcoes']" class='btn'>
+          <img src='/assets/images/porcoes.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">PORÇÕES</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5" style="display: flex; justify-content: space-evenly; ">
+      <figure class="figure">
+        <button [routerLink]="['/produto','porcoesespeciais']" class='btn'>
+          <img src='/assets/images/lanches.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">LANCHES</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div style="display: flex; justify-content: space-evenly;">
+      <figure class="figure">
+        <button [routerLink]="['/produto','salada']" class='btn'>
+          <img src='/assets/images/salgados.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SALGADOS</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5" style="display: flex; justify-content: space-evenly; ">
+      <figure class="figure">
+        <button [routerLink]="['/produto','saladaespecial']" class='btn'>
+          <img src='/assets/images/sobremesas.jpg' class="figure-img img-fluid rounded" alt="..." width="100"
+            height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">SOBREMESAS</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div style="display: flex; justify-content: space-evenly;">
+      <figure class="figure">
+        <button [routerLink]="['/produto','bebida']" class='btn'>
+          <img src='/assets/images/bebidas.jpg' class="figure-img img-fluid rounded" alt="..." width="100" height="100">
+        </button>
+        <figcaption style='margin-left: 0.9em; color: blue' class="figure-caption">BEBIDAS</figcaption>
       </figure>
     </div>
   </div>

@@ -5,36 +5,29 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.custom-css-class {
-  background-color: rgb(246, 250, 9);
-  color: #3D5AFE;
-}
-
 .desktop {
   display: block;
   /* ou inline, inline-block */
 }
-
 .laptop {
   display: none;
-}
 
+}
 .laptop2 {
   display: none;
 }
-
 .tablet {
   display: none;
 }
-
 .mobile {
   display: none;
 }
-
 .mobile-pequeno {
   display: none;
 }
-
+.mobile-pequeno2 {
+  display: none;
+}
 
  /* LAPTOP */
 
@@ -68,6 +61,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
   }
+
+  .mobile-pequeno2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
 }
  /* LAPTOP2 */
 
@@ -76,31 +74,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .laptop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .laptop2 {
     display: block;
     background-image: '../../assets/images/color-azul-mar.png';
   }
-
-  .mobile {
-    display: none;
-    background-image: '../../assets/images/color-azul-mar.png';
-  }
-
   .tablet {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
   }
-
+  .mobile {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
   .mobile-pequeno {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
   }
+  .mobile-pequeno2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+
 }
 
 /* TABLET  */
@@ -108,93 +107,149 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @media(min-width: 576px) and (max-width: 767px) {
   .desktop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .laptop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .laptop2 {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .tablet {
     display: block;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .mobile {
     display: none;
-
+    background-image: '../../assets/images/color-azul-mar.png';
   }
-
   .mobile-pequeno {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+  .mobile-pequeno2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 }
 
 /* MOBILE */
 
 @media(min-width: 381px) and (max-width: 575px) {
+
   .desktop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .laptop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .laptop2 {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .tablet {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .mobile {
     display: block;
-
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .mobile-pequeno {
     display: none;
-    /* ou inline, inline-block */
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .mobile-pequeno2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 }
 
 /* MOBILE PEQUENO */
 
-@media(max-width: 380px) {
+@media(min-width: 263px) and (max-width: 380px) {
   .desktop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .laptop {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .laptop2 {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .tablet {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .mobile {
     display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 
   .mobile-pequeno {
     display: block;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .mobile-pequeno2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* MOBILE PEQUENO2 */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media(max-width: 262px) {
+  .desktop {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  .laptop {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .laptop2 {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .tablet {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .mobile {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .mobile-pequeno {
+    display: none;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+
+  .mobile-pequeno2 {
+    display: block;
+    background-image: '../../assets/images/color-azul-mar.png';
+  }
+}
+
