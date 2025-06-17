@@ -139,6 +139,8 @@ export class ProdutoListComponent implements OnInit {
   
   getOTP() {
 
+    console.log('passando pela rotina getOTP')
+
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
     firebase.
@@ -193,6 +195,10 @@ export class ProdutoListComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   displayStyle = 'none';
 
+  // tslint:disable-next-line:quotemark
+  // tslint:disable-next-line:member-ordering
+  displayStyle2 = 'none';
+
   // tslint:disable-next-line:typedef
   openPopup(produtoId: number): void {
 
@@ -210,25 +216,19 @@ export class ProdutoListComponent implements OnInit {
     this.displayStyle = 'none';
   }
 
-  // tslint:disable-next-line:quotemark
-  // tslint:disable-next-line:member-ordering
-  displayStyle2 = 'none';
-
+  
   // tslint:disable-next-line:typedef
   openPopup2(produtoId: number): void {
 
-    // tslint:disable-next-line:no-unused-expression
-    this.produtoService.readById(produtoId).subscribe(product => {
-      this.produto = product;
+    console.log('entrei no open popup2')
 
-    });
+    
     this.displayStyle2 = 'block';
   }
 
   // tslint:disable-next-line:typedef
   closePopup2() { 
 
-    this.displayStyle = 'none';
     this.displayStyle2 = 'none';
   }
 
@@ -276,9 +276,7 @@ export class ProdutoListComponent implements OnInit {
       environment.codigo = this.codigo;
       // tslint:disable-next-line:semicolon
       // this.updateClassDisabled();
-      console.log('criar um carrinhho')
       this.carrinhoCreate(produtoId);
-      console.log('criou um carrinhho')
 
       this.closePopup2();
       this.closePopup();

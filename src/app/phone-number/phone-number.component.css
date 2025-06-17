@@ -1,8 +1,11 @@
 .card {
-  border: none;
+  border: #4cc5fd;
   padding: 20px;
-  background-color: #1c1e21;
-  color: #fff
+  background-color: #cbfaf8;
+  color: #dcf5fc;
+  width: 35em;
+  box-shadow: 0 4px 6px #4cc5fd;
+
 }
 
 .contain{
@@ -12,24 +15,35 @@ margin: 10rem 0 3rem 0;
 .form-input {
   position: relative;
   margin-bottom: 10px;
-  margin-top: 10px
+  margin-top: 10px;
+  color: #4f63e7;
+  border-color: #4f63e7;
 }
 
 .form-control {
   height: 50px;
-  background-color: #dfe7f3;
+  background-color: #dcf5fc;
   text-indent: 24px;
-  font-size: 15px
+  font-size: 15px;
 }
 
 .form-control:focus {
-  background-color: #25272a;
+  background-color: #4cc5fd ;
   box-shadow: none;
-  color: #fff;
-  border-color: #4f63e7
+  color: #041794;
+  border-color: #4cc5fd;
 }
 
 .signup {
   height: 50px;
-  font-size: 14px
+  font-size: 14px;
+  width: 33em;
+  background-color: #4cc5fd;
+  color: #041794;
+  border-color: #4f63e7;
+}
+
+.otp {
+  color: #4f63e7;
+  border-color: #4f63e7;
 }

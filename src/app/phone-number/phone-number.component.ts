@@ -69,6 +69,7 @@ export class PhoneNumberComponent implements OnInit {
     inputStyles: {
       width: '25px',
       height: '25px',
+      color: '#041794',
     },
   };
 
@@ -85,8 +86,6 @@ export class PhoneNumberComponent implements OnInit {
   }
 
   async getOtp() {
-
-    console.log('getOtp')
 
     this.applicationVerifier  = new RecaptchaVerifier(this.auth, 'sign-in-button', { size: 'invisible' })
 
@@ -116,7 +115,6 @@ export class PhoneNumberComponent implements OnInit {
 
   handleClick() {
 
-    console.log('handleclick()');
     var credential = firebase.auth.PhoneAuthProvider.credential(
       this.verify,
       this.otp

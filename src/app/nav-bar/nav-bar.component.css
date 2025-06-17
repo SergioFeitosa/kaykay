@@ -5,10 +5,10 @@ section {
 
 .container {
   background-image: url('../../assets/images/color-azul-mar.png');
-  border-color: #0509fc;
+  border-color: #4cc5fd;
   border-style: double;
-  border-bottom-color: #0509fc;
-  box-shadow: 0 4px 6px #0509fc;
+  border-bottom-color: #4cc5fd;
+  box-shadow: 0 4px 6px #4cc5fd;
 }
 
 .navbar-title {

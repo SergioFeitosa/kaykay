@@ -55,7 +55,7 @@ export class CarrinhoListComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   _filterBy: string = '';
 
-  statusBool: boolean = false;
+  statusPendente: boolean = false;
 
   container: any;
 
@@ -162,7 +162,7 @@ export class CarrinhoListComponent implements OnInit {
     
       this.produto = this.carrinho.produto;
       if(this.carrinho.status.toLowerCase() === 'pendente'){
-        this.statusBool = true;
+        this.statusPendente = true;
       }
     });
  

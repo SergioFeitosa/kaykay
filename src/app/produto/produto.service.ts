@@ -62,13 +62,11 @@ export class ProdutoService {
 
   readById(produtoId: number): Observable<Produto> {
     const url = `${this.baseUrl}/${produtoId}`;
-    console.log('ProdutoId ' + produtoId)
     return this.http.get<Produto>(url);
   }
 
   readByCategory(categoryId: string): Observable<Produto> {
     const url = `${this.baseUrl}/category/${categoryId}`;
-    console.log('ProdutoId ' + categoryId)
     return this.http.get<Produto>(url);
   }
 

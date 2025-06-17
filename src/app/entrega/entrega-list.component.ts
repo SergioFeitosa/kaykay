@@ -181,7 +181,7 @@ export class EntregaListComponent implements OnInit {
 
   async atualizarEntrega(entrega: Entrega) {
       const response2 =  await this.entregaService.update(entrega).subscribe(() => {
-        this.entregaService.showMessage('Entrega realizada');
+        this.entregaService.showMessage('Pedido Entregue');
     });
   }
 }
