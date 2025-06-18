@@ -22,12 +22,12 @@
     <thead>
       <tr>
         <th style='width: 1%;'> Imagem</th>
-        <th style='width: 11%'> Prato</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 11%'> <a (click)="sortProductsByName()" style="cursor: pointer;">Prato</a></th>
+        <th style='width: 5%'> <a (click)="sortProductsByPrice()" style="cursor: pointer;">Preço</a></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
+      <tr *ngFor='let produto of sortedProducts '
         (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>

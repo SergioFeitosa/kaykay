@@ -99,6 +99,8 @@ export class ProdutoListComponent implements OnInit {
     },
   };
 
+  sortedProducts: any[] = [];
+
   ngOnInit(): void {
 
     // this.modulo = 'Cardápio';
@@ -126,10 +128,19 @@ export class ProdutoListComponent implements OnInit {
       this.produtos = produto.filter((produto: Produto) =>
         produto.categoria ==  this._categoryId);
       this.filteredProdutos = this.produtos;
+      this.sortProductsByName();
     });
 
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
     // console.log(this.verify);
+  }
+
+  sortProductsByName() {
+    this.sortedProducts = [...this.filteredProdutos].sort((a, b) => a.nome.localeCompare(b.nome));
+  }
+
+  sortProductsByPrice() {
+    this.sortedProducts = [...this.filteredProdutos].sort((a, b) => a.preco - b.preco);
   }
 
     // tslint:disable-next-line:typedef
