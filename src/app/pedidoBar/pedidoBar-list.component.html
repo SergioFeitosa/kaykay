@@ -9,9 +9,8 @@
   <span> </span>
 </div>
 -->
-
 <div class='form-group row'>
-  <label class='col-sm-2 col-form-label'>Filter By:</label>
+  <label class='col-sm-2 col-form-label' style='color: blue;'>Filter By:</label>
   <div class='col-sm-10'>
     <input [(ngModel)]='filter' class='form-control'>
   </div>
@@ -23,52 +22,135 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th> Imagem</th>
-        <th> Quantidade</th>
-        <th> Bebida</th>
-        <th> telefone</th>
-        <th> local</th>
-        <th> observacao</th>
-        <th> Cortesia</th>
-        <th> hora</th>
-        <th class="text-center"> Ações </th>
+        <th style='width: 5%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;' > Ações </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
         <img [src]='pedido.carrinho.produto.imagem_url' 
           class="figure-img img-fluid rounded"
           alt="..."
           width="100"
           height="70">
-        <td>
-          <div style='align-items: center;
-              display: flex;
+         @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999998) &&
+              (pedido.carrinho.status === 'Confirmado')) {
+
+          <td>
+            <div style='align-items: center;
+              display: flex; 
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;
+              '>
+              
+              <a style="width: 1em; margin-top: 0.5em;" 
+                 (click)='minus(pedido)'>
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+              </a>
+            
+              <input [(ngModel)]='pedido.carrinho.quantidade'
+                class='form-control'
+                type="text"
+                style='color: blue; width: 3em;'
+                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+
+              <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
+                <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+              </a>
+            </div>
+          </td>
+        }
+         @else if ( 
+                    (i < 3) && 
+                    ( +pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) &&
+                    ( pedido.carrinho.status === 'Confirmado')
+                  ) {
+
+          <td>
+            <div style='align-items: center;
+              display: flex; 
               flex-direction: row;
               flex-wrap: wrap;
               justify-content: center;'>
+              
+              <span style="width: 1em; margin-top: 0.5em;">
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+          </span>
+            
+              <input [(ngModel)]='pedido.carrinho.quantidade'
+                class='form-control'
+                type="text"
+                style='color: blue; width: 3em;'
+                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
-            <a style="width: 1em; margin-top: 0.5em" (click)='minus(pedido)'>
-              <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
-            </a>
-            <input [(ngModel)]='pedido.carrinho.quantidade'
-              class='form-control'
-              type="text"
-              style='color: red; width: 3em;'
-              (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-              [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+              <span style="width: 1em; margin-top: 0.5em">
+                <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+              </span>
+            </div>
+          </td>
+        }
+        @else if(pedido.carrinho.status === 'Confirmado') {
+          <td>
+            <div style='align-items: center;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;'>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(pedido)'>
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
 
-            <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
-              <i class="fa fa-plus" style="color:red; padding-left: 3px;"></i>
-            </a>
-          </div>
-        </td>
+              </a>
+              <input [(ngModel)]='pedido.carrinho.quantidade'
+                class='form-control'
+                type="text"
+                style='color: blue; width: 3em;'
+                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
-        <td>{{ pedido.carrinho.produto.nome }} </td>
-        <td>{{ pedido.telefone }} </td>
-        <td>{{ pedido.local }} </td>
+              <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
+                <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+              </a>
+            </div>
+          </td>
+        } @else {
+          <td>
+            <div style='align-items: center;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;'>
+                <span style="width: 1em; margin-top: 0.5em;">
+                <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                </span>
+                <input [(ngModel)]='pedido.carrinho.quantidade'
+                  class='form-control'
+                  type="text"
+                  style='color: blue; width: 3em;'
+                  (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                  disabled>
 
+                <span style="width: 1em; margin-top: 0.5em">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                </span>
+            </div>
+          </td>
+
+        }
+        <td style='color: blue; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.telefone }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.local }} </td>
+ 
         <td>
 
           <textarea [(ngModel)]="pedido.carrinho.observacao" 
@@ -81,27 +163,34 @@
           </textarea>
           </td>
 
-        <td>{{ pedido.isencao }} </td>
-        <td>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.isencao }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
-            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25"
-              >
+            <img src='/assets/images/lupa.jpg' 
+                 class="figure-img img-fluid rounded" 
+                 width="25" 
+                 height="25" 
+                 title="Editar pedido" >
           </button>
+
           <button routerLink="/pedido/delete/{{ pedido.id }}"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
-            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
-              img-fluid rounded" alt="..." width="25"
-              height="25">
+            <img src='/assets/images/botao-cancelar.jpg' 
+                 class="figure-img img-fluid rounded"  
+                 width="25" 
+                 height="25" 
+                 title="Remover pedido">
           </button>
+
           <button (click)="entregaCreate( pedido.id! )"
-                  [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
-            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25">
+                  [disabled]=" (telefone == 5511982551256 || telefone == 5599999999998) && pedido.status == 'Confirmado' ? false : true ">
+            <img src='/assets/images/garcon.jpg' 
+                 class="figure-img img-fluid rounded" 
+                 width="25" 
+                 height="25" 
+                 title="Solicitar entrega" >
           </button>
         </td>
       </tr>
@@ -109,26 +198,26 @@
   </table>
 </div>
 
-<!-- LAPTOP -->
+<!-- LAPTOP @media(min-width: 993px) and (max-width: 1399px) {-->
 
 <div class="table-responsive laptop">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th> Imagem</th>
-        <th> Quantidade</th>
-        <th> Produto</th>
-        <th> telefone</th>
-        <th> local</th>
-        <th> observacao</th>
-        <th> isencao</th>
-        <th> hora</th>
-        <th class="text-center"> Ações </th>
+        <th style='width: 10%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;' > Ações </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
         <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
           rounded"
           alt="..."
@@ -156,21 +245,19 @@
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25"
-              >
+              rounded" width="25" height="25" title="Editar pedido" >
           </button>
+
           <button routerLink="/pedido/delete/{{ pedido.id }}"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/botao-cancelar.jpg' class="figure-img
-              img-fluid rounded" alt="..." width="25"
-              height="25">
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
           </button>
-          <button (click)="entregaCreate( pedido.id!)"
+          
+          <button (click)="entregaCreate( pedido.id! )"
                   [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
             <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25">
+              rounded" width="25" height="25" title="Solicitar entrega" >
           </button>
         </td>
       </tr>
@@ -179,34 +266,34 @@
 </div>
 
 
-<!-- TABLET -->
+<!-- LAPTOP2 @media(min-width: 768px) and (max-width: 992px) {-->
 
-<div class="table-responsive tablet">
+<div class="table-responsive laptop2">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th> Imagem</th>
-        <th> Quantidade</th>
-        <th> Produto</th>
-        <th> telefone</th>
-        <th> local</th>
-        <th> observacao</th>
-        <th> isencao</th>
-        <th> hora</th>
-        <th class="text-center"> Ações </th>
+        <th style='width: 10%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;' > Ações </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
         <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
           rounded"
           alt="..."
           width="100"
           height="70">
-        <td><input [(ngModel)]="pedido.quantidade" type="text" 
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
                    style='color: red; width: 60px'
-                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
@@ -226,21 +313,19 @@
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25"
-              >
+              rounded" width="25" height="25" title="Editar pedido" >
           </button>
+
           <button routerLink="/pedido/delete/{{ pedido.id }}"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/botao-cancelar.jpg' class="figure-img
-              img-fluid rounded" alt="..." width="25"
-              height="25">
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
           </button>
+          
           <button (click)="entregaCreate( pedido.id! )"
                   [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
             <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25">
+              rounded" width="25" height="25" title="Solicitar entrega" >
           </button>
         </td>
       </tr>
@@ -248,20 +333,93 @@
   </table>
 </div>
 
-<!-- MOBILE -->
+
+<!-- TABLET @media(min-width: 576px) and (max-width: 767px) -->
+
+<div class="table-responsive tablet">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 5%' ></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Produto</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Telefone</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Observacao</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Cortesia</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
+        <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
+          rounded"
+          alt="..."
+          width="100"
+          height="70">
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.telefone }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.local }} </td>
+
+        <td style='width: 5%; color: red; font-weight: 500; text-align: center;  font-size: 0.7em;'><input [(ngModel)]="pedido.observacao" type="text"
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+          </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.isencao }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" width="25" height="25" title="Editar pedido" >
+          </button>
+
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
+          </button>
+          
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" width="25" height="25" title="Solicitar entrega" >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE @media(min-width: 381px) and (max-width: 575px) -->
 
 <div class="table-responsive mobile">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%'> Imagem</th>
-        <th style='width: 30%'> Nome</th>
-        <th style='width: 10%' class="text-center"> Ações </th>
+        <th style='width: 5%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center; font-size: 0.7em;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Ações </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
 
         <td>
           <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
@@ -270,26 +428,41 @@
             width="100"
             height="70">
         </td>
-        <td>{{ pedido.carrinho.produto.nome }} </td>
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.telefone }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.local }} </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
+          <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+          </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.isencao }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25"
-              >
+              rounded" width="25" height="25" title="Editar pedido" >
           </button>
+
           <button routerLink="/pedido/delete/{{ pedido.id }}"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/botao-cancelar.jpg' class="figure-img
-              img-fluid rounded" alt="..." width="25"
-              height="25">
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
           </button>
+          
           <button (click)="entregaCreate( pedido.id! )"
                   [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
             <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25">
+              rounded" width="25" height="25" title="Solicitar entrega" >
           </button>
         </td>
       </tr>
@@ -297,20 +470,26 @@
   </table>
 </div>
 
-<!-- MOBILE PEQUENO -->
+<!-- MOBILE PEQUENO @media(min-width: 263px) and (max-width: 380px) -->
 
 <div class="table-responsive mobile-pequeno">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%'> Imagem</th>
-        <th style='width: 30%'> Nome</th>
-        <th style='width: 10%' class="text-center"> Ações </th>
+        <th style='width: 5%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center; font-size: 0.7em;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Ações </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let pedido of filteredPedidos; let i= index'
-          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : 'yellow' }">
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
 
         <td>
           <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
@@ -319,26 +498,111 @@
             width="100"
             height="70">
         </td>
-        <td>{{ pedido.carrinho.produto.nome }} </td>
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.telefone }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.local }} </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
+          <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+          </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.isencao }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25"
-              >
+              rounded" width="25" height="25" title="Editar pedido" >
           </button>
+
           <button routerLink="/pedido/delete/{{ pedido.id }}"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
             <img src='/assets/images/botao-cancelar.jpg' class="figure-img
-              img-fluid rounded" alt="..." width="25"
-              height="25">
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
           </button>
+          
           <button (click)="entregaCreate( pedido.id! )"
                   [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
             <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="25"
-              height="25">
+              rounded" width="25" height="25" title="Solicitar entrega" >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MOBILE PEQUENO2 @media(max-width: 262px) -->
+
+<div class="table-responsive mobile-pequeno2">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style='width: 5%' ></th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center; font-size: 0.7em;' > Quantidade</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Produto</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Local</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Observacao</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Hora</th>
+        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;' > Ações </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pedido of filteredPedidos; let i= index'
+          [ngStyle]="{backgroundColor: i > 2 ? 'transparent' : '#cbfaf8' }">
+
+        <td>
+          <img [src]='pedido.carrinho.produto.imagem_url' class="figure-img img-fluid
+            rounded"
+            alt="..."
+            width="100"
+            height="70">
+        </td>
+        <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   style='color: red; width: 60px'
+                   (blur)="atualizarPedido(pedido)" class="nav-link"
+                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.telefone }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.local }} </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
+          <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+          </td>
+
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.isencao }} </td>
+        <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td class="text-center">
+          <button (click)="openPopup( pedido.id! )"
+                  [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+            <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
+              rounded" width="25" height="25" title="Editar pedido" >
+          </button>
+
+          <button routerLink="/pedido/delete/{{ pedido.id }}"
+                  [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
+            <img src='/assets/images/botao-cancelar.jpg' class="figure-img
+              img-fluid rounded"  width="25" height="25" title="Remover pedido">
+          </button>
+          
+          <button (click)="entregaCreate( pedido.id! )"
+                  [disabled]=" (+telefone == 5511982551256 || +telefone == 5599999999998) ? false : true">
+            <img src='/assets/images/garcon.jpg' class="figure-img img-fluid
+              rounded" width="25" height="25" title="Solicitar entrega" >
           </button>
         </td>
       </tr>
@@ -362,45 +626,57 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Avaliação:</span>
-        <span><app-star [rating]="produto.avaliacao"></app-star></span>
+        <span><app-star [rating]="this.produto.avaliacao"></app-star></span>
 
       </div>
       <div class="modal-body row">
-        <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
+        <img [src]='this.produto.imagem_url' class="figure-img img-fluid rounded"
           alt="..."
           width="400"
           height="400">
       </div>
       <div class="modal-body row">
-        <span style='font-weight: bolder; text-align: center;'>Quantidade:</span>
-        <input [(ngModel)]="pedido.quantidade" type="text" style='color: red; width: 50%'  mask='000'
-        (blur)="atualizarPedido(pedido)" class="nav-link"
-        >
+        <span style='font-weight: bolder;'>Quantidade:</span>
+            <div style='align-items: center;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: left;'>
+              <span
+                class='form-control'
+                type="text"
+                style='color: red; width: 3em;'
+                >
+                {{ this.carrinho.quantidade}}
+              </span>
+            </div>
       </div>
+
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
-        <span>{{produto.nome}}</span>
+        <span>{{this.produto.nome}}</span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Observação:</span>
-        <input [(ngModel)]="pedido.observacao" type="text" style='color: red; width: 100%'
-        (blur)="atualizarPedido(pedido)" class="nav-link">
+        <span type="text" style='color: red; width: 100%' class="nav-link">
+          {{ this.carrinho.observacao }} 
+          </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Descrição:</span>
-        <span> {{ produto.descricao }} </span>
+        <span> {{ this.produto.descricao }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Local:</span>
-        <span> {{pedido.local}} </span>
+        <span> {{ this.pedido.local}} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Preço:</span>
-        <span>{{produto.preco}} </span>
+        <span>{{this.produto.preco}} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Tempo de Preparação:</span>
-        <span>{{produto.tempo_preparacao}} </span>
+        <span>{{this.produto.tempo_preparacao}} </span>
       </div>
 
       <div class="modal-body">

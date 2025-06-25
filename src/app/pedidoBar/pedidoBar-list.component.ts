@@ -91,7 +91,7 @@ export class PedidoBarListComponent implements OnInit {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebidas');
       });
 
       this.updateSubscription = interval(5000).subscribe(
@@ -100,7 +100,7 @@ export class PedidoBarListComponent implements OnInit {
             this.pedidos = pedidos;
             this.filteredPedidos = this.pedidos
               .filter((pedido: Pedido) => pedido.enviado !== true)
-              .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebida');
+              .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebidas');
           });
         });
 
@@ -110,7 +110,7 @@ export class PedidoBarListComponent implements OnInit {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos.filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebidas');
       });
     }
 
@@ -130,7 +130,7 @@ export class PedidoBarListComponent implements OnInit {
         this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
           .filter((pedido: Pedido) => pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebidas');
 
     } else {
 
@@ -139,7 +139,7 @@ export class PedidoBarListComponent implements OnInit {
           .filter((pedido: Pedido) => pedido.enviado !== true)
           .filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
           .filter((pedido: Pedido) => pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria.toLowerCase() === 'bebidas');
 
     }
   }
