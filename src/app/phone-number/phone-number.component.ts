@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, NgZone, CUSTOM_ELEMENTS_SCHEMA, Injectable, NO_ERRORS_SCHEMA, inject } from '@angular/core';
+import { Component, OnInit, NgZone, CUSTOM_ELEMENTS_SCHEMA, Injectable, NO_ERRORS_SCHEMA, inject, Output, Input, EventEmitter } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { interval } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -46,6 +46,8 @@ export class PhoneNumberComponent implements OnInit {
   displayStyle2: string = 'none'
   produto = {} as Produto;
 
+  @Output() phoneNumberChangeEvent = new EventEmitter<string>();
+  
   constructor(
     private router: Router,
     private ngZone: NgZone,
@@ -128,6 +130,7 @@ export class PhoneNumberComponent implements OnInit {
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
           this.navBarService.telefoneOk = true
+          this.phoneNumberChangeEvent.emit(this.phoneNumber);
           this.router.navigate(['/cardapioPrincipal'])
 
         });
@@ -139,19 +142,24 @@ export class PhoneNumberComponent implements OnInit {
     }
 
 
-    openPopup2(produtoId: number): void {
-      // tslint:disable-next-line:no-unused-expression
-      this.produtoService.readById(produtoId).subscribe(product => {
-        this.produto = product;
+    // openPopup2(produtoId: number): void {
+    //   // tslint:disable-next-line:no-unused-expression
+    //   this.produtoService.readById(produtoId).subscribe(product => {
+    //     this.produto = product;
   
-      });
-      this.displayStyle2 = 'block';
-    }
+    //   });
+    //   this.displayStyle2 = 'block';
+    // }
   
-    closePopup2() { 
-      this.displayStyle2 = 'none';
-      this.navBarService.telefoneOk = true
+    // closePopup2() { 
+    //   this.displayStyle2 = 'none';
+    //   this.navBarService.telefoneOk = true;
+
+    // }
+
+    emitEvent() {
+      this.phoneNumberChangeEvent.emit(this.phoneNumber);
     }
 
-    
+
 }

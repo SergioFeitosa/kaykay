@@ -1,6 +1,6 @@
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProdutoService } from './produto.service';
-import { Component, inject, NgZone, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NgZone, OnInit } from '@angular/core';
 import { Produto } from './produto';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 import { Carrinho } from '../carrinho/carrinho';
@@ -27,7 +27,8 @@ import { LoginService } from '../services/login.service';
     CommonModule,
     StarComponent,
     PhoneNumberComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class ProdutoListComponent implements OnInit {
@@ -87,17 +88,17 @@ export class ProdutoListComponent implements OnInit {
     private caminhoMenuComponent: CaminhoMenuComponent,
   ) { }
 
-  config = {
-    allowNumbersOnly: true,
-    length: 6,
-    isPasswordInput: false,
-    disableAutoFocus: false,
-    placeholder: '',
-    inputStyles: {
-      width: '30px',
-      height: '30px',
-    },
-  };
+  // config = {
+  //   allowNumbersOnly: true,
+  //   length: 6,
+  //   isPasswordInput: false,
+  //   disableAutoFocus: false,
+  //   placeholder: '',
+  //   inputStyles: {
+  //     width: '30px',
+  //     height: '30px',
+  //   },
+  // };
 
   sortedProducts: any[] = [];
 
@@ -112,8 +113,6 @@ export class ProdutoListComponent implements OnInit {
     this.telefone = environment.telefone;
     this.login = this.loginService.getUserLogin();
     this.flag = false;
-
-
 
     environment.fundoColoridoCardapio = true;
     environment.fundoColoridoPedido = false;
@@ -131,7 +130,7 @@ export class ProdutoListComponent implements OnInit {
       this.sortProductsByName();
     });
 
-    this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
+    // this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
     // console.log(this.verify);
   }
 
@@ -148,29 +147,29 @@ export class ProdutoListComponent implements OnInit {
       this.otp = otp;
     }
   
-  getOTP() {
+  // getOTP() {
 
-    console.log('passando pela rotina getOTP')
+  //   console.log('passando pela rotina getOTP')
 
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
+  //   this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
-    firebase.
-      auth().
-      signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
-      then((confirmationResult) => {
-    this.login = environment.login;
-    window.localStorage.setItem('verificationId',
-        JSON.stringify(confirmationResult.verificationId));
-        //this.router.navigate(['/code']);
-        //this.validarCodigo(this.produto.id);
-        this.carrinhoCreate(this.produto.id!)
-        this.router.navigate(['/carrinho']);
-      }).catch((error) => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 5000);
-      });
-  }
+  //   firebase.
+  //     auth().
+  //     signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
+  //     then((confirmationResult) => {
+  //   this.login = environment.login;
+  //   window.localStorage.setItem('verificationId',
+  //       JSON.stringify(confirmationResult.verificationId));
+  //       //this.router.navigate(['/code']);
+  //       //this.validarCodigo(this.produto.id);
+  //       this.carrinhoCreate(this.produto.id!)
+  //       this.router.navigate(['/carrinho']);
+  //     }).catch((error) => {
+  //       setTimeout(() => {
+  //         window.location.reload();
+  //       }, 5000);
+  //     });
+  // }
 
 
   // tslint:disable-next-line:typedef
@@ -230,16 +229,12 @@ export class ProdutoListComponent implements OnInit {
   
   // tslint:disable-next-line:typedef
   openPopup2(produtoId: number): void {
-
-    console.log('entrei no open popup2')
-
-    
     this.displayStyle2 = 'block';
   }
 
   // tslint:disable-next-line:typedef
   closePopup2() { 
-
+    //this.carrinhoCreate(this.produto.id!);
     this.displayStyle2 = 'none';
   }
 
@@ -249,8 +244,8 @@ export class ProdutoListComponent implements OnInit {
     this.produtoService.readById(produtoId).subscribe(product => {
       this.produto = product;
 
-      this.carrinho.enviado = false;
-      this.carrinho.isencao = false;
+      this.carrinho.enviado = false
+      this.carrinho.isencao = false; 
       this.carrinho.local = environment.local;
       this.carrinho.data_criacao = new Date();
 
@@ -262,68 +257,74 @@ export class ProdutoListComponent implements OnInit {
       this.carrinhoService.create(this.carrinho).subscribe(() => {
         this.carrinhoService.showMessage('Produto adicionado no pedido');
       });
+     this.router.navigate(['/carrinho']);
     });
 
-    this.closePopup();
+//    this.closePopup();
   }
 
-  validarTelefone(): void {
+  // validarTelefone(): void {
 
-    if (this.telefone > 0) {
-      environment.telefone = this.telefone;
-      this.enviarCodigo();
-    }
+  //   if (this.telefone > 0) {
+  //     environment.telefone = this.telefone;
+  //     this.enviarCodigo();
+  //   }
+  // }
+
+  // validarCodigo(produtoId: number): void {
+
+  //   // tslint:disable-next-line:no-unused-expression
+  //   this.produtoService.readById(produtoId).subscribe(product => {
+  //     this.produto = product;
+
+  //   });
+
+  //   if (environment.codigo > 0) {
+  //     environment.codigo = this.codigo;
+  //     // tslint:disable-next-line:semicolon
+  //     // this.updateClassDisabled();
+  //     this.carrinhoCreate(produtoId);
+
+  //     this.closePopup2();
+  //     this.closePopup();
+
+
+  //   }
+  // }
+
+  // enviarCodigo(): void {
+  //   // tslint:disable-next-line:comment-format
+  //   //const telefone = this.navForm.get('telefone').value;
+  //   const codigoGerado = Math.random() * this.telefone;
+  // }
+
+  // // tslint:disable-next-line:typedef
+  // updateClassDisabled() {
+  //   this.buttonDisabled = false;
+  //   this.element1 = document.getElementById('desabilitado1') as HTMLElement;
+  //   this.element2 = document.getElementById('desabilitado2') as HTMLElement;
+  //   this.element3 = document.getElementById('desabilitado3') as HTMLElement;
+  //   this.element4 = document.getElementById('desabilitado4') as HTMLElement;
+  //   this.element5 = document.getElementById('desabilitado5') as HTMLElement;
+  //   this.element6 = document.getElementById('desabilitado6') as HTMLElement;
+  //   this.element7 = document.getElementById('desabilitado7') as HTMLElement;
+  //   this.element8 = document.getElementById('desabilitado8') as HTMLElement;
+
+  //   this.element1.removeAttribute('disabled');
+  //   this.element2.removeAttribute('disabled');
+  //   this.element3.removeAttribute('disabled');
+  //   this.element4.removeAttribute('disabled');
+  //   this.element5.removeAttribute('disabled');
+  //   this.element6.removeAttribute('disabled');
+  //   this.element7.removeAttribute('disabled');
+  //   this.element8.removeAttribute('disabled');
+  // }
+
+    handleEvent(event: any) {
+     this.carrinhoCreate(this.produto.id!);
+     this.router.navigate(['/carrinho']);
+     
   }
-
-  validarCodigo(produtoId: number): void {
-
-    // tslint:disable-next-line:no-unused-expression
-    this.produtoService.readById(produtoId).subscribe(product => {
-      this.produto = product;
-
-    });
-
-    if (environment.codigo > 0) {
-      environment.codigo = this.codigo;
-      // tslint:disable-next-line:semicolon
-      // this.updateClassDisabled();
-      this.carrinhoCreate(produtoId);
-
-      this.closePopup2();
-      this.closePopup();
-
-
-    }
-  }
-
-  enviarCodigo(): void {
-    // tslint:disable-next-line:comment-format
-    //const telefone = this.navForm.get('telefone').value;
-    const codigoGerado = Math.random() * this.telefone;
-  }
-
-  // tslint:disable-next-line:typedef
-  updateClassDisabled() {
-    this.buttonDisabled = false;
-    this.element1 = document.getElementById('desabilitado1') as HTMLElement;
-    this.element2 = document.getElementById('desabilitado2') as HTMLElement;
-    this.element3 = document.getElementById('desabilitado3') as HTMLElement;
-    this.element4 = document.getElementById('desabilitado4') as HTMLElement;
-    this.element5 = document.getElementById('desabilitado5') as HTMLElement;
-    this.element6 = document.getElementById('desabilitado6') as HTMLElement;
-    this.element7 = document.getElementById('desabilitado7') as HTMLElement;
-    this.element8 = document.getElementById('desabilitado8') as HTMLElement;
-
-    this.element1.removeAttribute('disabled');
-    this.element2.removeAttribute('disabled');
-    this.element3.removeAttribute('disabled');
-    this.element4.removeAttribute('disabled');
-    this.element5.removeAttribute('disabled');
-    this.element6.removeAttribute('disabled');
-    this.element7.removeAttribute('disabled');
-    this.element8.removeAttribute('disabled');
-  }
-
 
 
 }
