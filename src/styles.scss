@@ -5,6 +5,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-mdc-snack-bar-container {
+    &.custom-css-class {
+      --mdc-snackbar-container-color: yellow;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: blue;
+    }
+  }
+
+
+  
 .desktop {
   display: block;
   /* ou inline, inline-block */

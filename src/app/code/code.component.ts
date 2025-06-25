@@ -95,44 +95,44 @@ export class CodeComponent implements OnInit {
       });
   }
 
-  validarCodigo(produtoId: number): void {
+  // validarCodigo(produtoId: number): void {
 
-    // tslint:disable-next-line:no-unused-expression
-    this.produtoService.readById(produtoId).subscribe(product => {
-      this.produto = product;
+  //   // tslint:disable-next-line:no-unused-expression
+  //   this.produtoService.readById(produtoId).subscribe(product => {
+  //     this.produto = product;
 
-    });
+  //   });
 
-    if (environment.codigo > 0) {
-      environment.codigo = this.codigo;
-      // tslint:disable-next-line:semicolon
-      // this.updateClassDisabled();
-      this.carrinhoCreate(produtoId);
-      environment.login = true;
+  //   if (environment.codigo > 0) {
+  //     environment.codigo = this.codigo;
+  //     // tslint:disable-next-line:semicolon
+  //     // this.updateClassDisabled();
+  //     this.carrinhoCreate(produtoId);
+  //     environment.login = true;
 
 
-    }
-  }
+  //   }
+  // }
 
-  carrinhoCreate(produtoId: number): void {
+  // carrinhoCreate(produtoId: number): void {
 
-    // tslint:disable-next-line:no-unused-expression
-    this.produtoService.readById(produtoId).subscribe(product => {
-      this.produto = product;
+  //   // tslint:disable-next-line:no-unused-expression
+  //   this.produtoService.readById(produtoId).subscribe(product => {
+  //     this.produto = product;
 
-      this.carrinho.enviado = false;
-      this.carrinho.isencao = false;
-      this.carrinho.local = environment.local;
-      this.carrinho.data_criacao = new Date();
-      this.carrinho.telefone = environment.telefone;
-      this.carrinho.status = 'Pendente';
+  //     this.carrinho.enviado = false;
+  //     this.carrinho.isencao = false;
+  //     this.carrinho.local = environment.local;
+  //     this.carrinho.data_criacao = new Date();
+  //     this.carrinho.telefone = environment.telefone;
+  //     this.carrinho.status = 'Pendente';
 
-      this.carrinho.produto = this.produto;
+  //     this.carrinho.produto = this.produto;
 
-      this.carrinhoService.create(this.carrinho).subscribe(() => {
-      this.carrinhoService.showMessage('Produto adicionado no pedido');
+  //     this.carrinhoService.create(this.carrinho).subscribe(() => {
+  //     this.carrinhoService.showMessage('Produto adicionado no carrinho');
 
-      });
-    });
-  }
+  //     });
+  //   });
+  // }
 }

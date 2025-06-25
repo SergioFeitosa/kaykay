@@ -255,7 +255,7 @@ export class ProdutoListComponent implements OnInit {
       this.carrinho.produto = this.produto;
 
       this.carrinhoService.create(this.carrinho).subscribe(() => {
-        this.carrinhoService.showMessage('Produto adicionado no pedido');
+        this.carrinhoService.showMessage('Produto adicionado no carrinho');
       });
      this.router.navigate(['/carrinho']);
     });
