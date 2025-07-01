@@ -17,5 +17,5 @@ import { ProdutoListComponent } from './produto/produto-list.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'kaykay';
+  title = 'Quiosque ZITO';
 }

@@ -14,28 +14,16 @@
   </div>
 </div>
 <div class="table-responsive desktop">
-
   <table class="table table-bordered table-striped">
     <thead>
 
-      <!-- <th style='width: 5%' ></th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
-        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
-        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora</th>
-        <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;' > Ações </th> -->
-
-
       <tr>
         <th style='width: 5%' ></th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
-        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;'> Item </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;'> Quantidade</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;'> Observacao</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;'> Local</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
-        <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora Pedido</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora Entrega</th>
@@ -51,6 +39,7 @@
             width="100"
             height="70">
         </td>
+        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.carrinho.produto.nome }} </td>
 
         <td style='color: red'>
           <div style='align-items: center;
@@ -63,11 +52,9 @@
                   {{ entrega.pedido.carrinho.quantidade }} 
           </div>
         </td>
-
-        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.carrinho.produto.nome }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.telefone }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.local }} </td>
         <td style='color: red'>{{ entrega.pedido.carrinho.observacao }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.local }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.telefone }} </td>
         <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.isencao }} </td>
         <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.dataCriacao | date:'hh:mm:ss' }} </td>
         <td style='color: blue; font-weight: 400;'>{{ entrega.data_criacao | date:'hh:mm:ss' }} </td>

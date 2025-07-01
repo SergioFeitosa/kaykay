@@ -114,7 +114,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* TABLET  */
 
-@media(min-width: 576px) and (max-width: 767px) {
+@media(min-width: 488px) and (max-width: 767px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
@@ -147,7 +147,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE */
 
-@media(min-width: 381px) and (max-width: 575px) {
+@media(min-width: 265px) and (max-width: 487px) {
 
   .desktop {
     display: none;
@@ -187,7 +187,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE PEQUENO */
 
-@media(min-width: 263px) and (max-width: 380px) {
+@media(min-width: 263px) and (max-width: 264px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';

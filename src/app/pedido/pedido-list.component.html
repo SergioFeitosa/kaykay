@@ -147,9 +147,9 @@
           </td>
 
         }
-        <td style='color: blue; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ pedido.telefone }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ pedido.local }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.telefone }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.local }} </td>
  
         <td>
 
@@ -163,8 +163,8 @@
           </textarea>
           </td>
 
-        <td style='color: blue; font-weight: 400;'>{{ pedido.isencao }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.isencao }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
@@ -229,18 +229,18 @@
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
-        <td>{{ pedido.carrinho.produto.nome }} </td>
-        <td>{{ pedido.telefone }} </td>
-        <td>{{ pedido.local }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.telefone }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.local }} </td>
 
         <td><input [(ngModel)]="pedido.observacao" type="text" style='color:
             red'
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
-          </td>
+        </td>
 
-        <td>{{ pedido.isencao }} </td>
-        <td>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.isencao }} </td>
+        <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">

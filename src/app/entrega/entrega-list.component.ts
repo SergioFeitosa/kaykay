@@ -135,6 +135,11 @@ export class EntregaListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   closePopup() {
     this.displayStyle = 'none';
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+
   } 
 
   entregaUpdate(entregaId: number) {
@@ -183,5 +188,10 @@ export class EntregaListComponent implements OnInit {
       const response2 =  await this.entregaService.update(entrega).subscribe(() => {
         this.entregaService.showMessage('Pedido Entregue');
     });
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+
   }
 }

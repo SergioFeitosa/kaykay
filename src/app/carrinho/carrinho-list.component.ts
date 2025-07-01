@@ -5,14 +5,18 @@ import { Carrinho } from './carrinho';
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../pedido/pedido';
 import { PedidoService } from '../pedido/pedido.service';
-import { interval, Subscription } from 'rxjs';
+import { debounceTime, interval, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { StarComponent } from '../star/star.component';
 import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
+import { INITIAL_CONFIG } from '@angular/platform-server';
+import { initializeApp } from '@angular/fire/app';
+import { consumerBeforeComputation } from '@angular/core/primitives/signals';
+import { Subject } from 'rxjs';
 
-@Component({ 
+@Component({
   standalone: true,
   imports: [
     CaminhoMenuComponent,
@@ -22,11 +26,12 @@ import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
     StarComponent
 
   ],
-  templateUrl: './carrinho-list.component.html' 
+  templateUrl: './carrinho-list.component.html'
 })
 
 export class CarrinhoListComponent implements OnInit {
 
+  private readSubscription!: Subscription;
   private updateSubscription!: Subscription;
 
   login: boolean = false;
@@ -55,19 +60,28 @@ export class CarrinhoListComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   _filterBy: string = '';
 
+  _debouncetime: boolean = false;
+
   statusPendente: boolean = false;
 
   container: any;
+
+  searchControl = new FormControl('');
 
   constructor(
     private carrinhoService: CarrinhoService,
     private pedidoService: PedidoService,
     private router: Router,
   ) {
-
   }
 
+
+
+
+
   ngOnInit(): void {
+
+    
 
     // this.modulo = 'Pedido';
     // this.local = environment.local;
@@ -80,9 +94,6 @@ export class CarrinhoListComponent implements OnInit {
     environment.fundoColoridoEntrega = false;
     environment.fundoColoridoConta = false;
 
-    // entram no if somente administradores, clientes saem pelo else
-
-    //console.log(environment.telefone)
 
     if (+environment.telefone === 5511982551256 || +environment.telefone === 5599999999997) {
 
@@ -92,34 +103,25 @@ export class CarrinhoListComponent implements OnInit {
           .filter((carrinho: Carrinho) => carrinho.enviado !== true);
       });
 
-      this.updateSubscription = interval(5000).subscribe(
-        (val) => {
-
-          this.carrinhoService.read().subscribe(carrinhos => {
-            this.carrinhos = carrinhos;
-            this.filteredCarrinhos = this.carrinhos
-              .filter((carrinho: Carrinho) => carrinho.enviado !== true);
-          });
-      });
     } else {
 
       this.carrinhoService.read().subscribe(carrinhos => {
         this.carrinhos = carrinhos;
         this.filteredCarrinhos = this.carrinhos
-        .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
-        .filter((carrinho: Carrinho) => carrinho.enviado !== true);
+          .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
+          .filter((carrinho: Carrinho) => carrinho.enviado !== true);
       });
 
-      this.updateSubscription = interval(5000).subscribe(
-        (val) => {
+      // this.readSubscription = interval(5000).subscribe(
+      //   (val) => {
 
-          this.carrinhoService.read().subscribe(carrinhos => {
-            this.carrinhos = carrinhos;
-            this.filteredCarrinhos = this.carrinhos
-            .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
-            .filter((carrinho: Carrinho) => carrinho.enviado !== true);
-          });
-      });
+      //     this.carrinhoService.read().subscribe(carrinhos => {
+      //       this.carrinhos = carrinhos;
+      //       this.filteredCarrinhos = this.carrinhos
+      //         .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
+      //         .filter((carrinho: Carrinho) => carrinho.enviado !== true);
+      //     });
+      //   });
     }
   }
 
@@ -158,14 +160,13 @@ export class CarrinhoListComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.carrinhoService.readById(carrinhoId).subscribe(carrinho => {
       this.carrinho = carrinho;
-      console.log('carrinho.imagemUrl' )
-    
+
       this.produto = this.carrinho.produto;
-      if(this.carrinho.status.toLowerCase() === 'pendente'){
+      if (this.carrinho.status.toLowerCase() === 'pendente') {
         this.statusPendente = true;
       }
     });
- 
+
     this.displayStyle = 'block';
   }
 
@@ -196,7 +197,7 @@ export class CarrinhoListComponent implements OnInit {
         this.carrinho.enviado = false;
         this.carrinho.status = 'Confirmado';
 
-         this.atualizarCarrinho(this.carrinho);
+        this.atualizarCarrinho(this.carrinho);
 
         this.pedido.telefone = this.carrinho.telefone;
         this.pedido.local = this.carrinho.local;
@@ -215,19 +216,19 @@ export class CarrinhoListComponent implements OnInit {
         });
       }
     });
- 
+
     this.closePopup();
   }
 
   // tslint:disable-next-line:typedef
   async atualizarCarrinho(carrinho: Carrinho) {
 
-    const response = await this.carrinhoService.update(carrinho).subscribe(() => {
-      this.carrinhoService.showMessage('Carrinho Atualizado');
-    });
+        this.carrinhoService.update(carrinho).subscribe(() => {
+          this.carrinhoService.showMessage('Carrinho Atualizado');
+        });
   }
 
-    // tslint:disable-next-line:typedef
+  // tslint:disable-next-line:typedef
   minus(carrinho: Carrinho) {
     if (carrinho.quantidade !== 1) {
       carrinho.quantidade--;
@@ -237,12 +238,11 @@ export class CarrinhoListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   plus(carrinho: Carrinho) {
-    if (carrinho.quantidade !== 10) { 
+    if (carrinho.quantidade !== 10) {
       carrinho.quantidade++;
       this.atualizarCarrinho(carrinho)
     }
   }
-
 
 }
 
