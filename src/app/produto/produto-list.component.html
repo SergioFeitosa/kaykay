@@ -1,24 +1,16 @@
-
 <app-caminho-menu></app-caminho-menu>
 <br>
-
-<!--
-  <div class="mobile" style='background-color: aquamarine; text-align-last:
-  center;'>
-  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
-  </div>
--->
-  
 <!-- DESKTOP -->
+
+  <div class='form-group row container mt-5'>
+    <label for="filter1" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter1"  id="filter1" [(ngModel)]='filter' class='form-control' style="width: 15em;">
+  </div>
 
 <div class='table-responsive desktop'>
 
-  <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
 
-  <table class="table table-bordered table-striped" style="margin-top: 1em;">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th style='width: 1%;'> Imagem</th>
@@ -27,14 +19,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of sortedProducts '
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts ' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -50,8 +38,8 @@
 <div class='table-responsive laptop'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter2" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter2"  id="filter2" [(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -63,14 +51,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -86,8 +70,8 @@
 <div class='table-responsive laptop2'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter3" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter3"  id="filter3"[(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -99,14 +83,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -123,8 +103,8 @@
 <div class='table-responsive tablet'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter4" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter4"  id="filter4" [(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -136,14 +116,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id!)">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id!)">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -159,8 +135,8 @@
 <div class='table-responsive mobile'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter5" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter5"  id="filter5" [(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -172,14 +148,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -195,8 +167,8 @@
 <div class='table-responsive mobile-pequeno'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter6" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter6"  id="filter6" [(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -208,14 +180,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
@@ -231,8 +199,8 @@
 <div class='table-responsive mobile-pequeno2'>
 
   <div class='form-group row container mt-5'>
-    <label class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label for="filter7" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
+    <input name="filter7"  id="filter7" [(ngModel)]='filter' class='form-control' style="width: 15em;">
   </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
@@ -244,14 +212,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos'
-        (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-            alt="..."
-            width="70"
-            height="70"
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
         <td style='width: 1%; font-size: 0.5em; cursor: pointer'>{{ produto.nome
@@ -263,33 +227,24 @@
 </div>
 
 <!-- Detalhes do produto/pedido -->
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display': displayStyle}">
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
       <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
         <button (click)="login ? carrinhoCreate( produto.id! ) : openPopup2(produto.id! )">
           <img src='/assets/images/carrinho.jpg' class="figure-img img-fluid
-            rounded" alt="Carrinho" width="50"
-            height="25">
+            rounded" alt="Carrinho" width="50" height="25">
         </button>
-        <button type="button" class="btn btn-danger"
-          (click)="closePopup()">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
           Fechar
-        </button> 
+        </button>
 
       </div>
       <div class="modal-body row">
         Avaliação: <app-star [rating]="produto.avaliacao"></app-star>
       </div>
       <div class="modal-body row">
-        <img [src]='produto.imagem_url' class="figure-img img-fluid rounded"
-          alt="..."
-          width="400"
-          height="400">
+        <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="400" height="400">
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Nome:</span>
@@ -314,21 +269,17 @@
 
       <div class="modal-body row">
         <span style='font-weight: bolder; color:blue'>Quantidade:</span>
-        <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i
-            class="fa
+        <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i class="fa
             fa-minus" style="color:red"></i></a>
-        <input style="width: 3em;" [(ngModel)]='carrinho.quantidade'
-          class='form-control'>
-        <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i
-            class="fa
+        <input style="width: 3em;" [(ngModel)]='carrinho.quantidade' class='form-control'>
+        <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i class="fa
             fa-plus" style="color:red"></i></a>
       </div>
       <div class="modal-body row">
         <div class='form-group row container'>
           <span style='font-weight: bolder; color:blue'>Observações:</span>
           <div>
-            <textarea [(ngModel)]='carrinho.observacao'
-              class='form-control'></textarea>
+            <textarea [(ngModel)]='carrinho.observacao' class='form-control'></textarea>
           </div>
         </div>
       </div>
@@ -343,11 +294,9 @@
           <button (click)="login ? carrinhoCreate( produto.id! ) :
             openPopup2(produto.id! )">
             <img src='/assets/images/carrinho.jpg' class="figure-img img-fluid
-              rounded" alt="..." width="50"
-              height="25">
+              rounded" alt="..." width="50" height="25">
           </button>
-          <button type="button" class="btn btn-danger"
-            (click)="closePopup()">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">
             Fechar
           </button>
         </div>
@@ -358,13 +307,8 @@
 
 
 <!-- login -->
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display': displayStyle2}">
-          <div class='col-sm-12'>
-            <app-phone-number (phoneNumberChangeEvent)="handleEvent($event)"></app-phone-number>
-          </div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle2}">
+  <div class='col-sm-12'>
+    <app-phone-number (phoneNumberChangeEvent)="handleEvent($event)"></app-phone-number>
+  </div>
 </div>
-

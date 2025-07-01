@@ -111,17 +111,6 @@ export class CarrinhoListComponent implements OnInit {
           .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
           .filter((carrinho: Carrinho) => carrinho.enviado !== true);
       });
-
-      // this.readSubscription = interval(5000).subscribe(
-      //   (val) => {
-
-      //     this.carrinhoService.read().subscribe(carrinhos => {
-      //       this.carrinhos = carrinhos;
-      //       this.filteredCarrinhos = this.carrinhos
-      //         .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
-      //         .filter((carrinho: Carrinho) => carrinho.enviado !== true);
-      //     });
-      //   });
     }
   }
 

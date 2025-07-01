@@ -65,9 +65,9 @@ export class ProdutoListComponent implements OnInit {
   produtos: Produto[] = [];
 
   filteredProdutos: Produto[] = [];
-  // tslint:disable-next-line:variable-name
+
+  // tslint:disable-next-line:variable-name  
   _produtos: Produto[] = [];
-  // tslint:disable-next-line:variable-name
 
   // tslint:disable-next-line:variable-name
   _filterBy: string = '';
@@ -124,14 +124,13 @@ export class ProdutoListComponent implements OnInit {
     this._categoryId = this.activatedRoute.snapshot.paramMap.get('categoryId');
 
     this.produtoService.read().subscribe(produto => {
-      this.produtos = produto.filter((produto: Produto) =>
-        produto.categoria ==  this._categoryId);
+      this.produtos = produto
+        .filter((produto: Produto) => produto.categoria == this._categoryId)
       this.filteredProdutos = this.produtos;
       this.sortProductsByName();
+
     });
 
-    // this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
-    // console.log(this.verify);
   }
 
   sortProductsByName() {
@@ -142,35 +141,10 @@ export class ProdutoListComponent implements OnInit {
     this.sortedProducts = [...this.filteredProdutos].sort((a, b) => a.preco - b.preco);
   }
 
-    // tslint:disable-next-line:typedef
-    onOtpChange(otp: string) {
-      this.otp = otp;
-    }
-  
-  // getOTP() {
-
-  //   console.log('passando pela rotina getOTP')
-
-  //   this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
-
-  //   firebase.
-  //     auth().
-  //     signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
-  //     then((confirmationResult) => {
-  //   this.login = environment.login;
-  //   window.localStorage.setItem('verificationId',
-  //       JSON.stringify(confirmationResult.verificationId));
-  //       //this.router.navigate(['/code']);
-  //       //this.validarCodigo(this.produto.id);
-  //       this.carrinhoCreate(this.produto.id!)
-  //       this.router.navigate(['/carrinho']);
-  //     }).catch((error) => {
-  //       setTimeout(() => {
-  //         window.location.reload();
-  //       }, 5000);
-  //     });
-  // }
-
+  // tslint:disable-next-line:typedef
+  onOtpChange(otp: string) {
+    this.otp = otp;
+  }
 
   // tslint:disable-next-line:typedef
   minus() {
@@ -197,8 +171,12 @@ export class ProdutoListComponent implements OnInit {
     this._filterBy = value;
 
     this.filteredProdutos =
-      this.produtos.filter((produto: Produto) =>
-        produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+      this.produtos
+        .filter((produto: Produto) => produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
+
+    this.sortProductsByName();
+    
+
   }
 
   // tslint:disable-next-line:quotemark
@@ -219,21 +197,21 @@ export class ProdutoListComponent implements OnInit {
     });
 
     this.displayStyle = 'block';
-  } 
+  }
 
   // tslint:disable-next-line:typedef
   closePopup() {
     this.displayStyle = 'none';
   }
 
-  
+
   // tslint:disable-next-line:typedef
   openPopup2(produtoId: number): void {
     this.displayStyle2 = 'block';
   }
 
   // tslint:disable-next-line:typedef
-  closePopup2() { 
+  closePopup2() {
     //this.carrinhoCreate(this.produto.id!);
     this.displayStyle2 = 'none';
   }
@@ -245,7 +223,7 @@ export class ProdutoListComponent implements OnInit {
       this.produto = product;
 
       this.carrinho.enviado = false
-      this.carrinho.isencao = false; 
+      this.carrinho.isencao = false;
       this.carrinho.local = environment.local;
       this.carrinho.data_criacao = new Date();
 
@@ -257,10 +235,10 @@ export class ProdutoListComponent implements OnInit {
       this.carrinhoService.create(this.carrinho).subscribe(() => {
         this.carrinhoService.showMessage('Produto adicionado no carrinho');
       });
-     this.router.navigate(['/carrinho']);
+      this.router.navigate(['/carrinho']);
     });
 
-//    this.closePopup();
+    //    this.closePopup();
   }
 
   // validarTelefone(): void {
@@ -320,10 +298,10 @@ export class ProdutoListComponent implements OnInit {
   //   this.element8.removeAttribute('disabled');
   // }
 
-    handleEvent(event: any) {
-     this.carrinhoCreate(this.produto.id!);
-     this.router.navigate(['/carrinho']);
-     
+  handleEvent(event: any) {
+    this.carrinhoCreate(this.produto.id!);
+    this.router.navigate(['/carrinho']);
+
   }
 
 
