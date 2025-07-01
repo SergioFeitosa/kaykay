@@ -4,8 +4,10 @@
 <!-- DESKTOP -->
 
   <div class='form-group row container mt-5'>
-    <label for="filter1" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter1" [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label class='col-sm-2 col-form-label' style="width: 6em;">
+      <input name="filter1" [(ngModel)]='filter' class='form-control' style="width: 15em;">
+      Filter By:
+    </label>
   </div>
 
 
@@ -54,6 +56,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeDesktop1"
                   class='form-control; nav-link;'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -79,6 +82,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeDesktop2"
                   class='form-control; nav-link;'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -105,6 +109,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeDesktop3"
                   class='form-control; nav-link;'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -121,7 +126,7 @@
         <td>
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                id="_observacao"
+                name="observacao1"
                 type="text" 
                 style='color: red'   
             >
@@ -183,6 +188,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop1"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -207,6 +213,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop2"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -232,6 +239,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop3"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -245,8 +253,14 @@
             </td>
 
           }
-        <td  (click)="openPopup(carrinho.id! )" style="color: #4f63e7">
-          {{ carrinho.observacao }} 
+
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao2"
+                type="text" 
+                style='color: red'   
+            >
         </td>
         <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7"> 
           {{ carrinho.local }} 
@@ -304,12 +318,13 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop2-1"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
 
-                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                <a  style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
                   <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
                 </a>
               </div>
@@ -328,6 +343,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop2-2"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -353,6 +369,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeLaptop2-3"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -366,15 +383,21 @@
             </td>
 
           }
-        <td style="color: #4f63e7">
-          {{ carrinho.observacao }}
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao3"
+                type="text" 
+                style='color: red'   
+            >
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
         <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
-        <td  (click)="openPopup(carrinho.id! )"class="text-center">
-          <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
-              carrinho.status }}</small></p>
+        <td  name="status"  id="status" (click)="openPopup(carrinho.id! )"class="text-center">
+          <p style="margin: 0; color: #4f63e7">
+            <small style="font-size: 0.8em;">{{carrinho.status }}</small>
+          </p>
         </td>
       </tr>
     </tbody>
@@ -421,6 +444,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeTablet1"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -444,6 +468,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeTablet2"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -468,6 +493,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeTablet3"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -479,7 +505,14 @@
             </td>
 
           }
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.observacao }}</td>
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao4"
+                type="text" 
+                style='color: red'   
+            >
+        </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
         <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
@@ -530,6 +563,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobile1"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -553,6 +587,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobile2"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -577,6 +612,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobile3"
                   type="text"
                   style='width: 2em; color: #4f63e7'
                   (ngModelChange)="atualizarCarrinho(carrinho)">
@@ -588,7 +624,14 @@
             </td>
 
           }
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.observacao }}</td>
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao5"
+                type="text" 
+                style='color: red'   
+            >
+        </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
         <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
@@ -636,6 +679,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno1"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -660,6 +704,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno2"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -685,6 +730,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno3"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -698,8 +744,13 @@
             </td>
 
           }
-        <td style="color: #4f63e7">
-          {{ carrinho.observacao }}
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao6"
+                type="text" 
+                style='color: red'   
+            >
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
@@ -750,6 +801,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno2-1"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -774,6 +826,7 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno2-2"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -799,6 +852,7 @@
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
+                  name="quantidadeMobilePequeno2-3"
                   class='form-control'
                   type="text"
                   style='width: 3em; color: #4f63e7'
@@ -812,8 +866,13 @@
             </td>
 
           }
-        <td style="color: #4f63e7">
-          {{ carrinho.observacao }}
+        <td>
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao7"
+                type="text" 
+                style='color: red'   
+            >
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
@@ -889,7 +948,9 @@
         <a style="width: 2em; margin-top: 0.5em" (click)="minus(carrinho)"><i
             class="fa
             fa-minus" style="color:red"></i></a>
-        <input style="width: 3em;" name="prp" [(ngModel)]='carrinho.quantidade'
+        <input                   
+          name="quantidadeModal1"
+          style="width: 3em;" name="prp" [(ngModel)]='carrinho.quantidade'
           class='form-control'>
         <a style="width: 2em; margin-top: 0.5em" (click)="plus(carrinho)"><i
             class="fa
@@ -899,7 +960,9 @@
         <div class='form-group row container'>
           <span style='font-weight: bolder; color:blue'>ObservStatus:</span>
           <div>
-            <textarea  [(ngModel)]='carrinho.observacao'
+            <textarea  
+              name="observacaoModal1"
+              [(ngModel)]='carrinho.observacao'
               class='form-control'
               (ngModelChange)="atualizarCarrinho(carrinho)"></textarea>
           </div>

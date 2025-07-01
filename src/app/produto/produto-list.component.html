@@ -3,8 +3,10 @@
 <!-- DESKTOP -->
 
   <div class='form-group row container mt-5'>
-    <label for="filter1" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter1"  id="filter1" [(ngModel)]='filter' class='form-control' style="width: 15em;">
+    <label class='col-sm-2 col-form-label' style="width: 6em;">
+      <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 15em;">
+      Filter By:
+    </label>
   </div>
 
 <div class='table-responsive desktop'>
@@ -37,11 +39,6 @@
 
 <div class='table-responsive laptop'>
 
-  <div class='form-group row container mt-5'>
-    <label for="filter2" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter2"  id="filter2" [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
-
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
@@ -68,11 +65,6 @@
 <!-- LAPTOP2 -->
 
 <div class='table-responsive laptop2'>
-
-  <div class='form-group row container mt-5'>
-    <label for="filter3" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter3"  id="filter3"[(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -102,11 +94,6 @@
 
 <div class='table-responsive tablet'>
 
-  <div class='form-group row container mt-5'>
-    <label for="filter4" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter4"  id="filter4" [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
-
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
@@ -133,11 +120,6 @@
 <!-- MOBILE -->
 
 <div class='table-responsive mobile'>
-
-  <div class='form-group row container mt-5'>
-    <label for="filter5" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter5"  id="filter5" [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -166,11 +148,6 @@
 
 <div class='table-responsive mobile-pequeno'>
 
-  <div class='form-group row container mt-5'>
-    <label for="filter6" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter6"  id="filter6" [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
-
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
@@ -197,11 +174,6 @@
 <!-- MOBILE PEQUENO2 -->
 
 <div class='table-responsive mobile-pequeno2'>
-
-  <div class='form-group row container mt-5'>
-    <label for="filter7" class='col-sm-2 col-form-label' style="width: 6em;">Filter By:</label>
-    <input name="filter7"  id="filter7" [(ngModel)]='filter' class='form-control' style="width: 15em;">
-  </div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -263,7 +235,8 @@
         </div>
         <div class="row">
           <span class="col-4"> {{ produto.preco }} </span>
-          <span class="col-8">{{ produto.preco * carrinho.quantidade }}</span>
+          <span class="col-8">{{ produto.preco * carrinho.quantidade }}
+          </span>
         </div>
       </div>
 
@@ -271,7 +244,12 @@
         <span style='font-weight: bolder; color:blue'>Quantidade:</span>
         <a style="width: 2em; margin-top: 0.5em" (click)="minus()"><i class="fa
             fa-minus" style="color:red"></i></a>
-        <input style="width: 3em;" [(ngModel)]='carrinho.quantidade' class='form-control'>
+        <input 
+          id="quantidadeModal1"
+          name="quantidadeModal1"          
+          style="width: 3em;" 
+          [(ngModel)]='carrinho.quantidade' 
+          class='form-control'>
         <a style="width: 2em; margin-top: 0.5em" (click)="plus()"><i class="fa
             fa-plus" style="color:red"></i></a>
       </div>
@@ -279,7 +257,13 @@
         <div class='form-group row container'>
           <span style='font-weight: bolder; color:blue'>Observações:</span>
           <div>
-            <textarea [(ngModel)]='carrinho.observacao' class='form-control'></textarea>
+            <textarea 
+                [(ngModel)]='carrinho.observacao' 
+                class='form-control'
+                id="observacaoModal1"
+                name="observacaoModal1"                
+                >
+            </textarea>
           </div>
         </div>
       </div>

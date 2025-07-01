@@ -58,6 +58,7 @@
               </a>
             
               <input [(ngModel)]='pedido.carrinho.quantidade'
+                name="quantidadeDesktop1"
                 class='form-control'
                 type="text"
                 style='color: blue; width: 3em;'
@@ -88,6 +89,7 @@
           </span>
             
               <input [(ngModel)]='pedido.carrinho.quantidade'
+                name="quantidadeDesktop2"
                 class='form-control'
                 type="text"
                 style='color: blue; width: 3em;'
@@ -112,6 +114,7 @@
 
               </a>
               <input [(ngModel)]='pedido.carrinho.quantidade'
+                name="quantidadeDesktop3"
                 class='form-control'
                 type="text"
                 style='color: blue; width: 3em;'
@@ -134,6 +137,7 @@
                 <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
                 </span>
                 <input [(ngModel)]='pedido.carrinho.quantidade'
+                  name="quantidadeDesktop4"
                   class='form-control'
                   type="text"
                   style='color: blue; width: 3em;'
@@ -154,6 +158,8 @@
         <td>
 
           <textarea [(ngModel)]="pedido.carrinho.observacao" 
+            name="observacaoDesktop1"
+
             type="text" 
             style='color:red' 
             (blur)="atualizarObservacao(pedido)" 
@@ -223,18 +229,24 @@
           alt="..."
           width="100"
           height="70">
-        <td><input [(ngModel)]="pedido.quantidade" type="text"
-                   style='color: red; width: 60px'
-                   (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        <td>
+          <input [(ngModel)]="pedido.quantidade" type="text"
+                 name="quantidadeLaptop1"
+                 style='color: red; width: 60px'
+                 (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                 [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
         <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
         <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.telefone }} </td>
         <td style='color: #4f63e7; font-weight: 400;'>{{ pedido.local }} </td>
 
-        <td><input [(ngModel)]="pedido.observacao" type="text" style='color:
-            red'
+        <td>
+          <input 
+            [(ngModel)]="pedido.observacao" 
+            name="observacaoLaptop1"
+            type="text" 
+            style='color: red'
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
         </td>
@@ -291,18 +303,26 @@
           alt="..."
           width="100"
           height="70">
-        <td><input [(ngModel)]="pedido.quantidade" type="text"
-                   style='color: red; width: 60px'
-                   (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
-                   [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
+        <td>
+          <input 
+            [(ngModel)]="pedido.quantidade" 
+            name="quantidadeLaptop2-1"
+            type="text"
+            style='color: red; width: 60px'
+            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+            [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
         </td>
 
         <td>{{ pedido.carrinho.produto.nome }} </td>
         <td>{{ pedido.telefone }} </td>
         <td>{{ pedido.local }} </td>
 
-        <td><input [(ngModel)]="pedido.observacao" type="text" style='color:
-            red'
+        <td>
+          <input 
+            [(ngModel)]="pedido.observacao" 
+            name="observacaoLaptop2-1"
+            type="text" 
+            style='color: red'
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </td>
@@ -360,6 +380,7 @@
           width="100"
           height="70">
         <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   name="quantidadeTablet1"
                    style='color: red; width: 60px'
                    (blur)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
@@ -369,8 +390,13 @@
         <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.telefone }} </td>
         <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>{{ pedido.local }} </td>
 
-        <td style='width: 5%; color: red; font-weight: 500; text-align: center;  font-size: 0.7em;'><input [(ngModel)]="pedido.observacao" type="text"
-            (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+        <td style='width: 5%; color: red; font-weight: 500; text-align: center;  font-size: 0.7em;'>
+          <input 
+            [(ngModel)]="pedido.observacao" 
+            name="observacaoTablet1"
+            type="text"
+            (ngModelChange)="atualizarPedido(pedido)" 
+            class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </td>
 
@@ -429,6 +455,7 @@
             height="70">
         </td>
         <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   name="quantidadeMobile1"
                    style='color: red; width: 60px'
                    (blur)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
@@ -440,6 +467,7 @@
 
         <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
           <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+                   name="observacaoMobile1"
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </td>
@@ -499,6 +527,7 @@
             height="70">
         </td>
         <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   name="quantidadeMobilePequeno1"
                    style='color: red; width: 60px'
                    (blur)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
@@ -510,6 +539,7 @@
 
         <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
           <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+            name="observacaoMobilePequeno1"
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </td>
@@ -569,6 +599,7 @@
             height="70">
         </td>
         <td><input [(ngModel)]="pedido.quantidade" type="text"
+                   name="quantidadeMobilePequeno2-1"
                    style='color: red; width: 60px'
                    (blur)="atualizarPedido(pedido)" class="nav-link"
                    [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
@@ -580,6 +611,7 @@
 
         <td style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;  font-size: 0.7em;'>
           <input [(ngModel)]="pedido.observacao" type="text" style='color: red'
+                   name="observacaoMobilePequeno2-1"
             (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </td>
