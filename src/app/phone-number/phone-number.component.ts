@@ -12,6 +12,7 @@ import { Produto } from '../produto/produto';
 import { NavBarService } from '../nav-bar/nav-bar.service';
 import { LoginService } from '../services/login.service';
 import { getFirestore } from 'firebase/firestore/lite';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
  
 @Component({
   selector: 'app-phone-number',
@@ -22,7 +23,10 @@ import { getFirestore } from 'firebase/firestore/lite';
     FormsModule,
     NgOtpInputModule,
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [
+    NavBarService
+  ]
 })
 
 //  @Injectable({
@@ -75,6 +79,8 @@ export class PhoneNumberComponent implements OnInit {
     },
   };
 
+  currentValue: string = '';
+
   ngOnInit() {
 
     //firebase.initializeApp(environment.firebaseConfig);
@@ -84,7 +90,6 @@ export class PhoneNumberComponent implements OnInit {
     const db = getFirestore(this.app);
     //this.auth.languageCode = 'pt-Br';
     this.displayCode = 'none';
-
   }
 
   async getOtp() {
@@ -140,22 +145,6 @@ export class PhoneNumberComponent implements OnInit {
       });
       this.loginService.login()
     }
-
-
-    // openPopup2(produtoId: number): void {
-    //   // tslint:disable-next-line:no-unused-expression
-    //   this.produtoService.readById(produtoId).subscribe(product => {
-    //     this.produto = product;
-  
-    //   });
-    //   this.displayStyle2 = 'block';
-    // }
-  
-    // closePopup2() { 
-    //   this.displayStyle2 = 'none';
-    //   this.navBarService.telefoneOk = true;
-
-    // }
 
     emitEvent() {
       this.phoneNumberChangeEvent.emit(this.phoneNumber);

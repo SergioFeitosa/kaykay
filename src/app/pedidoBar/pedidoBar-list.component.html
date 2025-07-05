@@ -1,19 +1,11 @@
 
 <app-caminho-menu></app-caminho-menu>
-<br>
 
-<!--
-<div class="mobile"  style='background-color: aquamarine; text-align-last: center;'>
-  <span style='font-weight: bolder;'>Módulo: {{ modulo }} </span>
-  <span style='font-weight: bolder;'>Local: {{ local }} </span>
-  <span> </span>
-</div>
--->
-<div class='form-group row'>
-  <label for="filter1" class='col-sm-2 col-form-label' style='color: blue;'>Filter By:</label>
-  <div class='col-sm-10'>
-    <input name="filter1"  id="filter1" [(ngModel)]='filter' class='form-control'>
-  </div>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 30em;">
+  </label>
 </div>
 
 <!-- DESKTOP -->
@@ -23,13 +15,13 @@
     <thead>
       <tr>
         <th style='width: 5%' ></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Item</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Quantidade</th>
-        <th style='width: 25%; color: #2494fc; font-weight: 500; text-align: center;' > Produto</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
         <th style='width: 10%; color: #2494fc; font-weight: 500; text-align: center;' > Observacao</th>
-        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Local</th>
         <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Hora</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Telefone</th>
+        <th style='width: 5%; color: #2494fc; font-weight: 500; text-align: center;' > Cortesia</th>
         <th class="text-center" style='color: #2494fc; font-weight: 500; text-align: center;' > Ações </th>
       </tr>
     </thead>
@@ -41,7 +33,9 @@
           alt="..."
           width="100"
           height="70">
-         @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999998) &&
+        <td style='color: blue; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
+
+          @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999998) &&
               (pedido.carrinho.status === 'Confirmado')) {
 
           <td>
@@ -52,17 +46,16 @@
               justify-content: center;
               '>
               
-              <a style="width: 1em; margin-top: 0.5em;" 
-                 (click)='minus(pedido)'>
+              <a style="width: 1em; margin-top: 0.5em;" (click)='minus(pedido)'>
                 <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
               </a>
             
               <input [(ngModel)]='pedido.carrinho.quantidade'
                 name="quantidadeDesktop1"
-                class='form-control'
+                class='form-control; class="nav-link;'
                 type="text"
                 style='color: blue; width: 3em;'
-                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                (ngModelChange)="atualizarPedido(pedido)"
                 [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
               <a style="width: 1em; margin-top: 0.5em" (click)="plus(pedido)">
@@ -86,14 +79,14 @@
               
               <span style="width: 1em; margin-top: 0.5em;">
                 <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
-          </span>
+              </span>
             
               <input [(ngModel)]='pedido.carrinho.quantidade'
                 name="quantidadeDesktop2"
-                class='form-control'
+                class='form-control; nav-link;'
                 type="text"
                 style='color: blue; width: 3em;'
-                (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                (ngModelChange)="atualizarPedido(pedido)"
                 [disabled]=" i < 3 && (+pedido.telefone != 5511982551256 && +pedido.telefone != 5599999999998) ? true : false">
 
               <span style="width: 1em; margin-top: 0.5em">
@@ -138,10 +131,10 @@
                 </span>
                 <input [(ngModel)]='pedido.carrinho.quantidade'
                 name="quantidadeDesktop4"
-                  class='form-control'
+                  class='form-control; nav-link;'
                   type="text"
                   style='color: blue; width: 3em;'
-                  (ngModelChange)="atualizarPedido(pedido)" class="nav-link"
+                  (ngModelChange)="atualizarPedido(pedido)"
                   disabled>
 
                 <span style="width: 1em; margin-top: 0.5em">
@@ -151,12 +144,7 @@
           </td>
 
         }
-        <td style='color: blue; font-weight: 400;'>{{ pedido.carrinho.produto.nome }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ pedido.telefone }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ pedido.local }} </td>
- 
         <td>
-
           <textarea [(ngModel)]="pedido.carrinho.observacao" 
             name="observacaoDesktop1"
             type="text" 
@@ -167,9 +155,12 @@
             [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">
           </textarea>
           </td>
-
-        <td style='color: blue; font-weight: 400;'>{{ pedido.isencao }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.local }} </td>
         <td style='color: blue; font-weight: 400;'>{{ pedido.dataCriacao | date:'hh:mm:ss'}} </td>
+
+        <td style='color: blue; font-weight: 400;'>{{ pedido.telefone }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ pedido.isencao }} </td>
+
         <td class="text-center">
           <button (click)="openPopup( pedido.id! )"
                   [disabled]=" i < 3 && (+telefone != 5511982551256 && +telefone != 5599999999998) ? true : false">

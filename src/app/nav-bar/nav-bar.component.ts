@@ -49,25 +49,25 @@ export class NavBarComponent implements OnInit {
 
   verify: any;
 
-
+  telefoneValue: number = 0;
   
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
     private ngZone: NgZone,
-    
-  ) { }
 
-  
+  ) {
+   }
+
+  currentValue: string = '';
+
   ngOnInit(): void {
     
     firebase.initializeApp(environment.firebaseConfig);
 
     this.local = environment.local;
-    this.telefone = environment.telefone;
+
   }
-
-
 
   // tslint:disable-next-line:typedef
   toggleNavbar() {
@@ -93,16 +93,16 @@ export class NavBarComponent implements OnInit {
         auth().
         signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
         then((confirmationResult) => {
-      this.login = environment.login;
-      window.localStorage.setItem('verificationId',
-          JSON.stringify(confirmationResult.verificationId));
-          //this.router.navigate(['/code']);
-          //this.validarCodigo(this.produto.id);
-        }).catch((error) => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 5000);
-        });
+          this.login = environment.login;
+          window.localStorage.setItem('verificationId',
+              JSON.stringify(confirmationResult.verificationId));
+              //this.router.navigate(['/code']);
+              //this.validarCodigo(this.produto.id);
+            }).catch((error) => {
+              setTimeout(() => {
+                window.location.reload();
+              }, 5000);
+            });
     }
   
   
