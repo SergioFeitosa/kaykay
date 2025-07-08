@@ -1,6 +1,6 @@
 
 import { NavBarService } from './nav-bar.service';
-import { booleanAttribute, Component, inject, Input, NgZone, OnInit } from '@angular/core';
+import { booleanAttribute, Component, CUSTOM_ELEMENTS_SCHEMA, inject, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -24,6 +24,8 @@ import firebase from 'firebase/compat/app';
   ],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class NavBarComponent implements OnInit {
 
@@ -181,13 +183,18 @@ export class NavBarComponent implements OnInit {
 
     phone() {
       return this.afAuth.signOut().then(() => {
-        console.log('chamada phone pelo navBar')
         this.ngZone.run(() => {
-          this.router.navigate(['/phone']);
+          this.router.navigate(['/phone']); 
         });
       });
     }
       
-    
+    handleEvent(event: number) {
+    this.telefone = +event;
+    this.phoneNumber = +event;
+    this.closePopup2();
+
+  }
+
 }
 

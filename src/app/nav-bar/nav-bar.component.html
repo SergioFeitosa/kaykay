@@ -18,7 +18,7 @@
         </a>
         <a style="font-size: 1em; padding-bottom: 0;" 
            class="navbar-brand  navbar-info">
-           {{ this.telefone }}
+           {{ this.phoneNumber }}
         </a>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
@@ -29,7 +29,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -83,7 +83,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -137,7 +137,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -193,7 +193,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -249,7 +249,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -303,7 +303,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 4px; color: red; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -360,7 +360,7 @@
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
-            <button style="border: none; background: none;" (click)="phone()">
+            <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
                 style="margin-right: 2px; color: red; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
@@ -427,21 +427,8 @@
 </div>
 
 <!-- login -->
-<div id="modalExperience" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle2}">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style='background-color:rgb(246, 253, 232)'>
-      <div class="modal-header" style='background-color:rgb(225, 240, 252)'>
-        <button type="button" class="btn btn-danger" (click)="closePopup2();">
-          Fechar
-        </button>
-      </div>
-      <div class="modal-body row">
-        <div class='row col-sm-12 mb-1'>
-          <div class='col-sm-12'>
-            <app-phone-number></app-phone-number>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle2}">
+  <div class='col-sm-12'>
+    <app-phone-number (phoneNumberChangeEvent)="handleEvent($event)"></app-phone-number>
   </div>
 </div>

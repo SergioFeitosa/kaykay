@@ -50,7 +50,7 @@ export class PhoneNumberComponent implements OnInit {
   displayStyle2: string = 'none'
   produto = {} as Produto;
 
-  @Output() phoneNumberChangeEvent = new EventEmitter<string>();
+  @Output() phoneNumberChangeEvent = new EventEmitter<number>();
   
   constructor(
     private router: Router,
@@ -135,7 +135,8 @@ export class PhoneNumberComponent implements OnInit {
         this.ngZone.run(() => {
           environment.telefone = this.phoneNumber;
           this.navBarService.telefoneOk = true
-          this.phoneNumberChangeEvent.emit(this.phoneNumber);
+
+          this.emitEvent();
           this.router.navigate(['/cardapioPrincipal'])
 
         });
@@ -147,6 +148,7 @@ export class PhoneNumberComponent implements OnInit {
     }
 
     emitEvent() {
+      console.log(' emitEvent phone ' + this.phoneNumber)
       this.phoneNumberChangeEvent.emit(this.phoneNumber);
     }
 

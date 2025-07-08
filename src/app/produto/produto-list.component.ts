@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { StarComponent } from '../star/star.component';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { environment } from '../../environments/environment.development';
-import { NavBarService } from '../nav-bar/nav-bar.service';
 import { LoginService } from '../services/login.service';
 
 
@@ -298,7 +297,8 @@ export class ProdutoListComponent implements OnInit {
   //   this.element8.removeAttribute('disabled');
   // }
 
-  handleEvent(event: any) {
+  handleEvent(event: number) {
+    console.log('phoneNumber ' + event)
     this.carrinhoCreate(this.produto.id!);
     this.router.navigate(['/carrinho']);
 
