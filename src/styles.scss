@@ -147,7 +147,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE */
 
-@media(min-width: 265px) and (max-width: 487px) {
+@media(min-width: 380px) and (max-width: 487px) {
 
   .desktop {
     display: none;
@@ -187,7 +187,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE PEQUENO */
 
-@media(min-width: 263px) and (max-width: 264px) {
+@media(min-width: 316px) and (max-width: 379px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
@@ -226,7 +226,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE PEQUENO2 */
 
-@media(max-width: 262px) {
+@media(max-width: 315px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';

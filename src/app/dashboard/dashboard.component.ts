@@ -20,14 +20,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     var data = JSON.parse(localStorage.getItem('user_data') || '{}');
     this.userData = data.user.phoneNumber;
-    console.log(this.userData);
   }
 
   logout() {
     return this.afAuth.signOut().then(() => {
       environment.login = false
       this.ngZone.run(() => {
-        this.router.navigate(['phonexxx']);
+        this.router.navigate(['phone']);
       });
     });
   }

@@ -58,8 +58,6 @@ export class CodeComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('code init' )
-
     firebase.initializeApp(environment.firebaseConfig);
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
   }

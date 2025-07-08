@@ -24,7 +24,6 @@ export class ProdutoReadComponent implements OnInit {
   Leitura(): void {
     this.produtoService.read().subscribe(produtos => {
       this.produtos = produtos;
-      console.log('produtos ');
     });
   }
 

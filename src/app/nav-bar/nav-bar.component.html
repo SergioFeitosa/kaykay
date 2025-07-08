@@ -1,25 +1,23 @@
 <!-- DESKTOP -->
 
 <div class='container mt-4 desktop'>
-  <nav class="navbar"
-       style="display: flex; justify-content: center; align-items: center;">
-    <div class="col-12" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      <a routerLink="cardapioPrincipal" 
-         routerLinkActive="active" 
-         class="navbar-brand  navbar-title"
-         style="font-size: 2em; margin-left: 0.5em; font-weight: bold;">
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+      <a routerLink="cardapioPrincipal" routerLinkActive="active" class="navbar-brand  navbar-title"
+        style="font-size: 2em; margin-left: 0.5em; font-weight: bold;">
         QUIOSQUERIDO
       </a>
       <div>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.phoneNumber }}
-        </a>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0; " class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
@@ -56,24 +54,23 @@
 <!-- LAPTOP -->
 
 <div class='container mt-4 laptop'>
-  <nav class="navbar" 
-       style="display: flex; justify-content: center; align-items: center">
-    <div class="col-12" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      <a  [routerLink]="['/cardapioPrincipal']" 
-          class="navbar-brand  navbar-title"
-          style="font-size: 1.8em; margin-left: 0.5em; font-weight: bold;">
-          QUIOSQUERIDO
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.8em; margin-left: 0.5em; font-weight: bold;">
+        QUIOSQUERIDO
       </a>
       <div>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
@@ -110,24 +107,23 @@
 <!-- LAPTOP2 -->
 
 <div class='container mt-4 laptop2'>
-  <nav class="navbar" 
-       style="display: flex; justify-content: center; align-items: center">
-    <div class="col-12" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      <a  [routerLink]="['/cardapioPrincipal']" 
-          class="navbar-brand  navbar-title"
-          style="font-size: 1.8em; margin-left: 0.5em;  font-weight: bold;">
-          QUIOSQUERIDO
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.8em; margin-left: 0.5em;  font-weight: bold;">
+        QUIOSQUERIDO
       </a>
       <div>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
@@ -164,26 +160,25 @@
 <!-- TABLET -->
 
 <div class='container mt-4 tablet'>
-  <nav class="navbar" 
-    style="display: flex;
+  <nav class="navbar" style="display: flex;
            justify-content: center; 
            align-items: center">
-    <div  class="col-12" 
-          style="display: flex; justify-content: space-between; align-items: center;">
-      <a [routerLink]="['/cardapioPrincipal']" 
-          class="navbar-brand  navbar-title"
-          style="font-size: 1.4em; margin-left: 0.5em; font-weight: bold;">
-          QUIOSQUERIDO
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.4em; margin-left: 0.5em; font-weight: bold;">
+        QUIOSQUERIDO
       </a>
       <div>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
@@ -220,26 +215,25 @@
 <!-- MOBILE -->
 
 <div class='container mt-4 mobile'>
-  <nav class="navbar" 
-       style="display: flex; justify-content: center; align-items: center">
-    <div class="col-12" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      
-      <a [routerLink]="['/cardapioPrincipal']" 
-            class="navbar-brand  navbar-title"
-      style="font-size: 0.9em; margin-left: 0.5em; font-weight: bold;">
-         QUIOSQUERIDO
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.2em; margin-left: 0.5em; font-weight: bold;">
+        QUIOSQUERIDO
       </a>
-      
+
       <div>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 1em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 1em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
@@ -276,36 +270,51 @@
 <!-- MOBILE PEQUENO -->
 <!--  -->
 <div class='container mt-4 mobile-pequeno'>
-  <nav  class="navbar" 
-        style="display: flex; justify-content: center; align-items: center">
-    <div class="col-12" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      <a [routerLink]="['/cardapioPrincipal']" 
-         class="navbar-brand  navbar-title"
-         style="font-size: 0.7em; margin-left: 0.5em; font-weight: bold;">
-         QUIOSQUERIDO
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.2em; margin-left: 0.5em; font-weight: bold;">
+        QUIOSQUERIDO
       </a>
       <div>
-        <a style="font-size: 0.5em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <a style="font-size: 0.5em; padding-bottom: 0;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
+        <div>
+          <a style="font-size: 0.5em;
+                    padding-bottom: 0;" 
+                    class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 0.5em; padding-bottom: 0;" class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {
             <button style="border: none; background: none;" (click)="logout();">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                style="margin-right: 4px; color: #01a501; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
+                style="margin-right: 4px; 
+                color: #01a501; 
+                width: 28px;
+                height: 36px; 
+
+                " 
+                aria-hidden="true" 
+                data-mat-icon-type="font"
                 title="Logout">account_circle</mat-icon>
             </button>
             } @else {
             <button style="border: none; background: none;" (click)="openPopup2()">
               <mat-icon _ngcontent-yfk-c11="" role="img" class="mat-icon notranslate material-icons"
-                style="margin-right: 4px; color: red; width: 0.8em;" aria-hidden="true" data-mat-icon-type="font"
+                style="
+                  margin-right: 4px; 
+                  color: red; 
+                  width: 28px;
+                  height: 28px; 
+                  " 
+                aria-hidden="true" 
+                data-mat-icon-type="font"
                 title="Login">account_circle</mat-icon>
             </button>
             }
@@ -329,28 +338,27 @@
 
 <!-- MOBILE PEQUENO2 -->
 <div class='container mt-4 mobile-pequeno2'>
-  <nav  class="navbar" 
-        style="display: flex; justify-content: center; align-items: center">
-    <div class="col-12 row" 
-         style="display: flex; justify-content: space-between; align-items: center;">
-      <a [routerLink]="['/cardapioPrincipal']" 
-         class="navbar-brand  navbar-title"
-         style="font-size: 0.7em; margin-left: 0.5em; font-weight: bold; display: flex; justify-content: center; align-items: center">
-         QUIOSQUERIDO
+  <nav class="navbar" style="display: flex; justify-content: center; align-items: center">
+    <div class="col-12 row" style="display: flex; justify-content: space-between; align-items: center;">
+      <a [routerLink]="['/cardapioPrincipal']" class="navbar-brand  navbar-title"
+        style="font-size: 1.2em; margin-left: 0.5em; font-weight: bold; display: flex; justify-content: center; align-items: center">
+        QUIOSQUERIDO
       </a>
       <BR>
 
       <div>
-        <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;" 
-           class="navbar-brand  navbar-info">
-           {{ this.local }}
-        </a>
-        <BR>
-        <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;" 
-           class="navbar-brand  navbar-info">
-           {{ '11 * **** 1256'}}
-        </a>
-        <BR>
+        <div>
+          <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;"
+            class="navbar-brand  navbar-info">
+            {{ this.local }}
+          </a>
+        </div>
+        <div>
+          <a style="font-size: 0.7em; padding-bottom: 0;display: flex; justify-content: center; align-items: center;"
+            class="navbar-brand  navbar-info">
+            {{ +this.phoneNumber ? +this.phoneNumber : ''}}
+          </a>
+        </div>
         <div style="display: flex; justify-content: center; align-items: center;">
           <a (click)="loginService.userStatus()">
             @if (loginService.userLogin) {

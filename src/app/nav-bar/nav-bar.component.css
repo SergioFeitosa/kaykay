@@ -15,14 +15,16 @@ section {
   color: #0509fc;
   font-weight: bold;
   font-size: 2em;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .navbar-info {
   color: #0509fc;
   font-weight: bold;
   font-size: 2em;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
 
 .navbar-button {

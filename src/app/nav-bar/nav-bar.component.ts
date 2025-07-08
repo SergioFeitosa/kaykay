@@ -190,8 +190,8 @@ export class NavBarComponent implements OnInit {
     }
       
     handleEvent(event: number) {
-    this.telefone = +event;
-    this.phoneNumber = +event;
+    this.telefone = event;
+    this.phoneNumber = event;
     this.closePopup2();
 
   }

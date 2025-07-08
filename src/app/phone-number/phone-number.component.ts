@@ -148,7 +148,6 @@ export class PhoneNumberComponent implements OnInit {
     }
 
     emitEvent() {
-      console.log(' emitEvent phone ' + this.phoneNumber)
       this.phoneNumberChangeEvent.emit(this.phoneNumber);
     }
 
