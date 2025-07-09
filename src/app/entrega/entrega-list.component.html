@@ -52,8 +52,8 @@
         <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.local }} </td>
         <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.telefone }} </td>
         <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.isencao }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.dataCriacao | date:'hh:mm:ss' }} </td>
-        <td style='color: blue; font-weight: 400;'>{{ entrega.data_criacao | date:'hh:mm:ss' }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ entrega.pedido.dataCriacao | date:'HH:mm:ss' }} </td>
+        <td style='color: blue; font-weight: 400;'>{{ entrega.data_criacao | date:'HH:mm:ss' }} </td>
         <td class="text-center">
           <button (click)="openPopup( entrega.id! )">
             <img src='/assets/images/lupa.jpg' class="figure-img img-fluid
@@ -152,11 +152,11 @@
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Horário do Pedido:</span>
-        <span>{{ this.pedido.dataCriacao | date:'hh:mm:ss' }} </span>
+        <span>{{ this.pedido.dataCriacao | date:'HH:mm:ss' }} </span>
       </div>
       <div class="modal-body row">
         <span style='font-weight: bolder;'>Horário da Entrega:</span>
-        <span>{{ this.entrega.data_criacao | date:'hh:mm:ss' }} </span>
+        <span>{{ this.entrega.data_criacao | date:'HH:mm:ss' }} </span>
       </div>
 
       <div class="modal-body">

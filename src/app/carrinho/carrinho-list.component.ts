@@ -44,6 +44,10 @@ export class CarrinhoListComponent implements OnInit {
   _categoryId: string = '';
 
   filteredCarrinhos: Carrinho[] = [];
+
+  sortedCarrinhos: any[] = [];
+
+
   carrinhos: Carrinho[] = [];
   // tslint:disable-next-line:variable-name
   pedido = {} as Pedido;
@@ -90,7 +94,7 @@ export class CarrinhoListComponent implements OnInit {
     environment.fundoColoridoCardapio = false;
     environment.fundoColoridoPedido = true;
     environment.fundoColoridoCozinha = false;
-    environment.fundoColoridoBar = false;
+    environment.fundoColoridoBar = false; 
     environment.fundoColoridoEntrega = false;
     environment.fundoColoridoConta = false;
 
@@ -101,6 +105,7 @@ export class CarrinhoListComponent implements OnInit {
         this.carrinhos = carrinhos;
         this.filteredCarrinhos = this.carrinhos
           .filter((carrinho: Carrinho) => carrinho.enviado !== true);
+        this.sortCarrinhosByHorarioPedido();
       });
 
     } else {
@@ -110,9 +115,24 @@ export class CarrinhoListComponent implements OnInit {
         this.filteredCarrinhos = this.carrinhos
           .filter((carrinho: Carrinho) => carrinho.telefone - environment.telefone === 0)
           .filter((carrinho: Carrinho) => carrinho.enviado !== true);
+        this.sortCarrinhosByHorarioPedido();
+
       });
     }
   }
+
+  sortCarrinhosByName() {
+    this.sortedCarrinhos = [...this.filteredCarrinhos].sort((a, b) => a.produto.nome.localeCompare(b.produto.nome));
+  }
+
+  sortCarrinhosByPrice() {
+    this.sortedCarrinhos = [...this.filteredCarrinhos].sort((a, b) => a.produto.preco - b.produto.preco);
+  }
+
+  sortCarrinhosByHorarioPedido() {
+    this.sortedCarrinhos = [...this.filteredCarrinhos].sort((a, b) => new Date(a.data_criacao).getTime() - new Date(b.data_criacao).getTime());
+  }
+
 
   // tslint:disable-next-line:typedef
   get filter() {
@@ -138,6 +158,8 @@ export class CarrinhoListComponent implements OnInit {
           .filter((carrinho: Carrinho) => carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     }
+    this.sortCarrinhosByName();
+
   }
   // tslint:disable-next-line:quotemark
   // tslint:disable-next-line:member-ordering

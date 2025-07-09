@@ -140,6 +140,7 @@ export class ProdutoListComponent implements OnInit {
     this.sortedProducts = [...this.filteredProdutos].sort((a, b) => a.preco - b.preco);
   }
 
+
   // tslint:disable-next-line:typedef
   onOtpChange(otp: string) {
     this.otp = otp;
@@ -173,8 +174,7 @@ export class ProdutoListComponent implements OnInit {
       this.produtos
         .filter((produto: Produto) => produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
-    this.sortProductsByName();
-    
+    this.sortProductsByName();        
 
   }
 

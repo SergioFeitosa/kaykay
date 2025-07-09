@@ -14,8 +14,13 @@
     <thead>
       <tr>
         <th style='width: 1%;'></th>
-        <th style='width: 11%'> <a (click)="sortProductsByName()" style="cursor: pointer;">Item</a></th>
-        <th style='width: 5%'> <a (click)="sortProductsByPrice()" style="cursor: pointer;">Preço</a></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
+
       </tr>
     </thead>
     <tbody>
@@ -25,9 +30,9 @@
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }}</td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em; cursor: pointer'>{{ produto.nome }}</td>
+         
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -40,21 +45,24 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%;'> </th>
-        <th style='width: 10%'> Nome</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -67,13 +75,17 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%;'> </th>
-        <th style='width: 10%'> Nome</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
@@ -81,7 +93,7 @@
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
           }} </td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -95,13 +107,17 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%;'> Imagem</th>
-        <th style='width: 10%'> Nome</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id!)">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id!)">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
@@ -109,7 +125,7 @@
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
           }} </td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -122,13 +138,17 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%;'> Imagem</th>
-        <th style='width: 10%'> Nome</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
@@ -136,7 +156,7 @@
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
           }} </td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -149,13 +169,17 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%;'> Imagem</th>
-        <th style='width: 10%'> Nome</th>
-        <th style='width: 5%'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
@@ -163,7 +187,7 @@
         </td>
         <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
           }} </td>
-        <td style='width: 1%; font-size: 12px;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -176,13 +200,17 @@
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
       <tr>
-        <th style='width: 2%; font-size: 0.7em;'> Imagem</th>
-        <th style='width: 10%; font-size: 0.7em;'> Nome</th>
-        <th style='width: 5%; font-size: 0.7em;'> Preço</th>
+        <th style='width: 1%;'></th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+        </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+          <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let produto of filteredProdutos' (click)="openPopup(produto.id! )">
+      <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
         <td style='padding-right: 0px; display: flex; justify-content: center;
           align-items: center; '>
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
@@ -190,7 +218,7 @@
         </td>
         <td style='width: 1%; font-size: 0.5em; cursor: pointer'>{{ produto.nome
           }} </td>
-        <td style='width: 1%; font-size: 0.5em;'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; font-size: 0.5em; cursor: pointer'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>

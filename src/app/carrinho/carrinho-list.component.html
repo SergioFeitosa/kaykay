@@ -14,18 +14,18 @@
     <thead>
       <tr>
         <th style='width: 5%'> </th>
-        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> ITEM </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
         <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
         <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
         <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
-        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> HORA PEDIDO</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
         <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
         <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
         <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let carrinho of filteredCarrinhos' style="cursor: pointer; ">
+      <tr *ngFor='let carrinho of sortedCarrinhos' style="cursor: pointer; ">
         
         <td  (click)="openPopup(carrinho.id! )">
           <img [src]='carrinho.produto.imagem_url' class="figure-img img-fluid rounded"
@@ -159,7 +159,7 @@
           {{ carrinho.local }} 
         </td>
         <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7; font-size: 0.8em;"  class="text-center">
-          {{ carrinho.data_criacao | date:'hh:mm:ss'}} 
+          {{ carrinho.data_criacao | date:'HH:mm:ss'}} 
         </td>
         <td style='color: #4f63e7; font-weight: 400;font-size: 0.8em;'>{{ carrinho.telefone }} </td>
 
@@ -181,13 +181,14 @@
     <thead>
       <tr>
         <th style='width: 5%'> </th>
-        <th style='width: 25%; color: #2494fc;'> Item </th>
-        <th style='width: 5%;  color: #2494fc;'> Quantidade</th>
-        <th style='width: 10%; color: #2494fc;'> Observacao</th>
-        <th style='width: 5%;  color: #2494fc;'> Local</th>
-        <th style='width: 5%;  color: #2494fc;'> Hora</th>
-        <th style='width: 20%; color: #2494fc;' class="text-center"> Status </th>
-
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -293,7 +294,13 @@
           {{ carrinho.local }} 
         </td>
         <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
-          {{ carrinho.data_criacao | date:'hh:mm:ss'}} 
+          {{ carrinho.data_criacao | date:'HH:mm:ss'}} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
         </td>
         <td  (click)="openPopup(carrinho.id! )"class="text-center">
           <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
@@ -312,12 +319,14 @@
     <thead>
       <tr>
         <th style='width: 5%'> </th>
-        <th style='width: 25%; color: #2494fc;'> Item </th>
-        <th style='width: 5%;  color: #2494fc;'> Quantidade</th>
-        <th style='width: 10%; color: #2494fc;'> Observacao</th>
-        <th style='width: 5%;  color: #2494fc;'> Local</th>
-        <th style='width: 5%;  color: #2494fc;'> Hora</th>
-        <th style='width: 20%; color: #2494fc;' class="text-center"> Status </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -420,7 +429,14 @@
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
+        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
+        </td>
+
         <td  name="status"  id="status" (click)="openPopup(carrinho.id! )"class="text-center">
           <p style="margin: 0; color: #4f63e7">
             <small style="font-size: 0.8em;">{{carrinho.status }}</small>
@@ -437,13 +453,15 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%'> </th>
-        <th style='width: 25%; color: greenyellow'> Item </th>
-        <th style='width: 5%;  color: #2494fc;'> Quantidade</th>
-        <th style='width: 10%; color: #2494fc;'> Observacao</th>
-        <th style='width: 5%;  color: #2494fc;'> Local</th>
-        <th style='width: 5%;  color: #2494fc;'> Hora</th>
-        <th style='width: 15%; color: #2494fc;' class="text-center"> Status </th>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -541,7 +559,14 @@
             >
         </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
+        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
+        </td>
+
         <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
             {{carrinho.status }}
         </td>
@@ -556,13 +581,15 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%'> </th>
-        <th style='width: 25%; color: red'> Item </th>
-        <th style='width: 5%;  color: #2494fc;'> Quantidade</th>
-        <th style='width: 10%; color: #2494fc;'> Observacao</th>
-        <th style='width: 5%;  color: #2494fc;'> Local</th>
-        <th style='width: 5%;  color: #2494fc;'> Hora</th>
-        <th style='width: 15%; color: #2494fc;' class="text-center"> Status </th>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -660,7 +687,14 @@
             >
         </td>
         <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
+        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
+        </td>
+
         <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
             {{carrinho.status }}
         </td>
@@ -675,10 +709,15 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%; font-size: 10px;color: yellow;'> </th>
-        <th style='width: 30%; font-size: 10px;color: #2494fc;'> Item </th>
-        <th style='width: 10%; font-size: 10px;color: #2494fc;'> Qtde</th>
-        <th style='width: 10%; font-size: 10px;color: #2494fc;' class="text-center"> Status </th>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -781,7 +820,14 @@
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
+        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
+        </td>
+
         <td  (click)="openPopup(carrinho.id! )"class="text-center">
           <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
               carrinho.status }}</small></p>
@@ -797,10 +843,15 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th style='width: 10%; font-size: 10px;color: #2494fc;'> </th>
-        <th style='width: 30%; font-size: 10px;color: #2494fc;'> Item </th>
-        <th style='width: 10%; font-size: 10px;color: #2494fc;'> Qtde</th>
-        <th style='width: 10%; font-size: 10px;color: #2494fc;' class="text-center"> Status </th>
+        <th style='width: 5%'> </th>
+        <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> <a (click)="sortCarrinhosByName()" style="cursor: pointer;">ITEM</a> </th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> QUANTIDADE</th>
+        <th style='width: 10%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> OBSERVAÇÃO</th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> LOCAL</th>
+        <th style='width: 8%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> <a (click)="sortCarrinhosByHorarioPedido()" style="cursor: pointer;">HORA PEDIDO</a></th>
+        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> TELEFONE</th>
+        <th style='width: 3%;  color: #2494fc; font-weight: 500;font-size: 0.8em;'> CORTESIA</th>
+        <th style='width: 18%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> STATUS </th>
       </tr>
     </thead>
     <tbody>
@@ -903,7 +954,14 @@
         </td>
 
         <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'hh:mm:ss'}} </td>
+        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.telefone }} 
+        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+          {{ carrinho.isencao }} 
+        </td>
+
         <td  (click)="openPopup(carrinho.id! )"class="text-center">
           <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
               carrinho.status }}</small></p>
