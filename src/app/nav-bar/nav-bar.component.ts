@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../../environments/environment.development';
-import { MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../services/login.service';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
@@ -20,7 +20,7 @@ import firebase from 'firebase/compat/app';
     MatIconModule,
     RouterLink,
     PhoneNumberComponent
-    
+
   ],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
@@ -39,7 +39,7 @@ export class NavBarComponent implements OnInit {
   //login: boolean = false;
 
   login: boolean = false;
-  
+
   userData: any;
 
   loginService = inject(LoginService);
@@ -52,19 +52,19 @@ export class NavBarComponent implements OnInit {
   verify: any;
 
   telefoneValue: number = 0;
-  
+
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
     private ngZone: NgZone,
 
   ) {
-   }
+  }
 
   currentValue: string = '';
 
   ngOnInit(): void {
-    
+
     firebase.initializeApp(environment.firebaseConfig);
 
     this.local = environment.local;
@@ -81,115 +81,115 @@ export class NavBarComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  
-      // tslint:disable-next-line:typedef
-      onOtpChange(otp: string) {
-        this.otp = otp;
-      }
-    
-    getOTP() {
 
-      this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
-  
-      firebase.
-        auth().
-        signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
-        then((confirmationResult) => {
-          this.login = environment.login;
-          window.localStorage.setItem('verificationId',
-              JSON.stringify(confirmationResult.verificationId));
-              //this.router.navigate(['/code']);
-              //this.validarCodigo(this.produto.id);
-            }).catch((error) => {
-              setTimeout(() => {
-                window.location.reload();
-              }, 5000);
-            });
-    }
-  
-  
-  
-    // tslint:disable-next-line:quotemark
-    // tslint:disable-next-line:member-ordering
-    displayStyle = 'none';
-  
-    // tslint:disable-next-line:typedef
-    openPopup(): void {
-      this.displayStyle = 'block';
-    } 
-  
-    // tslint:disable-next-line:typedef
-    closePopup() {
-      this.displayStyle = 'none';
-    }
-  
-    // tslint:disable-next-line:quotemark
-    // tslint:disable-next-line:member-ordering
-    displayStyle2 = 'none';
-  
-    // tslint:disable-next-line:typedef
-    openPopup2(): void {
-      this.displayStyle2 = 'block';
-    }
-  
-    // tslint:disable-next-line:typedef
-    closePopup2() { 
-      this.displayStyle = 'none';
-      this.displayStyle2 = 'none';
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
-  
-    }
+  // tslint:disable-next-line:typedef
+  onOtpChange(otp: string) {
+    this.otp = otp;
+  }
 
-    validarTelefone(): void {
-  
-      if (this.telefone > 0) {
-        environment.telefone = this.telefone;
-        this.enviarCodigo();
-      }
-    }
-  
-  
-  
-    enviarCodigo(): void {
-      // tslint:disable-next-line:comment-format
-      //const telefone = this.navForm.get('telefone').value;
-      const codigoGerado = Math.random() * this.telefone;
-      this.navBarService.enviarCodigo(this.telefone.toString(), codigoGerado.toString());
-  
-    }
-  
-    validarCodigo(): void {
+  getOTP() {
 
-      // tslint:disable-next-line:semicolon
-        // this.updateClassDisabled();  
-        this.closePopup2();
-        this.closePopup();
-  
-    }
+    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
-    logout() {
-      return this.afAuth.signOut().then(() => {
-        this.loginService.logout()
-        this.ngZone.run(() => {
-          this.router.navigate(['']);
-        });
+    firebase.
+      auth().
+      signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
+      then((confirmationResult) => {
+        this.login = environment.login;
+        window.localStorage.setItem('verificationId',
+          JSON.stringify(confirmationResult.verificationId));
+        //this.router.navigate(['/code']);
+        //this.validarCodigo(this.produto.id);
+      }).catch((error) => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
       });
+  }
+
+
+
+  // tslint:disable-next-line:quotemark
+  // tslint:disable-next-line:member-ordering
+  displayStyle = 'none';
+
+  // tslint:disable-next-line:typedef
+  openPopup(): void {
+    this.displayStyle = 'block';
+  }
+
+  // tslint:disable-next-line:typedef
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  // tslint:disable-next-line:quotemark
+  // tslint:disable-next-line:member-ordering
+  displayStyle2 = 'none';
+
+  // tslint:disable-next-line:typedef
+  openPopup2(): void {
+    this.displayStyle2 = 'block';
+  }
+
+  // tslint:disable-next-line:typedef
+  closePopup2() {
+    this.displayStyle = 'none';
+    this.displayStyle2 = 'none';
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+
+  }
+
+  validarTelefone(): void {
+
+    if (this.telefone > 0) {
+      environment.telefone = this.telefone;
+      this.enviarCodigo();
     }
-      
+  }
 
 
-    phone() {
-      return this.afAuth.signOut().then(() => {
-        this.ngZone.run(() => {
-          this.router.navigate(['/phone']); 
-        });
+
+  enviarCodigo(): void {
+    // tslint:disable-next-line:comment-format
+    //const telefone = this.navForm.get('telefone').value;
+    const codigoGerado = Math.random() * this.telefone;
+    this.navBarService.enviarCodigo(this.telefone.toString(), codigoGerado.toString());
+
+  }
+
+  validarCodigo(): void {
+
+    // tslint:disable-next-line:semicolon
+    // this.updateClassDisabled();  
+    this.closePopup2();
+    this.closePopup();
+
+  }
+
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      this.loginService.logout()
+      this.ngZone.run(() => {
+        this.router.navigate(['']);
       });
-    }
-      
-    handleEvent(event: number) {
+    });
+  }
+
+
+
+  phone() {
+    return this.afAuth.signOut().then(() => {
+      this.ngZone.run(() => {
+        this.router.navigate(['/phone']);
+      });
+    });
+  }
+
+  handleEvent(event: number) {
     this.telefone = event;
     this.phoneNumber = event;
     this.closePopup2();

@@ -60,6 +60,9 @@ export class PedidoListComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   _filterBy: string = '';
 
+  sortedPedidos: Pedido[] = [];
+
+
   constructor(
     private pedidoService: PedidoService,
     private carrinhoService: CarrinhoService,
@@ -86,7 +89,10 @@ export class PedidoListComponent implements OnInit {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida');
+          .filter((pedido: Pedido) => pedido.status.toLowerCase() === 'confirmado')
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida')
+          .sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+        this.sortedPedidos = this.filteredPedidos;
         });
 
       this.updateSubscription = interval(5000).subscribe(
@@ -95,7 +101,10 @@ export class PedidoListComponent implements OnInit {
             this.pedidos = pedidos;
             this.filteredPedidos = this.pedidos
               .filter((pedido: Pedido) => pedido.enviado !== true)
-              .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida');
+              .filter((pedido: Pedido) => pedido.status.toLowerCase() === 'confirmado')
+              .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida')
+              .sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+        this.sortedPedidos = this.filteredPedidos;
           });
         }); 
 
@@ -105,10 +114,27 @@ export class PedidoListComponent implements OnInit {
         this.pedidos = pedidos;
         this.filteredPedidos = this.pedidos.filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
           .filter((pedido: Pedido) => pedido.enviado !== true)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida');
+          .filter((pedido: Pedido) => pedido.status.toLowerCase() === 'confirmado')
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida')
+          .sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+        this.sortedPedidos = this.filteredPedidos;
       });
+
     }
   }
+
+  sortPedidosByName() {
+    this.sortedPedidos = [...this.filteredPedidos].sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+  }
+
+  sortPedidosByPrice() {
+    this.sortedPedidos = [...this.filteredPedidos].sort((a, b) => a.carrinho.produto.preco - b.carrinho.produto.preco);
+  }
+
+  sortPedidosByHorarioPedido() {
+    this.sortedPedidos = [...this.filteredPedidos].sort((a, b) => new Date(a.carrinho.data_criacao).getTime() - new Date(b.carrinho.data_criacao).getTime());
+  }
+
 
   // tslint:disable-next-line:typedef
   get filter() {
@@ -124,7 +150,9 @@ export class PedidoListComponent implements OnInit {
         this.pedidos
           .filter((pedido: Pedido) => pedido.enviado !== true)
           .filter((pedido: Pedido) => pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida')
+          .sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+      this.sortedPedidos = this.filteredPedidos;
 
     } else {
 
@@ -133,7 +161,9 @@ export class PedidoListComponent implements OnInit {
           .filter((pedido: Pedido) => pedido.enviado !== true)
           .filter((pedido: Pedido) => pedido.telefone - environment.telefone === 0)
           .filter((pedido: Pedido) => pedido.carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1)
-          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida');
+          .filter((pedido: Pedido) => pedido.carrinho.produto.categoria !== 'bebida')
+          .sort((a, b) => a.carrinho.produto.nome.localeCompare(b.carrinho.produto.nome));
+      this.sortedPedidos = this.filteredPedidos;
 
     }
   }

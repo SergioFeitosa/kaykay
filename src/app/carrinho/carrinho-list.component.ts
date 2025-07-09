@@ -47,7 +47,6 @@ export class CarrinhoListComponent implements OnInit {
 
   sortedCarrinhos: any[] = [];
 
-
   carrinhos: Carrinho[] = [];
   // tslint:disable-next-line:variable-name
   pedido = {} as Pedido;
@@ -158,7 +157,7 @@ export class CarrinhoListComponent implements OnInit {
           .filter((carrinho: Carrinho) => carrinho.produto.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
 
     }
-    this.sortCarrinhosByName();
+    this.sortCarrinhosByName(); 
 
   }
   // tslint:disable-next-line:quotemark
