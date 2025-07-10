@@ -87,25 +87,25 @@ export class NavBarComponent implements OnInit {
     this.otp = otp;
   }
 
-  getOTP() {
+  // getOTP() {
 
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
+  //   this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', { size: 'invisible' });
 
-    firebase.
-      auth().
-      signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
-      then((confirmationResult) => {
-        this.login = environment.login;
-        window.localStorage.setItem('verificationId',
-          JSON.stringify(confirmationResult.verificationId));
-        //this.router.navigate(['/code']);
-        //this.validarCodigo(this.produto.id);
-      }).catch((error) => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 5000);
-      });
-  }
+  //   firebase.
+  //     auth().
+  //     signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).
+  //     then((confirmationResult) => {
+  //       this.login = environment.login;
+  //       window.localStorage.setItem('verificationId',
+  //         JSON.stringify(confirmationResult.verificationId));
+  //       //this.router.navigate(['/code']);
+  //       //this.validarCodigo(this.produto.id);
+  //     }).catch((error) => {
+  //       setTimeout(() => {
+  //         window.location.reload();
+  //       }, 5000);
+  //     });
+  // }
 
 
 
