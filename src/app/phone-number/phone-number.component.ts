@@ -40,7 +40,7 @@ export class PhoneNumberComponent implements OnInit {
   // tslint:disable-next-line:quotemark
   // tslint:disable-next-line:member-ordering
   displayCode = 'none';
-
+  teste = 'teste'
   otp!: string;
   verify: any;
   auth: any;
