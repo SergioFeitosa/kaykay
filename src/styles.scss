@@ -35,7 +35,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mobile-pequeno {
   display: none;
 }
-.mobile-pequeno2 {
+.mobile-pequeno2 { 
   display: none;
 }
 
@@ -114,7 +114,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* TABLET  */
 
-@media(min-width: 488px) and (max-width: 767px) {
+@media(min-width: 576px) and (max-width: 767px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
@@ -147,8 +147,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* MOBILE */
 
-@media(min-width: 380px) and (max-width: 487px) {
-
+@media(min-width: 380px) and (max-width: 575px) {
+ 
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
@@ -172,7 +172,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .mobile {
     display: block;
     background-image: '../../assets/images/color-azul-mar.png';
-  }
+    margin-left: 1em;
+    width: 30em;
+    
+  } 
 
   .mobile-pequeno {
     display: none;
@@ -216,6 +219,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .mobile-pequeno {
     display: block;
     background-image: '../../assets/images/color-azul-mar.png';
+    width: 20em;
+    margin-left: 1em;
+
   }
 
   .mobile-pequeno2 {
@@ -260,6 +266,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .mobile-pequeno2 {
     display: block;
     background-image: '../../assets/images/color-azul-mar.png';
+    margin-left: 1em;
+    width: 20em;
   }
 }
 

@@ -298,7 +298,6 @@ export class ProdutoListComponent implements OnInit {
   // }
 
   handleEvent(event: number) {
-    console.log('phoneNumber ' + event)
     this.carrinhoCreate(this.produto.id!);
     this.router.navigate(['/carrinho']);
 

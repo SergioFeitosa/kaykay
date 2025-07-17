@@ -1,15 +1,15 @@
 <app-caminho-menu></app-caminho-menu>
 
-<div class='form-group row container mt-5'>
-  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
-    Filter By:
-    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 30em;">
-  </label>
-</div>
 
 <!-- DESKTOP -->
 
 <div class='table-responsive desktop'>
+  <div class='form-group row container mt-5'>
+    <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+      Filter By:
+      <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 30em;">
+    </label>
+  </div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -25,14 +25,13 @@
     </thead>
     <tbody>
       <tr *ngFor='let produto of sortedProducts ' (click)="openPopup(produto.id! )">
-        <td style='padding-right: 0px; display: flex; justify-content: center;
-          align-items: center; '>
+        <td >
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em; cursor: pointer'>{{ produto.nome }}</td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }}</td>
          
-        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -41,6 +40,12 @@
 <!-- LAPTOP -->
 
 <div class='table-responsive laptop'>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 30em;">
+  </label>
+</div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -61,8 +66,8 @@
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome }} </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -71,6 +76,12 @@
 <!-- LAPTOP2 -->
 
 <div class='table-responsive laptop2'>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 30em;">
+  </label>
+</div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -91,9 +102,8 @@
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -103,6 +113,12 @@
 <!-- TABLET -->
 
 <div class='table-responsive tablet'>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 20em;">
+  </label>
+</div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -118,14 +134,11 @@
     </thead>
     <tbody>
       <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id!)">
-        <td style='padding-right: 0px; display: flex; justify-content: center;
-          align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
-            style="margin: 0;">
+        <td style='padding-right: 0px; display: flex; justify-content: center; align-items: center; '>
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70" style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -134,29 +147,32 @@
 <!-- MOBILE -->
 
 <div class='table-responsive mobile'>
+<div class='form-group row container  mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 15em;">
+  </label>
+</div>
 
-  <table class="table table-bordered table-striped" style="margin-top: 1em;">
+  <table class="table table-bordered table-striped" style="margin-top: 1em; width: 30em;">
     <thead>
       <tr>
         <th style='width: 1%;'></th>
         <th style='width: 25%; color: #2494fc; font-weight: 500;font-size: 0.8em;'> 
-          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEM</a> 
+          <a (click)="sortProductsByName()" style="cursor: pointer;">ITEMxx</a> 
         </th>
-        <th style='width: 5%;  color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
+        <th style='width: 5%; color: #2494fc; font-weight: 500;font-size: 0.8em;' class="text-center"> 
           <a (click)="sortProductsByPrice()" style="cursor: pointer;">PREÇO</a>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
-        <td style='padding-right: 0px; display: flex; justify-content: center;
-          align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
-            style="margin: 0;">
+        <td style='padding-right: 0px; display: flex; justify-content: center; align-items: center; '>
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70" style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -165,6 +181,12 @@
 <!-- MOBILE PEQUENO -->
 
 <div class='table-responsive mobile-pequeno'>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 12em;">
+  </label>
+</div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -180,14 +202,11 @@
     </thead>
     <tbody>
       <tr *ngFor='let produto of sortedProducts' (click)="openPopup(produto.id! )">
-        <td style='padding-right: 0px; display: flex; justify-content: center;
-          align-items: center; '>
-          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
-            style="margin: 0;">
+        <td style='padding-right: 0px; display: flex; justify-content: center; align-items: center; '>
+          <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70" style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 12px; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>
@@ -196,6 +215,12 @@
 <!-- MOBILE PEQUENO2 -->
 
 <div class='table-responsive mobile-pequeno2'>
+<div class='form-group row container mt-5'>
+  <label class='col-sm-2 col-form-label' style="width: 6em; color: #2494fc">
+    Filter By:
+    <input name="filter1"  [(ngModel)]='filter' class='form-control' style="width: 10em;">
+  </label>
+</div>
 
   <table class="table table-bordered table-striped" style="margin-top: 1em;">
     <thead>
@@ -216,9 +241,8 @@
           <img [src]='produto.imagem_url' class="figure-img img-fluid rounded" alt="..." width="70" height="70"
             style="margin: 0;">
         </td>
-        <td style='width: 1%; font-size: 0.5em; cursor: pointer'>{{ produto.nome
-          }} </td>
-        <td style='width: 1%; font-size: 0.5em; cursor: pointer'>R$ {{ produto.preco }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>{{ produto.nome }} </td>
+        <td style='width: 1%; color: #4f63e7; font-weight: 500;font-size: 0.8em;'>R$ {{ produto.preco }} </td>
       </tr>
     </tbody>
   </table>

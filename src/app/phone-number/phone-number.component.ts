@@ -111,7 +111,8 @@ export class PhoneNumberComponent implements OnInit {
       //this.router.navigate(['/cardapioPrincipal'])
     }).catch((error) => {
       //send sms
-      //alert('erro')
+      alert('erro no numero do telefone. Tente Novamente!!!')
+      this.router.navigate(['/cardapioPrincipal'])
       interval(1000).subscribe(n => window.location.reload());
     })
   }
@@ -142,6 +143,7 @@ export class PhoneNumberComponent implements OnInit {
         });
       })
       .catch((error) => {
+        alert('erro no código enviado. Tente Novamente!!!')
         interval(1000).subscribe(n => window.location.reload());
       });
       this.loginService.login()

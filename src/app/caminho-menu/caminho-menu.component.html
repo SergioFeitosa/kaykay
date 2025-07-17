@@ -399,7 +399,7 @@
   
   <div class="container mobile">
     <div class="content">
-      <mat-grid-list cols="5" rowHeight="6em">
+      <mat-grid-list cols="5" rowHeight="6em" style="margin-right: 1em;">
         <mat-grid-tile>
           <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
           <mat-card class="example-card" 
@@ -407,7 +407,7 @@
                     style=" border: 1px solid blue; 
                             width: 4em;
                             align-items: center;
-                             box-shadow: 0 4px 6px #4cc5fd;
+                            box-shadow: 0 4px 6px #4cc5fd;
                             ">
             <mat-card-title style="font-size: 0.7em;">Cardápio</mat-card-title>
             <mat-card-subtitle style="font-size: 0.8em;">Menu</mat-card-subtitle>
@@ -495,17 +495,17 @@
   <!-- MOBILE-PEQUENO -->
   
   <div class="container mobile-pequeno">
-    <div class="content">
-      <mat-grid-list cols="5" rowHeight="5em">
+    <div class="content" >
+      <mat-grid-list cols="5" rowHeight="5em"  style="margin-right: 1em;">
         <mat-grid-tile>
           <a [routerLink]="['/cardapioPrincipal']" routerLinkActive="active" class="nav-link">
           <mat-card class="example-card" 
                     [ngStyle]="{'background-color':fundoColoridoCardapio ? '#fad42e' : ''}" 
                     style=" border: 1px solid blue; 
-                            width: 2.6em;
+                            width: 3em;
                             height: 4em;
                             align-items: center;
-                             box-shadow: 0 4px 6px #4cc5fd;
+                            box-shadow: 0 4px 6px #4cc5fd;
                             ">
             <mat-card-title style="font-size: 0.6em; height: 1.5em;">Cardápio</mat-card-title>
             <mat-card-subtitle style="font-size: 0.7em; height: 1.5em;">Menu</mat-card-subtitle>
@@ -520,7 +520,7 @@
           <mat-card class="example-card" 
                     [ngStyle]="{'background-color':fundoColoridoPedido ? '#fad42e' : ''}"  
                     style=" border: 1px solid blue; 
-                            width: 2.6em;
+                            width: 3em;
                             height: 4em;
                             align-items: center;">
             <mat-card-title style="font-size: 0.6em; height: 1.5em;">Pedido</mat-card-title>
@@ -536,7 +536,7 @@
           <mat-card class="example-card" 
                     [ngStyle]="{'background-color':fundoColoridoPedido ? '#fad42e' : ''}"  
                     style=" border: 1px solid blue; 
-                            width: 2.6em;
+                            width: 3em;
                             height: 4em;
                             align-items: center; 
                             box-shadow: 0 4px 6px #4cc5fd;
@@ -555,7 +555,7 @@
           <mat-card class="example-card" 
                     [ngStyle]="{'background-color':fundoColoridoPedido ? '#fad42e' : ''}"  
                     style="border: 1px solid blue; 
-                            width: 2.6em;
+                            width: 3em;
                             height: 4em;
                            align-items: center;">
             <mat-card-title  style="font-size: 0.6em; height: 1.5em;">Bar</mat-card-title>
@@ -572,7 +572,7 @@
           <mat-card class="example-card" 
                     [ngStyle]="{'background-color':fundoColoridoPedido ? '#fad42e' : ''}"  
                     style=" border: 1px solid blue; 
-                            width: 2.6em;
+                            width: 3em;
                             height: 4em;
                             align-items: center; 
                             box-shadow: 0 4px 6px #4cc5fd;
@@ -586,7 +586,7 @@
           </mat-card>
           </a>
         </mat-grid-tile>
-      </mat-grid-list>
+      </mat-grid-list> 
     </div>
   </div>
 

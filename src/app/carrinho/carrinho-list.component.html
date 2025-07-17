@@ -155,9 +155,7 @@
             >
         </td>
       }
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;"> 
-          {{ carrinho.local }} 
-        </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7; font-size: 0.8em;"> {{ carrinho.local }} </td>
         <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7; font-size: 0.8em;"  class="text-center">
           {{ carrinho.data_criacao | date:'HH:mm:ss'}} 
         </td>
@@ -200,7 +198,7 @@
             width="100"
             height="70">
         </td>
-        <td style="color: #4f63e7"><p>{{ carrinho.produto.nome }}</p></td>
+        <td style="color: #4f63e7; font-size: 0.8em;"><p>{{ carrinho.produto.nome }}</p></td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -212,18 +210,19 @@
                   justify-content: center;'
                   >
                 <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop1"
-                  class='form-control'
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -241,14 +240,15 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop2"
-                  class='form-control'
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -263,16 +263,16 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop3"
-                  class='form-control'
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
                   disabled=""
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <span style="width: 1em; margin-top: 0.5em">
                   <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
@@ -282,28 +282,53 @@
 
           }
 
-        <td>
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao2"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7"> 
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;"> 
           {{ carrinho.local }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.data_criacao | date:'HH:mm:ss'}} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
         <td  (click)="openPopup(carrinho.id! )"class="text-center">
-          <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
+          <p style="margin: 0; "><small style="color: #4f63e7;font-size: 0.8em;">{{
               carrinho.status }}</small></p>
         </td>
 
@@ -338,7 +363,7 @@
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style="color: #4f63e7; font-size: 0.8em;">{{ carrinho.produto.nome }}</td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -350,18 +375,19 @@
                   justify-content: center;'
                   >
                 <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop2-1"
-                  class='form-control'
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <a  style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -379,14 +405,15 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop2-2"
-                  class='form-control'
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -401,16 +428,16 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeLaptop2-3"
-                  class='form-control'
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
                   disabled=""
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <span style="width: 1em; margin-top: 0.5em">
                   <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
@@ -419,27 +446,52 @@
             </td>
 
           }
-        <td>
+
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao3"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
-
-        <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.local }} </td>
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
 
         <td  name="status"  id="status" (click)="openPopup(carrinho.id! )"class="text-center">
-          <p style="margin: 0; color: #4f63e7">
-            <small style="font-size: 0.8em;">{{carrinho.status }}</small>
+          <p style="margin: 0;">
+            <small style="color: #4f63e7;font-size: 0.8em;">{{carrinho.status }}</small>
           </p>
         </td>
       </tr>
@@ -473,7 +525,7 @@
             width="100"
             height="70">
         </td>
-        <td style='width: 7%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style="color: #4f63e7; font-size: 0.8em;">{{ carrinho.produto.nome }}</td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -484,18 +536,20 @@
                   flex-wrap: wrap;
                   justify-content: center;'
                   >
-                <a style="width: 0.5em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeTablet1"
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <a style="width: 0.5em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -508,18 +562,20 @@
                   flex-wrap: wrap;
                   justify-content: center;'
                   >
-                <a style="width: 0.5em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeTablet2"
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                  <a style="width: 0.5em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -534,40 +590,68 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeTablet3"
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <span style="width: 0.5em; margin-top: 0.5em">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <span style="width: 1em; margin-top: 0.5em">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
                 </span>
               </div>
             </td>
 
           }
-        <td>
+
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao4"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.local }} </td>
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
 
-        <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
+        <td style="color: #4f63e7;font-size: 0.8em;" (click)="openPopup(carrinho.id! )" class="text-center">
             {{carrinho.status }}
         </td>
       </tr>
@@ -601,7 +685,7 @@
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style="color: #4f63e7; font-size: 0.8em;">{{ carrinho.produto.nome }}</td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -612,18 +696,20 @@
                   flex-wrap: wrap;
                   justify-content: center;'
                   >
-                <a style="width: 0.5em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobile1"
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <a style="width: 0.5em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -636,18 +722,20 @@
                   flex-wrap: wrap;
                   justify-content: center;'
                   >
-                <a style="width: 0.5em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobile2"
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <a style="width: 0.5em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -662,40 +750,68 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px; width: 10px; height: 10px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobile3"
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 2em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)">
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
-                <span style="width: 0.5em; margin-top: 0.5em">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px; width: 10px; height: 10px;"></i>
+                <span style="width: 1em; margin-top: 0.5em">
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
                 </span>
               </div>
             </td>
 
           }
-        <td>
+
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao5"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7; font-size: 10px;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
-                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.local }} </td>
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
 
-        <td style="color: #4f63e7; font-size: 10px;" (click)="openPopup(carrinho.id! )" class="text-center">
+        <td style="color: #4f63e7;font-size: 0.8em;" (click)="openPopup(carrinho.id! )" class="text-center">
             {{carrinho.status }}
         </td>
       </tr>
@@ -729,7 +845,7 @@
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style="color: #4f63e7; font-size: 0.8em;">{{ carrinho.produto.nome }}</td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -741,18 +857,19 @@
                   justify-content: center;'
                   >
                 <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno1"
-                  class='form-control'
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -770,14 +887,15 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno2"
-                  class='form-control'
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -792,16 +910,16 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno3"
-                  class='form-control'
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
                   disabled=""
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <span style="width: 1em; margin-top: 0.5em">
                   <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
@@ -810,26 +928,52 @@
             </td>
 
           }
-        <td>
+
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao6"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
 
-        <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
-                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.local }} </td>
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+                <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
 
-        <td  (click)="openPopup(carrinho.id! )"class="text-center">
-          <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
+        <td  (click)="openPopup(carrinho.id! )" class="text-center">
+          <p style="margin: 0;"><small style="color: #4f63e7;font-size: 0.8em;">{{
               carrinho.status }}</small></p>
         </td>
       </tr>
@@ -863,7 +1007,7 @@
             width="100"
             height="70">
         </td>
-        <td style='width: 10%; font-size: 10px;'>{{ carrinho.produto.nome }}</td>
+        <td style="color: #4f63e7; font-size: 0.8em;">{{ carrinho.produto.nome }}</td>
           @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
                (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
 
@@ -875,18 +1019,19 @@
                   justify-content: center;'
                   >
                 <a style="width: 1em; margin-top: 0.5em;" (click)='minus(carrinho)'>
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno2-1"
-                  class='form-control'
+                  name="quantidadeDesktop1"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -904,14 +1049,15 @@
 
                 </a>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno2-2"
-                  class='form-control'
+                  name="quantidadeDesktop2"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;'
+                  disabled=""
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <a style="width: 1em; margin-top: 0.5em" (click)="plus(carrinho)">
-                  <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
+                  <i class="fa fa-plus" style="color:green; padding-left: 3px;font-size: 0.8em;"></i>
                 </a>
               </div>
             </td>
@@ -926,16 +1072,16 @@
                   justify-content: center;'
                   >
                 <span style="width: 1em; margin-top: 0.5em;">
-                  <i class="fa fa-minus" style="color:red; padding-right: 8px;"></i>
+                  <i class="fa fa-minus" style="color:red; padding-right: 8px;font-size: 0.8em;"></i>
 
                 </span>
                 <input [(ngModel)]='carrinho.quantidade'
-                  name="quantidadeMobilePequeno2-3"
-                  class='form-control'
+                  name="quantidadeDesktop3"
+                  class='form-control; nav-link; text-center'
                   type="text"
-                  style='width: 3em; color: #4f63e7'
+                  style='width: 2em; color: #4f63e7;font-size: 0.8em;' 
                   disabled=""
-                  (ngModelChange)="atualizarCarrinho(carrinho)" class="nav-link" >
+                  (ngModelChange)="atualizarCarrinho(carrinho)" >
 
                 <span style="width: 1em; margin-top: 0.5em">
                   <i class="fa fa-plus" style="color:green; padding-left: 3px;"></i>
@@ -944,26 +1090,52 @@
             </td>
 
           }
-        <td>
+
+      @if ((+pedido.telefone == 5511982551256 || +pedido.telefone == 5599999999997) &&
+            (carrinho.status === 'Pendente' || carrinho.status === 'Confirmado')) {
+
+        <td>         
           <input [(ngModel)]="carrinho.observacao" 
                 (ngModelChange)="atualizarCarrinho(carrinho) "
-                name="observacao7"
+                name="observacao1"
                 type="text" 
-                style='color: red'   
+                style='color: red;font-size: 0.8em;'   
             >
         </td>
+      }
+      @else if(carrinho.status === 'Pendente') {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+            >
+        </td>
+          }
+          @else {
+        <td>         
+          <input [(ngModel)]="carrinho.observacao" 
+                (ngModelChange)="atualizarCarrinho(carrinho) "
+                name="observacao1"
+                type="text" 
+                style='color: red;font-size: 0.8em;'   
+                [disabled]="true"
+            >
+        </td>
+      }
 
-        <td style="color: #4f63e7">{{ carrinho.local }} </td>
-        <td style="color: #4f63e7">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.local }} </td>
+        <td style="color: #4f63e7;font-size: 0.8em;">{{ carrinho.data_criacao | date:'HH:mm:ss'}} </td>
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.telefone }} 
         </td>
-        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7">
+        <td  (click)="openPopup(carrinho.id! )"  style="color: #4f63e7;font-size: 0.8em;">
           {{ carrinho.isencao }} 
         </td>
 
         <td  (click)="openPopup(carrinho.id! )"class="text-center">
-          <p style="margin: 0; color: #4f63e7"><small style="font-size: 0.8em;">{{
+          <p style="margin: 0;"><small style="color: #4f63e7;font-size: 0.8em;">{{
               carrinho.status }}</small></p>
         </td>
       </tr>
