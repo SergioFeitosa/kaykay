@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { environment } from '../../environments/environment.development';
 import { CaminhoMenuComponent } from '../caminho-menu/caminho-menu.component';
 import { CommonModule } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-cardapio-principal',

@@ -41,7 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
  /* LAPTOP */
 
- @media(min-width: 993px) and (max-width: 1399px) {
+ @media(min-width: 992px) and (max-width: 1399px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
@@ -79,7 +79,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
  /* LAPTOP2 */
 
- @media(min-width: 768px) and (max-width: 992px) {
+ @media(min-width: 768px) and (max-width: 991px) {
   .desktop {
     display: none;
     background-image: '../../assets/images/color-azul-mar.png';
