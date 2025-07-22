@@ -6,7 +6,7 @@
 export const environment = {
     production: false,
     login: false,
-    ApiURL : 'http://localhost:8000',
+    ApiURL : 'http://localhost:3000',
     telefone: 0,
     codigo: 123,
     local: 'GS001',
